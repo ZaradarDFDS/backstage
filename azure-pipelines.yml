@@ -32,7 +32,7 @@ stages:
 
   - job: Build
     # Use multistage image to compile code and build image
-    displayName: 'Build image and push to ECR'
+    displayName: 'Build frontend image and push to ECR'
     steps:
     - task: Docker@2
       displayName: 'Build Container Image'
@@ -43,13 +43,33 @@ stages:
 
     # Push the image to ECR with a tag based on the current BuildID
     - task: ECRPushImage@1
-      displayName: 'Push Image to Shared ECR'
+      displayName: 'Push frontend image to Shared ECR'
       inputs:
         awsCredentials: 'Shared-Prod ECR-Push'
         regionName: 'eu-central-1'
         imageSource: 'imagename'
         sourceImageName: 'backstage'
         repositoryName: 'selfservice/backstage'
+        pushTag: '$(Build.BuildId)'
+
+
+    # Use multistage image to compile code and build image
+    - task: Docker@2
+      displayName: 'Build Container Image'
+      inputs:
+        command: 'build'
+        Dockerfile: 'packages/backend/Dockerfile'
+        arguments: '-t backstage-backend'
+
+    # Push the image to ECR with a tag based on the current BuildID
+    - task: ECRPushImage@1
+      displayName: 'Push backend image to Shared ECR'
+      inputs:
+        awsCredentials: 'Shared-Prod ECR-Push'
+        regionName: 'eu-central-1'
+        imageSource: 'imagename'
+        sourceImageName: 'backstage-backend'
+        repositoryName: 'selfservice/backstage-backend'
         pushTag: '$(Build.BuildId)'
 
 
