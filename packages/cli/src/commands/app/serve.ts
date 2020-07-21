@@ -20,12 +20,14 @@ import { ConfigReader } from '@backstage/config';
 import { serveBundle } from '../../lib/bundler';
 
 export default async (cmd: Command) => {
+  const buildType = cmd.buildtype;
   const appConfigs = await loadConfig();
   const waitForExit = await serveBundle({
     entry: 'src/index',
     checksEnabled: cmd.check,
     config: ConfigReader.fromConfigs(appConfigs),
     appConfigs,
+    buildType: buildType,
   });
 
   await waitForExit();

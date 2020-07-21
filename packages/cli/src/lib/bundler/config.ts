@@ -23,7 +23,7 @@ import nodeExternals from 'webpack-node-externals';
 import { optimization } from './optimization';
 import { Config } from '@backstage/config';
 import { BundlingPaths } from './paths';
-import { transforms } from './transforms';
+import { transformsSucrase, transformsBabel } from './transforms';
 import { BundlingOptions, BackendBundlingOptions } from './types';
 // import checkRequiredFiles from 'react-dev-utils/checkRequiredFiles';
 // import ModuleNotFoundPlugin from 'react-dev-utils/ModuleNotFoundPlugin';
@@ -46,7 +46,38 @@ export function createConfig(
 ): webpack.Configuration {
   const { checksEnabled, isDev } = options;
 
-  const { plugins, loaders } = transforms(options);
+  let plugins;
+  let loaders;
+
+  if (!options.buildType) {
+    options.buildType = '';
+  }
+
+  switch (options.buildType.toLowerCase().valueOf()) {
+    case 'babel'.valueOf():
+      console.log('Loading babel buildType');
+      {
+        const result = transformsBabel(options);
+        plugins = result.plugins;
+        loaders = result.loaders;
+      }
+      break;
+    case 'sucrase'.valueOf():
+      console.log('Loading sucrase buildType');
+      {
+        const result = transformsSucrase(options);
+        plugins = result.plugins;
+        loaders = result.loaders;
+      }
+      break;
+    default:
+      console.log('Loading sucrase buildType');
+      {
+        const result = transformsSucrase(options);
+        plugins = result.plugins;
+        loaders = result.loaders;
+      }
+  }
 
   const baseUrl = options.config.getString('app.baseUrl');
   const validBaseUrl = new URL(baseUrl);
@@ -141,7 +172,25 @@ export function createBackendConfig(
 ): webpack.Configuration {
   const { checksEnabled, isDev } = options;
 
-  const { loaders } = transforms(options);
+  let loaders;
+
+  if (!options.buildType) {
+    options.buildType = '';
+  }
+
+  switch (options.buildType.toLowerCase().valueOf()) {
+    case 'babel'.valueOf():
+      console.log('Loading babel buildType');
+      loaders = transformsBabel(options);
+      break;
+    case 'sucrase'.valueOf():
+      console.log('Loading sucrase buildType');
+      loaders = transformsSucrase(options);
+      break;
+    default:
+      console.log('Loading sucrase buildType');
+      loaders = transformsSucrase(options);
+  }
 
   return {
     mode: isDev ? 'development' : 'production',

@@ -37,12 +37,20 @@ const main = (argv: string[]) => {
     .command('app:build')
     .description('Build an app for a production release')
     .option('--stats', 'Write bundle stats to output directory')
+    .option(
+      '--buildtype <type>',
+      'Specify build config, either "webpack" or "sucrase"',
+    )
     .action(lazyAction(() => import('./commands/app/build'), 'default'));
 
   program
     .command('app:serve')
     .description('Serve an app for local development')
     .option('--check', 'Enable type checking and linting')
+    .option(
+      '--buildtype <type>',
+      'Specify build config, either "webpack" or "sucrase"',
+    )
     .action(lazyAction(() => import('./commands/app/serve'), 'default'));
 
   program
@@ -63,6 +71,10 @@ const main = (argv: string[]) => {
     .command('backend:dev')
     .description('Start local development server with HMR for the backend')
     .option('--check', 'Enable type checking and linting')
+    .option(
+      '--buildtype <type>',
+      'Specify build config, either "webpack" or "sucrase"',
+    )
     .action(lazyAction(() => import('./commands/backend/dev'), 'default'));
 
   program
