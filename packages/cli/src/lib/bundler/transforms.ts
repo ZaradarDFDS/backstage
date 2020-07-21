@@ -128,22 +128,55 @@ export const transformsBabel = (
   const extraTransforms = isDev ? ['react-hot-loader'] : [];
 
   const loaders = [
+    // PRE-change TSX
+    // {
+    //   test: /\.(tsx?)$/,
+    //   exclude: /node_modules/,
+    //   loader: require.resolve('@sucrase/webpack-loader'),
+    //   options: {
+    //     transforms: ['typescript', 'jsx', ...extraTransforms],
+    //     production: !isDev,
+    //   },
+    // },
+    // Babel TSX
     {
       test: /\.(tsx?)$/,
       exclude: /node_modules/,
-      loader: require.resolve('@sucrase/webpack-loader'),
+      loader: require.resolve('babel-loader'),
       options: {
-        transforms: ['typescript', 'jsx', ...extraTransforms],
-        production: !isDev,
+        presets: [
+          ['@babel/preset-react', {}],
+          ['@babel/preset-typescript', {}],
+          ['@babel/preset-env', { targets: 'last 2 Chrome versions' }],
+        ],
+        plugins: [
+          '@babel/plugin-proposal-class-properties',
+          '@babel/plugin-transform-classes',
+          [
+            '@babel/plugin-proposal-decorators',
+            { legacy: false, decoratorsBeforeExport: true },
+          ],
+        ],
       },
     },
     {
       test: /\.(jsx?|mjs)$/,
       exclude: /node_modules/,
-      loader: require.resolve('@sucrase/webpack-loader'),
+      loader: require.resolve('babel-loader'),
       options: {
-        transforms: ['jsx', ...extraTransforms],
-        production: !isDev,
+        presets: [
+          ['@babel/preset-react', {}],
+          ['@babel/preset-typescript', {}],
+          ['@babel/preset-env', { targets: 'last 2 Chrome versions' }],
+        ],
+        plugins: [
+          '@babel/plugin-proposal-class-properties',
+          '@babel/plugin-transform-classes',
+          [
+            '@babel/plugin-proposal-decorators',
+            { legacy: false, decoratorsBeforeExport: true },
+          ],
+        ],
       },
     },
     {

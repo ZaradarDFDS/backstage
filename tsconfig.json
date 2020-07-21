@@ -8,6 +8,7 @@
   ],
   "compilerOptions": {
     "outDir": "dist",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "jsx": "react"
   }
 }
