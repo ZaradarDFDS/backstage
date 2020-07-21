@@ -24,7 +24,103 @@ type Transforms = {
   plugins: Plugin[];
 };
 
-export const transforms = (
+export const transformsSucrase = (
+  options: BundlingOptions | BackendBundlingOptions,
+): Transforms => {
+  const { isDev } = options;
+
+  const extraTransforms = isDev ? ['react-hot-loader'] : [];
+
+  const loaders = [
+    {
+      test: /\.(tsx?)$/,
+      exclude: /node_modules/,
+      loader: require.resolve('@sucrase/webpack-loader'),
+      options: {
+        transforms: ['typescript', 'jsx', ...extraTransforms],
+        production: !isDev,
+      },
+    },
+    {
+      test: /\.(jsx?|mjs)$/,
+      exclude: /node_modules/,
+      loader: require.resolve('@sucrase/webpack-loader'),
+      options: {
+        transforms: ['jsx', ...extraTransforms],
+        production: !isDev,
+      },
+    },
+    {
+      test: [/\.icon\.svg$/],
+      use: [
+        {
+          loader: require.resolve('@sucrase/webpack-loader'),
+          options: {
+            transforms: ['jsx', ...extraTransforms],
+            production: !isDev,
+          },
+        },
+        {
+          loader: require.resolve('@svgr/webpack'),
+          options: { babel: false, template: svgrTemplate },
+        },
+      ],
+    },
+    {
+      test: [
+        /\.bmp$/,
+        /\.gif$/,
+        /\.jpe?g$/,
+        /\.png$/,
+        /\.frag/,
+        { test: /\.svg/, not: [/\.icon\.svg/] },
+        /\.xml/,
+      ],
+      loader: require.resolve('url-loader'),
+      options: {
+        limit: 10000,
+        name: 'static/media/[name].[hash:8].[ext]',
+      },
+    },
+    {
+      test: /\.ya?ml$/,
+      use: require.resolve('yml-loader'),
+    },
+    {
+      include: /\.(md)$/,
+      use: require.resolve('raw-loader'),
+    },
+    {
+      test: /\.css$/i,
+      use: [
+        isDev ? require.resolve('style-loader') : MiniCssExtractPlugin.loader,
+        {
+          loader: require.resolve('css-loader'),
+          options: {
+            sourceMap: true,
+          },
+        },
+      ],
+    },
+  ];
+
+  const plugins = new Array<Plugin>();
+
+  if (isDev) {
+    plugins.push(new webpack.HotModuleReplacementPlugin());
+  } else {
+    plugins.push(
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash:8].css',
+        chunkFilename: '[name].[id].[contenthash:8].css',
+      }),
+    );
+  }
+
+  return { loaders, plugins };
+};
+
+export const transformsBabel = (
   options: BundlingOptions | BackendBundlingOptions,
 ): Transforms => {
   const { isDev } = options;
