@@ -147,11 +147,13 @@ export const transformsBabel = (
         presets: [
           ['@babel/preset-typescript', {}],
           ['@babel/preset-react', {}],
-          ['@babel/preset-env', { targets: ['last 2 Chrome versions', 'last 2 Firefox versions'] }],
+          [
+            '@babel/preset-env',
+            { targets: ['last 2 Chrome versions', 'last 2 Firefox versions'] },
+          ],
         ],
         plugins: [
           '@babel/plugin-proposal-class-properties',
-          '@babel/plugin-transform-classes',
           [
             '@babel/plugin-proposal-decorators',
             { legacy: false, decoratorsBeforeExport: true },
@@ -167,11 +169,13 @@ export const transformsBabel = (
         presets: [
           ['@babel/preset-typescript', {}],
           ['@babel/preset-react', {}],
-          ['@babel/preset-env', { targets: ['last 2 Chrome versions', 'last 2 Firefox versions'] }],
+          [
+            '@babel/preset-env',
+            { targets: ['last 2 Chrome versions', 'last 2 Firefox versions'] },
+          ],
         ],
         plugins: [
           '@babel/plugin-proposal-class-properties',
-          '@babel/plugin-transform-classes',
           [
             '@babel/plugin-proposal-decorators',
             { legacy: false, decoratorsBeforeExport: true },
