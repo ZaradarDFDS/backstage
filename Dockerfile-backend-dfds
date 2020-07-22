@@ -1,0 +1,16 @@
+#Setup build image
+FROM node:lts-buster
+
+#Set container filesystem to /build (and create folder if it doesnt exist)
+WORKDIR /backstage
+
+#Copy files to container file system.
+COPY ./packages/backend ./backend
+COPY ./app-config.yaml ./app-config.yaml
+COPY ./package.json ./package.json
+
+WORKDIR /backstage/backend
+
+RUN yarn install
+
+CMD yarn start
