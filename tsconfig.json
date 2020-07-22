@@ -7,6 +7,8 @@
     "plugins/*/migrations"
   ],
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "experimentalDecorators": true,
+    "jsx": "react"
   }
 }
