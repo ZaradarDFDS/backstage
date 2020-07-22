@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: backstage
+  annotations:
+    traefik.frontend.rule.type: PathPrefixStrip
   labels:
     app: backstage
     component: ingress
