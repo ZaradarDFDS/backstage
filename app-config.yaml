@@ -1,12 +1,12 @@
 app:
   title: Backstage DFDS
-  baseUrl: http://backstage.dfds.cloud:3000
+  baseUrl: https://backstage.dfds.cloud
 
 backend:
-  baseUrl: http://backstage.dfds.cloud:7000
+  baseUrl: https://backstage.dfds.cloud/backend
   listen: 0.0.0.0:7000
   cors:
-    origin: http://backstage.dfds.cloud:3000
+    origin: https://backstage.dfds.cloud
     methods: [GET, POST, PUT, DELETE]
     credentials: true
 
