@@ -87,8 +87,8 @@ stages:
 - stage: CD
   displayName: 'Continuous Deployment'
   dependsOn: CI
-  # Run CD only if CI succeeds and if pipeline runs from Master branch
-  condition: and(succeeded('CI'), eq(variables['Build.SourceBranch'], 'refs/heads/master')) 
+  # Run CD only if CI succeeds and if pipeline runs from release branch
+  condition: and(succeeded('CI'), eq(variables['Build.SourceBranch'], 'refs/heads/dfds-release')) 
 
   jobs:  
   # Deployment job for kubernetes deployments
