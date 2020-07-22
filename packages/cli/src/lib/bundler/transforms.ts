@@ -145,9 +145,9 @@ export const transformsBabel = (
       loader: require.resolve('babel-loader'),
       options: {
         presets: [
-          ['@babel/preset-react', {}],
           ['@babel/preset-typescript', {}],
-          ['@babel/preset-env', { targets: 'last 2 Chrome versions' }],
+          ['@babel/preset-react', {}],
+          ['@babel/preset-env', { targets: ['last 2 Chrome versions', 'last 2 Firefox versions'] }],
         ],
         plugins: [
           '@babel/plugin-proposal-class-properties',
@@ -165,9 +165,9 @@ export const transformsBabel = (
       loader: require.resolve('babel-loader'),
       options: {
         presets: [
-          ['@babel/preset-react', {}],
           ['@babel/preset-typescript', {}],
-          ['@babel/preset-env', { targets: 'last 2 Chrome versions' }],
+          ['@babel/preset-react', {}],
+          ['@babel/preset-env', { targets: ['last 2 Chrome versions', 'last 2 Firefox versions'] }],
         ],
         plugins: [
           '@babel/plugin-proposal-class-properties',
