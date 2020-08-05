@@ -20,12 +20,14 @@ import { Command } from 'commander';
 import { serveBackend } from '../../lib/bundler/backend';
 
 export default async (cmd: Command) => {
+  const buildType = cmd.buildtype;
   const appConfigs = await loadConfig();
   const waitForExit = await serveBackend({
     entry: 'src/index',
     checksEnabled: cmd.check,
     config: ConfigReader.fromConfigs(appConfigs),
     appConfigs,
+    buildType: buildType,
   });
 
   await waitForExit();
