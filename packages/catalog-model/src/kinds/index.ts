@@ -19,6 +19,13 @@ export type {
   ComponentEntityV1alpha1 as ComponentEntity,
   ComponentEntityV1alpha1,
 } from './ComponentEntityV1alpha1';
+
+export { ComponentEntityV1alpha1DfdsPolicy } from './ComponentEntityV1alpha1Dfds';
+export type {
+  ComponentEntityV1alpha1Dfds as ComponentEntityDfds,
+  ComponentEntityV1alpha1Dfds,
+} from './ComponentEntityV1alpha1Dfds';
+
 export { LocationEntityV1alpha1Policy } from './LocationEntityV1alpha1';
 export type {
   LocationEntityV1alpha1 as LocationEntity,

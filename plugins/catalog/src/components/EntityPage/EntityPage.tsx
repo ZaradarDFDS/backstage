@@ -164,6 +164,10 @@ export const EntityPage: FC<{}> = () => {
               label="Lifecycle"
               value={entity.spec?.lifecycle || 'unknown'}
             />
+            <HeaderLabel
+              label="Capability"
+              value={entity.spec?.capability || 'unknown'}
+            />
             <EntityContextMenu onUnregisterEntity={showRemovalDialog} />
           </>
         )}
