@@ -21,11 +21,13 @@ import { serveBundle } from '../../lib/bundler';
 
 export default async (cmd: Command) => {
   const appConfigs = await loadConfig();
+  const buildType = cmd.buildtype;
   const waitForExit = await serveBundle({
     entry: 'dev/index',
     checksEnabled: cmd.check,
     config: ConfigReader.fromConfigs(appConfigs),
     appConfigs,
+    buildType: buildType,
   });
 
   await waitForExit();
