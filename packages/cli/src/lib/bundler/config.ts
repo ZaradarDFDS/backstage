@@ -181,15 +181,24 @@ export function createBackendConfig(
   switch (options.buildType.toLowerCase().valueOf()) {
     case 'babel'.valueOf():
       console.log('Loading babel buildType');
-      loaders = transformsBabel(options);
+      {
+        const result = transformsBabel(options);
+        loaders = result.loaders;
+      }
       break;
     case 'sucrase'.valueOf():
       console.log('Loading sucrase buildType');
-      loaders = transformsSucrase(options);
+      {
+        const result = transformsSucrase(options);
+        loaders = result.loaders;
+      }
       break;
     default:
       console.log('Loading sucrase buildType');
-      loaders = transformsSucrase(options);
+      {
+        const result = transformsSucrase(options);
+        loaders = result.loaders;
+      }
   }
 
   return {
