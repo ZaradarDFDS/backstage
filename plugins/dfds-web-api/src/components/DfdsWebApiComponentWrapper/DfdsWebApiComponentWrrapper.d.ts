@@ -16,5 +16,6 @@
 declare namespace JSX {
   interface IntrinsicElements {
     'dfds-concret-component': any;
+    'dfds-devex-capabilitydashboard-component' : any;
   }
 }

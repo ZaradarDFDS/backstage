@@ -27,9 +27,15 @@ import {
   SupportButton,
 } from '@backstage/core';
 import ConcretComponent from '@dfds-devex/dfds-blaster-v2/lib/components/ConcretComponent';
+import CapabilityDashboardComponent from '@dfds-devex/dfds-blaster-v2/lib/components/CapabilityDashboardComponent';
 
-const DfdsWebApiComponentWrapper: FC<{}> = () => (
-  <Page theme={pageTheme.tool}>
+const DfdsWebApiComponentWrapper = () => {
+  var concreteComponent = new ConcretComponent();
+  var dashboardComponent = new CapabilityDashboardComponent();
+  console.log("Creating DfdsWebApiComponent");
+
+  return (
+    <Page theme={pageTheme.tool}>
     <Header title="Welcome to dfds-web-api!" subtitle="Optional subtitle">
       <HeaderLabel label="Owner" value="Team DFDS" />
       <HeaderLabel label="Lifecycle" value="Alpha" />
@@ -46,10 +52,12 @@ const DfdsWebApiComponentWrapper: FC<{}> = () => (
         </Grid>
         <Grid item>
           <dfds-concret-component />
+          <dfds-devex-capabilitydashboard-component />
         </Grid>
       </Grid>
     </Content>
-  </Page>
-);
+    </Page>
+  )
+};
 
 export default DfdsWebApiComponentWrapper;
