@@ -23,6 +23,7 @@ export type BundlingOptions = {
   config: Config;
   appConfigs: AppConfig[];
   baseUrl: URL;
+  buildType: String;
 };
 
 export type BackendBundlingOptions = Omit<BundlingOptions, 'baseUrl'>;
@@ -31,10 +32,12 @@ export type ServeOptions = BundlingPathsOptions & {
   checksEnabled: boolean;
   config: Config;
   appConfigs: AppConfig[];
+  buildType: String;
 };
 
 export type BuildOptions = BundlingPathsOptions & {
   statsJsonEnabled: boolean;
   config: Config;
   appConfigs: AppConfig[];
+  buildType: String;
 };

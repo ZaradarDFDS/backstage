@@ -21,10 +21,12 @@ import { buildBundle } from '../../lib/bundler';
 
 export default async (cmd: Command) => {
   const appConfigs = await loadConfig();
+  const buildType = cmd.buildtype;
   await buildBundle({
     entry: 'dev/index',
     statsJsonEnabled: cmd.stats,
     config: ConfigReader.fromConfigs(appConfigs),
     appConfigs,
+    buildType: buildType,
   });
 };

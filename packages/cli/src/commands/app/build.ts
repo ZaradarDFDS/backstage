@@ -20,11 +20,13 @@ import { ConfigReader } from '@backstage/config';
 import { buildBundle } from '../../lib/bundler';
 
 export default async (cmd: Command) => {
+  const buildType = cmd.buildtype;
   const appConfigs = await loadConfig();
   await buildBundle({
     entry: 'src/index',
     statsJsonEnabled: cmd.stats,
     config: ConfigReader.fromConfigs(appConfigs),
     appConfigs,
+    buildType: buildType,
   });
 };
