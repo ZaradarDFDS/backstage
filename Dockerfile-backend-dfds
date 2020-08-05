@@ -1,7 +1,7 @@
 #Setup build image
 FROM node:lts-buster
 
-#Set container filesystem to /build (and create folder if it doesnt exist)
+# Set container filesystem to /build (and create folder if it doesn't exist)
 WORKDIR /backstage
 
 #Copy files to container file system.
