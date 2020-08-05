@@ -1,0 +1,83 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  generation: 1
+  labels:
+    k8s-app: traefik-okta-test
+  name: traefik-okta-test
+  namespace: kube-system
+  resourceVersion: "123702388"
+  selfLink: /apis/extensions/v1beta1/namespaces/kube-system/deployments/traefik-okta-test
+  uid: d8e953af-d77c-4b66-a166-8125f72a5d0c
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: traefik-okta-test
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        k8s-app: traefik-okta-test
+        name: traefik-okta-test
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: k8s-app
+                operator: In
+                values:
+                - traefik-okta-test
+            topologyKey: failure-domain.beta.kubernetes.io/zone
+      automountServiceAccountToken: false
+      containers:
+      - args:
+        - --api
+        - --kubernetes
+        - --logLevel=INFO
+        - --metrics.prometheus
+        - --accessLog.format=json
+        - --accessLog.filters.statusCodes='300-399,400-499,500-599'
+        image: traefik:v1.7.25
+        imagePullPolicy: IfNotPresent
+        name: traefik-okta-test
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 8080
+          name: admin
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          mountPropagation: None
+          name: traefik-sa-token-8vz77
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      priorityClassName: service-critical
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: traefik-sa
+      serviceAccountName: traefik-sa
+      shareProcessNamespace: false
+      terminationGracePeriodSeconds: 60
+      volumes:
+      - name: traefik-sa-token-8vz77
+        secret:
+          defaultMode: 420
+          optional: false
+          secretName: traefik-sa-token-8vz77

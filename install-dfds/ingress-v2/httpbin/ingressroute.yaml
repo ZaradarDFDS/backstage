@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: httpbin-ingress-route
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`hellman-traefik-alb-okta-2048208114.eu-west-1.elb.amazonaws.com`)
+    kind: Rule
+    services:
+    - name: httpbin
+      port: 8080
