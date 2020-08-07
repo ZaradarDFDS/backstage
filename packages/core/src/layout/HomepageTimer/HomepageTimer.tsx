@@ -24,10 +24,7 @@ const istOptions = { timeZone: 'Europe/Istanbul', ...timeFormat };
 const gmsOptions = { timeZone: 'Europe/London', ...timeFormat };
 
 const defaultTimes = {
-  timeNY: '',
   timeUTC: '',
-  timeTYO: '',
-  timeSTO: '',
   timeCPH: '',
   timeIST: '',
   timeGMS: '',
