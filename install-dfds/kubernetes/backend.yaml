@@ -36,14 +36,14 @@ spec:
           value: $(DATABASE_NAME)
         - name: DATABASE_PASSWORD
           value: $(DATABASE_PASSWORD)
-        - name: AUTH_OKTA_CLIENT_ID
-          value: $(AUTH_OKTA_CLIENT_ID)
-        - name: AUTH_OKTA_CLIENT_SECRET,
-          value: $(AUTH_OKTA_CLIENT_SECRET)
-        - name: AUTH_OKTA_AUDIENCE
-          value: $(AUTH_OKTA_AUDIENCE)
-        - name: AUTH_GITHUB_CLIENT_ID,
-          value: $(AUTH_GITHUB_CLIENT_ID)
-        - name: AUTH_GITHUB_CLIENT_SECRET
-          value: $(AUTH_GITHUB_CLIENT_SECRET)
+        # - name: AUTH_OKTA_CLIENT_ID
+        #   value: $(AUTH_OKTA_CLIENT_ID)
+        # - name: AUTH_OKTA_CLIENT_SECRET,
+        #   value: $(AUTH_OKTA_CLIENT_SECRET)
+        # - name: AUTH_OKTA_AUDIENCE
+        #   value: $(AUTH_OKTA_AUDIENCE)
+        # - name: AUTH_GITHUB_CLIENT_ID,
+        #   value: $(AUTH_GITHUB_CLIENT_ID)
+        # - name: AUTH_GITHUB_CLIENT_SECRET
+        #   value: $(AUTH_GITHUB_CLIENT_SECRET)
         resources: {}
