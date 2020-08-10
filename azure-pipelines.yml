@@ -53,6 +53,10 @@ stages:
         pushTag: '$(Build.BuildId)'
 
 
+  - job: BuildBackend
+    # Use multistage image to compile code and build image
+    displayName: 'Build backend image and push to ECR'
+    steps:
     # Use multistage image to compile code and build image
     - task: Docker@2
       displayName: 'Build Container Image'
@@ -74,14 +78,14 @@ stages:
 
 
   - job: Publish
+    displayName: 'Publish pipeline manifests'
     steps:
     # Upload Kubernetes manifests to current artifact Pipeline from folder /k8s
     - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '$(System.DefaultWorkingDirectory)/install-dfds/kubernetes'
         artifact: 'manifests'
-        publishLocation: 'pipeline'
-        displayName: 'Publish Artifact: manifests'    
+        publishLocation: 'pipeline'   
 
 # Continuous Deployment steps
 - stage: CD
