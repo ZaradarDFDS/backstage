@@ -6,7 +6,7 @@ spec:
   entryPoints:
     - web
   routes:
-  - match: Host(`hellman-traefik-alb-okta-2048208114.eu-west-1.elb.amazonaws.com`)
+  - match: Host(`okta.hellman.oxygen.dfds.cloud`)
     kind: Rule
     services:
     - name: httpbin
