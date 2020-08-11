@@ -94,7 +94,7 @@ export const CatalogTable = ({
     (rowData: Entity) => {
       const location = findLocationForEntityMeta(rowData.metadata);
       return {
-        icon: () => <GitHub fontSize="small" />,
+        icon: () => <GitHub fontSize="small" htmlColor="#53e848" />,
         tooltip: 'View on GitHub',
         onClick: () => {
           if (!location) return;
