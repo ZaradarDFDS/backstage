@@ -6,6 +6,7 @@ WORKDIR /build
 
 #Copy files to container file system.
 COPY ./ ./src
+COPY ./app-config.RELEASE.yaml ./src/app-config.yaml
 
 #Set workdir to current project folder
 WORKDIR /build/src

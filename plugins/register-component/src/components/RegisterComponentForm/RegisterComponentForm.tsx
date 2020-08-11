@@ -14,13 +14,16 @@
  * limitations under the License.
  */
 
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
   Button,
   FormControl,
   FormHelperText,
   TextField,
   LinearProgress,
+  Select,
+  MenuItem,
+  InputLabel,
 } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
@@ -44,12 +47,27 @@ export type Props = {
 };
 
 const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
-  const { register, handleSubmit, errors, formState } = useForm({
+  const { register, handleSubmit, errors, formState, setValue } = useForm({
     mode: 'onChange',
   });
   const classes = useStyles();
   const hasErrors = !!errors.componentLocation;
   const dirty = formState?.dirty;
+  const initialLocationSelection = "github";
+
+  React.useEffect(() => {
+    register("locationSelection");
+    setValue("locationSelection", initialLocationSelection);
+  }, [register]);
+
+
+  const [locationSelection, setLocationSelection] = useState(initialLocationSelection);
+
+  // Makes sure internal state is updated to reflect changes in UI and react-hook-form receives the new value
+  const handleLocationSelectionChange = (event: any) => {
+    setLocationSelection(event.target.value);
+    setValue("locationSelection", event.target.value);
+  };
 
   return submitting ? (
     <LinearProgress data-testid="loading-progress" />
@@ -84,6 +102,24 @@ const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
           </FormHelperText>
         )}
       </FormControl>
+
+      <FormControl>
+        <InputLabel id="registerComponentLocationSelection-label">Location</InputLabel>
+        <Select
+          labelId="registerComponentLocationSelection-label"
+          id="registerComponentLocationSelection"
+          required
+          displayEmpty
+          name="componentLocationSelection"
+          value={locationSelection}
+          onChange={handleLocationSelectionChange}
+        >
+            <MenuItem value={"github"}>GitHub</MenuItem>
+            <MenuItem value={"github/api"}>GitHub - Private repos</MenuItem>
+            <MenuItem disabled value={"azuredevops"}>Azure DevOps - WIP</MenuItem>
+          </Select>
+      </FormControl>
+
       <Button
         id="registerComponentFormSubmit"
         variant="contained"

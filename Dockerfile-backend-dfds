@@ -20,7 +20,7 @@ COPY ./plugins/techdocs-backend ./plugins/techdocs-backend
 COPY ./packages/catalog-model ./packages/catalog-model
 COPY ./packages/cli ./packages/cli
 
-COPY ./app-config.yaml ./app-config.yaml
+COPY ./app-config.RELEASE.yaml ./app-config.yaml
 COPY ./package.json ./package.json
 COPY ./yarn.lock ./yarn.lock
 COPY ./tsconfig.json ./tsconfig.json

@@ -77,9 +77,8 @@ const RegisterComponentPage: FC<{}> = () => {
 
   const handleSubmit = async (formData: Record<string, string>) => {
     setFormState(FormStates.Submitting);
-    const { componentLocation: target } = formData;
     try {
-      const data = await catalogApi.addLocation('github', target);
+      const data = await catalogApi.addLocation(formData.locationSelection, formData.componentLocation);
 
       if (!isMounted()) return;
 
