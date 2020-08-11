@@ -100,13 +100,27 @@ export const CatalogTable = ({
           if (!location) return;
           window.open(location.target, '_blank');
         },
-        hidden: location?.type !== 'github',
+        hidden: location?.type === 'github' ? false : true,
+      };
+    },
+    (rowData: Entity) => {
+      const location = findLocationForEntityMeta(rowData.metadata);
+      return {
+        icon: () => <GitHub fontSize="small" htmlColor="#fc6156" />,
+        tooltip: 'View on GitHub',
+        onClick: () => {
+          if (!location) return;
+          window.open(location.target, '_blank');
+        },
+        hidden: location?.type === 'github/api' ? false : true,
       };
     },
     (rowData: Entity) => {
       const createEditLink = (location: LocationSpec): string => {
         switch (location.type) {
           case 'github':
+            return location.target.replace('/blob/', '/edit/');
+          case 'github/api':
             return location.target.replace('/blob/', '/edit/');
           default:
             return location.target;
@@ -120,7 +134,10 @@ export const CatalogTable = ({
           if (!location) return;
           window.open(createEditLink(location), '_blank');
         },
-        hidden: location?.type !== 'github',
+        hidden:
+          location?.type === 'github' || location?.type === 'github/api'
+            ? false
+            : true,
       };
     },
     (rowData: Entity) => {
