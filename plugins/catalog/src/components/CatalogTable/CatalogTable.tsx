@@ -28,6 +28,7 @@ import {
   favouriteEntityIcon,
   favouriteEntityTooltip,
 } from '../FavouriteEntity/FavouriteEntity';
+import AzureDevOpsIcon from './Icons/AzureDevOpsIcon';
 
 const columns: TableColumn<Entity>[] = [
   {
@@ -115,6 +116,18 @@ export const CatalogTable = ({
         hidden: location?.type === 'github/api' ? false : true,
       };
     },
+    (rowData: Entity) => {
+      const location = findLocationForEntityMeta(rowData.metadata);
+      return {
+        icon: () => <AzureDevOpsIcon fontSize="small" htmlColor="#fc6156" />,
+        tooltip: 'View on Azure DevOps',
+        onClick: () => {
+          if (!location) return;
+          window.open(location.target, '_blank');
+        },
+        hidden: location?.type === 'azuredevops' ? false : true,
+      };
+    },    
     (rowData: Entity) => {
       const createEditLink = (location: LocationSpec): string => {
         switch (location.type) {
