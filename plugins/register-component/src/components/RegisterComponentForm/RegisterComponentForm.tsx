@@ -116,7 +116,7 @@ const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
         >
             <MenuItem value={"github"}>GitHub</MenuItem>
             <MenuItem value={"github/api"}>GitHub - Private repos</MenuItem>
-            <MenuItem disabled value={"azuredevops"}>Azure DevOps - WIP</MenuItem>
+            <MenuItem value={"azuredevops"}>Azure DevOps</MenuItem>
           </Select>
       </FormControl>
 
