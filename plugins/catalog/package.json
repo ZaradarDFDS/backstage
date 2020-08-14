@@ -23,6 +23,7 @@
   "dependencies": {
     "@backstage/catalog-model": "^0.1.1-alpha.14",
     "@backstage/core": "^0.1.1-alpha.14",
+    "@backstage/core-api": "^0.1.1-alpha.14",
     "@backstage/plugin-scaffolder": "^0.1.1-alpha.14",
     "@backstage/plugin-sentry": "^0.1.1-alpha.14",
     "@backstage/theme": "^0.1.1-alpha.14",

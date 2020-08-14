@@ -35,7 +35,6 @@ import { CatalogTable } from '../CatalogTable/CatalogTable';
 import CatalogLayout from './CatalogLayout';
 import { CatalogTabs, LabeledComponentType } from './CatalogTabs';
 import { WelcomeBanner } from './WelcomeBanner';
-import GitHub from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles(theme => ({
   contentWrapper: {
@@ -148,18 +147,6 @@ const CatalogPageContents = () => {
           </Button>
           <SupportButton>All your software catalog entities</SupportButton>
         </ContentHeader>
-        <div className={styles.iconsWrapper}>
-          <div className={styles.iconWrapper}>
-            {' '}
-            <span className={styles.iconText}>Public repo </span>{' '}
-            <GitHub fontSize="small" htmlColor="#53e848" />
-          </div>
-          <div className={styles.iconWrapper}>
-            {' '}
-            <span className={styles.iconText}>Private repo</span>{' '}
-            <GitHub fontSize="small" htmlColor="#fc6156" />
-          </div>
-        </div>
         <div className={styles.contentWrapper}>
           <div>
             <CatalogFilter
