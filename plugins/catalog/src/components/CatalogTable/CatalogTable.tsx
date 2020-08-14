@@ -114,6 +114,9 @@ export const CatalogTable = ({
       githubPublicColour = '#1DB954';
       break;
     default:
+      azureDevOpsIconColour = '#ffffff';
+      githubPrivateColour = '#F8F8F8';
+      githubPublicColour = '#1DB954';
       break;
   }
 
