@@ -98,9 +98,9 @@ export const CatalogTable = ({
     );
   }
 
-  let azureDevOpsIconColour = '#d7d5d5';
-  let githubPrivateColour = '#d7d5d5';
-  let githubPublicColour = '#d7d5d5';
+  let azureDevOpsIconColour = '#ffffff';
+  let githubPrivateColour = '#F8F8F8';
+  let githubPublicColour = '#1DB954';
 
   switch (themeId) {
     case 'dark':
