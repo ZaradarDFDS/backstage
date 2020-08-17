@@ -26,6 +26,11 @@ export type {
   ComponentEntityV1alpha1Dfds,
 } from './ComponentEntityV1alpha1Dfds';
 
+export { GroupEntityV1alpha1Policy } from './GroupEntityV1alpha1';
+export type {
+  GroupEntityV1alpha1 as GroupEntity,
+  GroupEntityV1alpha1,
+} from './GroupEntityV1alpha1';
 export { LocationEntityV1alpha1Policy } from './LocationEntityV1alpha1';
 export type {
   LocationEntityV1alpha1 as LocationEntity,
@@ -36,3 +41,8 @@ export type {
   TemplateEntityV1alpha1 as TemplateEntity,
   TemplateEntityV1alpha1,
 } from './TemplateEntityV1alpha1';
+export { ApiEntityV1alpha1Policy } from './ApiEntityV1alpha1';
+export type {
+  ApiEntityV1alpha1 as ApiEntity,
+  ApiEntityV1alpha1,
+} from './ApiEntityV1alpha1';

@@ -23,8 +23,10 @@ import {
   SchemaValidEntityPolicy,
 } from './entity';
 import {
+  ApiEntityV1alpha1Policy,
   ComponentEntityV1alpha1Policy,
   ComponentEntityV1alpha1DfdsPolicy,
+  GroupEntityV1alpha1Policy,
   LocationEntityV1alpha1Policy,
   TemplateEntityV1alpha1Policy,
 } from './kinds';
@@ -76,8 +78,10 @@ export class EntityPolicies implements EntityPolicy {
       EntityPolicies.anyOf([
         new ComponentEntityV1alpha1Policy(),
         new ComponentEntityV1alpha1DfdsPolicy(),
+        new GroupEntityV1alpha1Policy(),
         new LocationEntityV1alpha1Policy(),
         new TemplateEntityV1alpha1Policy(),
+        new ApiEntityV1alpha1Policy(),
       ]),
     ]);
   }

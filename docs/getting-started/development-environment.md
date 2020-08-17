@@ -1,4 +1,7 @@
-# Development Environment
+---
+id: development-environment
+title: Development Environment
+---
 
 This section describes how to get set up for doing development on the Backstage
 repository.
@@ -73,8 +76,6 @@ yarn test # test packages that have changed since later commit on origin/master
 yarn test:all # test all packages
 
 yarn clean # Remove all output folders and @backstage/cli cache
-
-yarn bundle # Build a production bundle of the example app
 
 yarn diff # Make sure all plugins are up to date with the latest plugin template
 

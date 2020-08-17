@@ -60,6 +60,9 @@ async function runPlain(cmd, options) {
     });
     return stdout.trim();
   } catch (error) {
+    if (error.stdout) {
+      process.stdout.write(error.stdout);
+    }
     if (error.stderr) {
       process.stderr.write(error.stderr);
     }
@@ -76,6 +79,12 @@ function handleError(err) {
   }
 }
 
+/**
+ * Waits for fn() to be true
+ * Checks every 100ms
+ * .cancel() is available
+ * @returns {Promise} Promise of resolution
+ */
 function waitFor(fn) {
   return new Promise(resolve => {
     const handle = setInterval(() => {
