@@ -15,11 +15,13 @@
  */
 import { Entity, LocationSpec } from '@backstage/catalog-model';
 import { Table, TableColumn, TableProps } from '@backstage/core';
+import { appThemeApiRef, useApi } from '@backstage/core-api';
 import { Link } from '@material-ui/core';
 import Edit from '@material-ui/icons/Edit';
 import GitHub from '@material-ui/icons/GitHub';
 import { Alert } from '@material-ui/lab';
 import React from 'react';
+import { useObservable } from 'react-use';
 import { generatePath, Link as RouterLink } from 'react-router-dom';
 import { findLocationForEntityMeta } from '../../data/utils';
 import { useStarredEntities } from '../../hooks/useStarredEntites';
@@ -80,6 +82,11 @@ export const CatalogTable = ({
   titlePreamble,
 }: CatalogTableProps) => {
   const { isStarredEntity, toggleStarredEntity } = useStarredEntities();
+  const appThemeApi = useApi(appThemeApiRef);
+  const themeId = useObservable(
+    appThemeApi.activeThemeId$(),
+    appThemeApi.getActiveThemeId(),
+  );
 
   if (error) {
     return (
@@ -91,12 +98,34 @@ export const CatalogTable = ({
     );
   }
 
+  let azureDevOpsIconColour = '#ffffff';
+  let githubPrivateColour = '#F8F8F8';
+  let githubPublicColour = '#1DB954';
+
+  switch (themeId) {
+    case 'dark':
+      azureDevOpsIconColour = '#ffffff';
+      githubPrivateColour = '#F8F8F8';
+      githubPublicColour = '#1DB954';
+      break;
+    case 'light':
+      azureDevOpsIconColour = '#000000';
+      githubPrivateColour = '#616161';
+      githubPublicColour = '#1DB954';
+      break;
+    default:
+      azureDevOpsIconColour = '#ffffff';
+      githubPrivateColour = '#F8F8F8';
+      githubPublicColour = '#1DB954';
+      break;
+  }
+
   const actions: TableProps<Entity>['actions'] = [
     (rowData: Entity) => {
       const location = findLocationForEntityMeta(rowData.metadata);
       return {
-        icon: () => <GitHub fontSize="small" htmlColor="#53e848" />,
-        tooltip: 'View on GitHub',
+        icon: () => <GitHub fontSize="small" htmlColor={githubPublicColour} />,
+        tooltip: '🔓 View on GitHub',
         onClick: () => {
           if (!location) return;
           window.open(location.target, '_blank');
@@ -107,8 +136,8 @@ export const CatalogTable = ({
     (rowData: Entity) => {
       const location = findLocationForEntityMeta(rowData.metadata);
       return {
-        icon: () => <GitHub fontSize="small" htmlColor="#fc6156" />,
-        tooltip: 'View on GitHub',
+        icon: () => <GitHub fontSize="small" htmlColor={githubPrivateColour} />,
+        tooltip: '🔒 View on GitHub',
         onClick: () => {
           if (!location) return;
           window.open(location.target, '_blank');
@@ -119,7 +148,7 @@ export const CatalogTable = ({
     (rowData: Entity) => {
       const location = findLocationForEntityMeta(rowData.metadata);
       return {
-        icon: () => <AzureDevOpsIcon fontSize="small" htmlColor="#fc6156" />,
+        icon: () => <AzureDevOpsIcon colour={azureDevOpsIconColour} />,
         tooltip: 'View on Azure DevOps',
         onClick: () => {
           if (!location) return;
@@ -127,7 +156,7 @@ export const CatalogTable = ({
         },
         hidden: location?.type === 'azuredevops' ? false : true,
       };
-    },    
+    },
     (rowData: Entity) => {
       const createEditLink = (location: LocationSpec): string => {
         switch (location.type) {
