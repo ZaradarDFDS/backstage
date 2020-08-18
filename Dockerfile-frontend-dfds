@@ -13,7 +13,7 @@ WORKDIR /build/src
 
 #Run yarn install
 RUN yarn install
-RUN yarn bundle
+RUN yarn workspace example-app build
 
 
 FROM nginx:mainline AS release
