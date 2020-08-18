@@ -29,3 +29,9 @@ techdocs:
 
 sentry:
   organization: dfds
+
+rollbar:
+  organization: spotify
+  accountToken:
+    $secret:
+      env: ROLLBAR_ACCOUNT_TOKEN  
