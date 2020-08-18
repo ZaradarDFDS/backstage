@@ -20,7 +20,8 @@ import * as result from './results';
 import { LocationProcessor, LocationProcessorEmit } from './types';
 
 export class AzureDevOpsReaderProcessor implements LocationProcessor {
-  private authCredentials: string = process.env.AZUREDEVOPS_AUTH_CREDENTIALS || '';
+  private authCredentials: string =
+    process.env.AZUREDEVOPS_AUTH_CREDENTIALS || '';
 
   getRequestOptions(): RequestInit {
     const headers: HeadersInit = {
@@ -51,7 +52,7 @@ export class AzureDevOpsReaderProcessor implements LocationProcessor {
       const url = this.buildRawUrl(location.target);
 
       const fileObj = await this.getObjectInfo(url);
-      let requestOptions = this.getRequestOptions();
+      const requestOptions = this.getRequestOptions();
       (requestOptions.headers as any).Accept = null;
       const response = await fetch(fileObj._links.blob, requestOptions);
 
@@ -76,19 +77,17 @@ export class AzureDevOpsReaderProcessor implements LocationProcessor {
     return true;
   }
 
-  async getObjectInfo(url : URL) : Promise<ObjectInfoResponse>
-  {
+  async getObjectInfo(url: URL): Promise<ObjectInfoResponse> {
     const response = await fetch(url.toString(), this.getRequestOptions());
 
     if (response.ok) {
       const data = await response.buffer();
       const rawData = data.toString();
-      const payload : ObjectInfoResponse = JSON.parse(rawData);
-      
+      const payload: ObjectInfoResponse = JSON.parse(rawData);
+
       return payload;
-    } else {
-      throw new Error("Unable to get OK response for given location");
     }
+    throw new Error('Unable to get OK response for given location');
   }
 
   // Converts
@@ -99,11 +98,13 @@ export class AzureDevOpsReaderProcessor implements LocationProcessor {
       const url = new URL(target);
 
       const [
+        // @ts-ignore
         empty,
         org,
         teamName,
         resourceType,
         repoName,
+        // @ts-ignore
         ...restOfPath
       ] = url.pathname.split('/');
 
@@ -115,7 +116,7 @@ export class AzureDevOpsReaderProcessor implements LocationProcessor {
         teamName === '' ||
         resourceType === '' ||
         repoName === 'blob' ||
-        !filePath?.includes(".yaml")
+        !filePath?.includes('.yaml')
       ) {
         throw new Error('Wrong Azure DevOps URL or Invalid file path');
       }
@@ -128,7 +129,7 @@ export class AzureDevOpsReaderProcessor implements LocationProcessor {
         'git',
         'repositories',
         repoName,
-        'items'
+        'items',
       ].join('/');
       url.hostname = 'dev.azure.com';
       url.protocol = 'https';
@@ -141,22 +142,21 @@ export class AzureDevOpsReaderProcessor implements LocationProcessor {
   }
 }
 
-
 class ObjectInfoResponseLink {
-  href : string = '';
+  href: string = '';
 }
 
 class ObjectInfoResponseLinks {
-  self : ObjectInfoResponseLink = new ObjectInfoResponseLink();
-  repository : ObjectInfoResponseLink = new ObjectInfoResponseLink();
-  blob : ObjectInfoResponseLink = new ObjectInfoResponseLink();
+  self: ObjectInfoResponseLink = new ObjectInfoResponseLink();
+  repository: ObjectInfoResponseLink = new ObjectInfoResponseLink();
+  blob: ObjectInfoResponseLink = new ObjectInfoResponseLink();
 }
 
 class ObjectInfoResponse {
-  objectId : string = '';
-  gitObjectType : string = '';
-  commitId : string = '';
-  path : string = '';
-  url : string = '';
-  _links : ObjectInfoResponseLinks = new ObjectInfoResponseLinks();
+  objectId: string = '';
+  gitObjectType: string = '';
+  commitId: string = '';
+  path: string = '';
+  url: string = '';
+  _links: ObjectInfoResponseLinks = new ObjectInfoResponseLinks();
 }

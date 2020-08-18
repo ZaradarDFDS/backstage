@@ -25,6 +25,8 @@ COPY ./package.json ./package.json
 COPY ./yarn.lock ./yarn.lock
 COPY ./tsconfig.json ./tsconfig.json
 
+RUN mkdir -p /assets && curl https://s3.amazonaws.com/rds-downloads/rds-ca-2019-root.pem > /assets/rds-ca-2019-root.pem
+
 RUN yarn install
 
 WORKDIR /backstage/packages/backend
