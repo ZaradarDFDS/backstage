@@ -1742,16 +1742,18 @@
   dependencies:
     "@date-io/core" "^1.3.13"
 
-"@dfds-devex/dfds-blaster-v2@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.npmjs.org/@dfds-devex/dfds-blaster-v2/-/dfds-blaster-v2-0.0.9.tgz#d891224a9bb4516c7ce6e18d8c025da09bd7f0c2"
-  integrity sha512-PjKWGM5StjEynnvLs98zxtj6imKifUGsgxbtM7juzMkxpiuavxdkolrr7/nFxFm4aMartXGKOUmyB78YMZb/mg==
+"@dfds-devex/dfds-blaster-v2@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.npmjs.org/@dfds-devex/dfds-blaster-v2/-/dfds-blaster-v2-0.0.11.tgz#2445ba2a0a96064ff86b19c08e1fe8a28c4e6f1e"
+  integrity sha512-rLFXnf4cZggywHnLiY9bpfUUqXwkAkw2nSj2a22moQ20gajLX55EZIcao6HPgayNvBNe3xAvyZIqJXyxSfNmfw==
   dependencies:
     "@babel/core" "^7.8.7"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
     "@babel/plugin-proposal-decorators" "^7.8.3"
     "@babel/plugin-transform-classes" "^7.8.6"
     "@babel/preset-env" "^7.8.7"
+    "@dfds-devex/minions-core" "0.0.31"
+    "@dfds-devex/minions-plugins-kafka" "0.0.17"
     axios "^0.19.2"
     babel-loader "^8.0.6"
     clean-webpack-plugin "^3.0.0"
@@ -1759,8 +1761,6 @@
     file-loader "^6.0.0"
     html-webpack-plugin "^4.0.1"
     mini-css-extract-plugin "^0.9.0"
-    minions-core "0.0.30"
-    minions-plugins-kafka "0.0.15"
     node-sass "^4.13.1"
     sass-loader "^8.0.2"
     ts-loader "^6.2.1"
@@ -1773,6 +1773,15 @@
   integrity sha512-eXYSfRnoPqBAIEb4Oam+Mk/0Qq2DAZs8+2tw0WwKctYOzWSrj0l6mRgACnoKowRScMXK7hnSQ+7PS8tcP8LDEg==
   dependencies:
     lit-element "^2.2.1"
+
+"@dfds-devex/minions-plugins-kafka@0.0.17":
+  version "0.0.17"
+  resolved "https://registry.npmjs.org/@dfds-devex/minions-plugins-kafka/-/minions-plugins-kafka-0.0.17.tgz#d87c271485251ca2752e9815734814f9927cae60"
+  integrity sha512-hQqGBA8Q/5+FOjDDbCYlQhJuUW4w9XP/gbhwNLxlvz/IUvv76Nux4oeJo6wUcdKfm7LG672rZIMeRcauZUAD0w==
+  dependencies:
+    "@dfds-devex/minions-core" "0.0.31"
+    "@microsoft/signalr" "^3.1.2"
+    "@types/node" "^13.9.3"
 
 "@emotion/cache@^10.0.27":
   version "10.0.29"
@@ -13922,22 +13931,6 @@ minimist@1.2.5, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2
   version "1.2.5"
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
-
-minions-core@0.0.30:
-  version "0.0.30"
-  resolved "https://registry.npmjs.org/minions-core/-/minions-core-0.0.30.tgz#9c1e08f9e43f76747b4ade59271bfeb1ec496faf"
-  integrity sha512-Z0mkl7CZ7hlKIQRr91cyI5or/Xe+8QyBXjjpgCHPdgeOO6aJEqgzkY9hhDSzkuOrQad+r+mvp7wQNJpgRlWlPg==
-  dependencies:
-    lit-element "^2.2.1"
-
-minions-plugins-kafka@0.0.15:
-  version "0.0.15"
-  resolved "https://registry.npmjs.org/minions-plugins-kafka/-/minions-plugins-kafka-0.0.15.tgz#d714e313315f837120a124db750d43b93c4fe3fc"
-  integrity sha512-nyvCTgejdhFI+niFD59mWfu1ApVHPp8D377ccFo9fHMQlOlTSg7refSWkHhTFQtM4Sy46BwYfe+m8L506tGH9Q==
-  dependencies:
-    "@microsoft/signalr" "^3.1.2"
-    "@types/node" "^13.9.3"
-    minions-core "0.0.30"
 
 minipass-collect@^1.0.2:
   version "1.0.2"

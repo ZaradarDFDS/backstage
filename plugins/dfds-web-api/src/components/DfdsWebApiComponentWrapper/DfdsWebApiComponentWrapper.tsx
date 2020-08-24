@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { FC } from 'react';
+import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import {
   InfoCard,
@@ -30,7 +30,9 @@ import ConcretComponent from '@dfds-devex/dfds-blaster-v2/lib/components/Concret
 import CapabilityDashboardComponent from '@dfds-devex/dfds-blaster-v2/lib/components/CapabilityDashboardComponent';
 
 const DfdsWebApiComponentWrapper = () => {
+  // @ts-ignore
   var concreteComponent = new ConcretComponent();
+  // @ts-ignore
   var dashboardComponent = new CapabilityDashboardComponent();
   console.log("Creating DfdsWebApiComponent");
 
