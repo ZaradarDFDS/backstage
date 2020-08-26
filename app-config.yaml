@@ -109,6 +109,9 @@ auth:
         audience:
           $secret:
             env: AUTH_OKTA_AUDIENCE
+        pkce:
+          $secret:
+            env: AUTH_OKTA_PKCE
     oauth2:
       development:
         clientId:

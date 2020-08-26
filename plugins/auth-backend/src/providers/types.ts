@@ -34,6 +34,8 @@ export type OAuthProviderOptions = {
    * Callback URL to be passed to the auth provider to redirect to after the user signs in.
    */
   callbackUrl: string;
+
+  pkce?: boolean;
 };
 
 export type AuthProviderConfig = {

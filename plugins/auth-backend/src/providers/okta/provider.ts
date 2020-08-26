@@ -75,6 +75,7 @@ export class OktaAuthProvider implements OAuthProviderHandlers {
         passReqToCallback: false as true,
         store: this._store,
         response_type: 'code',
+        pkce: options?.pkce,
       },
       (
         accessToken: any,
@@ -182,12 +183,14 @@ export function createOktaProvider(
   const clientSecret = envConfig.getString('clientSecret');
   const audience = envConfig.getString('audience');
   const callbackUrl = `${config.baseUrl}/${providerId}/handler/frame`;
+  const pkce: boolean = JSON.parse(envConfig.getString('pkce'));
 
   const provider = new OktaAuthProvider({
     audience,
     clientId,
     clientSecret,
     callbackUrl,
+    pkce,
   });
 
   return OAuthProvider.fromConfig(config, provider, {
