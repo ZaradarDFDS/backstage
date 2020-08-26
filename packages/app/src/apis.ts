@@ -30,6 +30,7 @@ import {
   OktaAuth,
   GitlabAuth,
   Auth0Auth,
+  MicrosoftAuth,
   oauthRequestApiRef,
   OAuthRequestManager,
   googleAuthApiRef,
@@ -38,6 +39,7 @@ import {
   oktaAuthApiRef,
   gitlabAuthApiRef,
   auth0AuthApiRef,
+  microsoftAuthApiRef,
   storageApiRef,
   WebStorage,
 } from '@backstage/core';
@@ -58,6 +60,10 @@ import {
   GraphQLEndpoints,
 } from '@backstage/plugin-graphiql';
 import { scaffolderApiRef, ScaffolderApi } from '@backstage/plugin-scaffolder';
+import {
+  techdocsStorageApiRef,
+  TechDocsStorageApi,
+} from '@backstage/plugin-techdocs';
 
 import { rollbarApiRef, RollbarClient } from '@backstage/plugin-rollbar';
 import {
@@ -66,13 +72,21 @@ import {
 } from '@backstage/plugin-github-actions';
 import { jenkinsApiRef, JenkinsApi } from '@backstage/plugin-jenkins';
 
-import { TravisCIApi, travisCIApiRef } from '@roadiehq/backstage-plugin-travis-ci';
+import {
+  TravisCIApi,
+  travisCIApiRef,
+} from '@roadiehq/backstage-plugin-travis-ci';
+import {
+  GithubPullRequestsClient,
+  githubPullRequestsApiRef,
+} from '@roadiehq/backstage-plugin-github-pull-requests';
 
 export const apis = (config: ConfigApi) => {
   // eslint-disable-next-line no-console
   console.log(`Creating APIs for ${config.getString('app.title')}`);
 
   const backendUrl = config.getString('backend.baseUrl');
+  const techdocsUrl = config.getString('techdocs.storageUrl');
 
   const builder = ApiRegistry.builder();
 
@@ -97,6 +111,7 @@ export const apis = (config: ConfigApi) => {
   builder.add(lighthouseApiRef, new LighthouseRestApi('http://localhost:3003'));
 
   builder.add(travisCIApiRef, new TravisCIApi());
+  builder.add(githubPullRequestsApiRef, new GithubPullRequestsClient());
 
   const oauthRequestApi = builder.add(
     oauthRequestApiRef,
@@ -106,7 +121,16 @@ export const apis = (config: ConfigApi) => {
   builder.add(
     googleAuthApiRef,
     GoogleAuth.create({
-      apiOrigin: backendUrl,
+      backendUrl,
+      basePath: '/auth/',
+      oauthRequestApi,
+    }),
+  );
+
+  builder.add(
+    microsoftAuthApiRef,
+    MicrosoftAuth.create({
+      backendUrl,
       basePath: '/auth/',
       oauthRequestApi,
     }),
@@ -115,7 +139,7 @@ export const apis = (config: ConfigApi) => {
   const githubAuthApi = builder.add(
     githubAuthApiRef,
     GithubAuth.create({
-      apiOrigin: backendUrl,
+      backendUrl,
       basePath: '/auth/',
       oauthRequestApi,
     }),
@@ -124,7 +148,7 @@ export const apis = (config: ConfigApi) => {
   builder.add(
     oktaAuthApiRef,
     OktaAuth.create({
-      apiOrigin: backendUrl,
+      backendUrl,
       basePath: '/auth/',
       oauthRequestApi,
     }),
@@ -133,16 +157,16 @@ export const apis = (config: ConfigApi) => {
   builder.add(
     gitlabAuthApiRef,
     GitlabAuth.create({
-      apiOrigin: backendUrl,
+      backendUrl,
       basePath: '/auth/',
       oauthRequestApi,
     }),
   );
-  
+
   builder.add(
     auth0AuthApiRef,
     Auth0Auth.create({
-      apiOrigin: backendUrl,
+      backendUrl,
       basePath: '/auth/',
       oauthRequestApi,
     }),
@@ -151,7 +175,7 @@ export const apis = (config: ConfigApi) => {
   builder.add(
     oauth2ApiRef,
     OAuth2.create({
-      apiOrigin: backendUrl,
+      backendUrl,
       basePath: '/auth/',
       oauthRequestApi,
     }),
@@ -205,6 +229,13 @@ export const apis = (config: ConfigApi) => {
     new RollbarClient({
       apiOrigin: backendUrl,
       basePath: '/rollbar',
+    }),
+  );
+
+  builder.add(
+    techdocsStorageApiRef,
+    new TechDocsStorageApi({
+      apiOrigin: techdocsUrl,
     }),
   );
 
