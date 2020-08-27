@@ -15,13 +15,11 @@
  */
 import express from 'express';
 import { OAuthProvider } from '../../lib/OAuthProvider';
-import { Strategy as OktaStrategy } from 'passport-okta-oauth';
 import passport from 'passport';
 import {
   executeFrameHandlerStrategy,
   executeRedirectStrategy,
   executeRefreshTokenStrategy,
-  makeProfileInfo,
   executeFetchUserProfileStrategy,
 } from '../../lib/PassportStrategyHelper';
 import {
@@ -33,7 +31,7 @@ import {
   PassportDoneCallback,
 } from '../types';
 import { Logger } from 'winston';
-import { StateStore } from 'passport-oauth2';
+import OAuth2Strategy from 'passport-oauth2';
 import { TokenIssuer } from '../../identity';
 import { Config } from '@backstage/config';
 
@@ -48,61 +46,33 @@ export type OktaAuthProviderOptions = OAuthProviderOptions & {
 export class OktaAuthProvider implements OAuthProviderHandlers {
   private readonly _strategy: any;
 
-  /**
-   * Due to passport-okta-oauth forcing options.state = true,
-   * passport-oauth2 requires express-session to be installed
-   * so that the 'state' parameter of the oauth2 flow can be stored.
-   * This implementation of StateStore matches the NullStore found within
-   * passport-oauth2, which is the StateStore implementation used when options.state = false,
-   * allowing us to avoid using express-session in order to integrate with Okta.
-   */
-  private _store: StateStore = {
-    store(_req: express.Request, cb: any) {
-      cb(null, null);
-    },
-    verify(_req: express.Request, _state: string, cb: any) {
-      cb(null, true);
-    },
-  };
-
   constructor(options: OktaAuthProviderOptions) {
-    this._strategy = new OktaStrategy(
-      {
-        clientID: options.clientId,
-        clientSecret: options.clientSecret,
-        callbackURL: options.callbackUrl,
-        audience: options.audience,
-        passReqToCallback: false as true,
-        store: this._store,
-        response_type: 'code',
-        pkce: options?.pkce,
-      },
-      (
-        accessToken: any,
-        refreshToken: any,
-        params: any,
-        rawProfile: passport.Profile,
-        done: PassportDoneCallback<OAuthResponse, PrivateInfo>,
-      ) => {
-        const profile = makeProfileInfo(rawProfile, params.id_token);
+    const oAuthOptions: OAuth2Strategy.StrategyOptions = {
+      authorizationURL:
+        'https://dfds-devex.okta.com/oauth2/default/v1/authorize',
+      tokenURL: 'https://dfds-devex.okta.com/oauth2/default/v1/token',
+      clientID: options.clientId,
+      clientSecret: options.clientSecret,
+      state: true,
+      pkce: options.pkce,
+      callbackURL: '/auth/okta/handler/frame',
+    };
 
-        done(
-          undefined,
-          {
-            providerInfo: {
-              idToken: params.id_token,
-              accessToken,
-              scope: params.scope,
-              expiresInSeconds: params.expires_in,
-            },
-            profile,
-          },
-          {
-            refreshToken,
-          },
-        );
-      },
-    );
+    const verifyFunction: OAuth2Strategy.VerifyFunction = (
+      accessToken: any,
+      refreshToken: any,
+      params: any,
+      rawProfile: passport.Profile,
+      done: PassportDoneCallback<OAuthResponse, PrivateInfo>,
+    ) => {
+      console.log('token', accessToken, refreshToken);
+      console.log('params', params);
+      console.log('profile', rawProfile);
+
+      done();
+    };
+
+    this._strategy = new OAuth2Strategy(oAuthOptions, verifyFunction);
   }
 
   async start(
