@@ -48,14 +48,13 @@ export class OktaAuthProvider implements OAuthProviderHandlers {
 
   constructor(options: OktaAuthProviderOptions) {
     const oAuthOptions: OAuth2Strategy.StrategyOptions = {
-      authorizationURL:
-        'https://dfds-devex.okta.com/oauth2/default/v1/authorize',
-      tokenURL: 'https://dfds-devex.okta.com/oauth2/default/v1/token',
+      authorizationURL: `https://dfds-devex.okta.com/oauth2/${options.audience}/v1/authorize`,
+      tokenURL: `https://dfds-devex.okta.com/oauth2/${options.audience}/v1/token`,
+      state: true,
       clientID: options.clientId,
       clientSecret: options.clientSecret,
-      state: true,
       pkce: options.pkce,
-      callbackURL: '/auth/okta/handler/frame',
+      callbackURL: options.callbackUrl,
     };
 
     const verifyFunction: OAuth2Strategy.VerifyFunction = (

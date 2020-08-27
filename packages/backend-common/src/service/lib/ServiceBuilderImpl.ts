@@ -118,6 +118,8 @@ export class ServiceBuilderImpl implements ServiceBuilder {
 
   start(): Promise<http.Server> {
     const app = express();
+    app.set('trust proxy', 1); // trust first proxy
+
     const {
       port,
       host,
@@ -139,7 +141,6 @@ export class ServiceBuilderImpl implements ServiceBuilder {
     app.use(notFoundHandler());
     app.use(errorHandler());
 
-    app.set('trust proxy', 1); // trust first proxy
     app.use(
       session({
         secret: 'keyboard cat',
