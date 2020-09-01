@@ -10,7 +10,7 @@ Each of these methods is hosted at an endpoint `/auth/[provider]/method`, where
 
 ```
   /auth/[provider]/start -> start
-  /auth/[provider]/handler/frame -> frameHandler
+  /auth/[provider]/handle/frame -> handle
   /auth/[provider]/refresh -> refresh
   /auth/[provider]/logout -> logout
 ```

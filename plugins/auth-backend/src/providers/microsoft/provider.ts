@@ -220,7 +220,7 @@ export function createMicrosoftProvider(
   const clientSecret = envConfig.getString('clientSecret');
   const tenantID = envConfig.getString('tenantId');
 
-  const callbackUrl = `${config.baseUrl}/${providerId}/handler/frame`;
+  const callbackUrl = `${config.baseUrl}/${providerId}/handle/frame`;
   const authorizationUrl = `https://login.microsoftonline.com/${tenantID}/oauth2/v2.0/authorize`;
   const tokenUrl = `https://login.microsoftonline.com/${tenantID}/oauth2/v2.0/token`;
 

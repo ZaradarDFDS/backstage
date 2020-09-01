@@ -160,7 +160,7 @@ export function createGoogleProvider(
   const providerId = 'google';
   const clientId = envConfig.getString('clientId');
   const clientSecret = envConfig.getString('clientSecret');
-  const callbackUrl = `${config.baseUrl}/${providerId}/handler/frame`;
+  const callbackUrl = `${config.baseUrl}/${providerId}/handle/frame`;
 
   const provider = new GoogleAuthProvider({
     clientId,

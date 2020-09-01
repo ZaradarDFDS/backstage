@@ -75,7 +75,7 @@ paths:
       summary: Handles the response from the consent popup for the provider
       description:
         If the login request is accepted, the popup window will be redirected
-        back to the `/handler/frame` endpoint of the auth backend.
+        back to the `/handle/frame` endpoint of the auth backend.
       parameters:
         - name: scope
           in: query

@@ -76,13 +76,13 @@ The popup window is pointed to the `/start` endpoint of the auth provider in the
 provider. The consent screen is controlled by the OAuth provider, and will do
 things like prompting the user to log in with an account, and possibly reviewing
 the set of requested scopes. If the login request is accepted, the popup window
-will be redirected back to the `/handler/frame` endpoint of the auth backend.
-The redirect URL will contain a short-term authorization code, which is picked
-up by the backend and exchanged for long-term tokens via a call to the OAuth
-provider. The Access and possibly ID Token is then handed back to the main
-Backstage page via `postMessage`. If the OAuth provider implements offline
-refresh, a refresh token will be stored in an HTTP-only cookie scoped to the
-specific provider in the `auth-backend` plugin.
+will be redirected back to the `/handle/frame` endpoint of the auth backend. The
+redirect URL will contain a short-term authorization code, which is picked up by
+the backend and exchanged for long-term tokens via a call to the OAuth provider.
+The Access and possibly ID Token is then handed back to the main Backstage page
+via `postMessage`. If the OAuth provider implements offline refresh, a refresh
+token will be stored in an HTTP-only cookie scoped to the specific provider in
+the `auth-backend` plugin.
 
 To protect against certain attacks, the above flow also includes a simple nonce
 check and a lightweight CSRF protection header. The nonce check is done to
@@ -125,12 +125,12 @@ note over Browser: Components on page ask for an\naccess token with greater\nsco
 Browser -> Popup: Open popup
 Popup -> Backend: GET /auth/<provider>/start?scope=some%20scopes
 Popup <- Backend: Redirect to consent screen with\nrandom nonce in OAuth state and\nshort-lived cookie with the same nonce.
-Popup -> Consent: GET /consent_url?redirect_uri=<redirect_uri>?nonce=<n>\nwhere redirect_uri=<app-origin>/auth/<provider>/handler/frame
+Popup -> Consent: GET /consent_url?redirect_uri=<redirect_uri>?nonce=<n>\nwhere redirect_uri=<app-origin>/auth/<provider>/handle/frame
 
 note over Consent: User consents to\naccess the new scope.
 
 Popup <- Consent: Redirect to given redirect URL, with authorization code
-Popup -> Backend: GET /auth/<provider>/handler/frame?code=<c>&nonce=<n>\nRequest includes the previously set none cookie
+Popup -> Backend: GET /auth/<provider>/handle/frame?code=<c>&nonce=<n>\nRequest includes the previously set none cookie
 
 note over Backend: Verify that the nonce in the cookie\nmatches the nonce in the OAuth state
 

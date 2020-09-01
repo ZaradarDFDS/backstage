@@ -183,7 +183,7 @@ export function createOktaProvider(
   const clientId = envConfig.getString('clientId');
   const clientSecret = envConfig.getString('clientSecret');
   const audience = envConfig.getString('audience');
-  const callbackUrl = `${config.baseUrl}/${providerId}/handler/frame`;
+  const callbackUrl = `${config.baseUrl}/${providerId}/handle/frame`;
 
   const provider = new OktaAuthProvider({
     audience,

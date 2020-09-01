@@ -151,7 +151,7 @@ export interface AuthProviderHandler extends AuthProvider {
  * The routes in the auth backend API are tied to these methods like below
  *
  * /auth/[provider]/start -> start
- * /auth/[provider]/handler/frame -> handle
+ * /auth/[provider]/handle/frame -> handle
  * /auth/[provider]/refresh -> refresh
  * /auth/[provider]/logout -> logout
  */

@@ -128,7 +128,7 @@ export function createSamlProvider(
   const opts = {
     entryPoint,
     issuer,
-    path: '/auth/saml/handler/frame',
+    path: '/auth/saml/handle/frame',
     tokenIssuer,
   };
 

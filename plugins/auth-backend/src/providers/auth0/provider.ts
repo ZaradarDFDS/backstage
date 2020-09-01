@@ -164,7 +164,7 @@ export function createAuth0Provider(
   const clientId = envConfig.getString('clientId');
   const clientSecret = envConfig.getString('clientSecret');
   const domain = envConfig.getString('domain');
-  const callbackUrl = `${config.baseUrl}/${providerId}/handler/frame`;
+  const callbackUrl = `${config.baseUrl}/${providerId}/handle/frame`;
 
   const provider = new Auth0AuthProvider({
     clientId,

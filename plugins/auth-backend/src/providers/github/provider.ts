@@ -161,7 +161,7 @@ export function createGithubProvider(
   const userProfileUrl = enterpriseInstanceUrl
     ? `${enterpriseInstanceUrl}/api/v3/user`
     : undefined;
-  const callbackUrl = `${config.baseUrl}/${providerId}/handler/frame`;
+  const callbackUrl = `${config.baseUrl}/${providerId}/handle/frame`;
 
   const provider = new GithubAuthProvider({
     clientId,
