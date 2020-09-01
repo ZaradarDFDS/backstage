@@ -19,6 +19,7 @@ import {
   gitlabAuthApiRef,
   oktaAuthApiRef,
   githubAuthApiRef,
+  dfdsOktaClientsideAuthApiRef,
 } from '@backstage/core';
 
 export const providers = [
@@ -45,5 +46,11 @@ export const providers = [
     title: 'Okta',
     message: 'Sign In using Okta',
     apiRef: oktaAuthApiRef,
+  },
+  {
+    id: 'dfds-okta-clientside-provider',
+    title: 'DFDS | Okta clientside',
+    message: 'Sign In using DFDS configured Okta client-side',
+    apiRef: dfdsOktaClientsideAuthApiRef
   },
 ];

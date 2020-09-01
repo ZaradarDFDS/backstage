@@ -38,6 +38,8 @@ import {
   gitlabAuthApiRef,
   storageApiRef,
   WebStorage,
+  dfdsOktaClientsideAuthApiRef,
+  OktaClientsideAuth,
 } from '@backstage/core';
 
 import {
@@ -122,6 +124,15 @@ export const apis = (config: ConfigApi) => {
   builder.add(
     oktaAuthApiRef,
     OktaAuth.create({
+      apiOrigin: backendUrl,
+      basePath: '/auth/',
+      oauthRequestApi,
+    }),
+  );
+
+  builder.add(
+    dfdsOktaClientsideAuthApiRef,
+    OktaClientsideAuth.create({
       apiOrigin: backendUrl,
       basePath: '/auth/',
       oauthRequestApi,

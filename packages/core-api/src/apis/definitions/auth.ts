@@ -251,6 +251,11 @@ export const oktaAuthApiRef = createApiRef<
   description: 'Provides authentication towards Okta APIs',
 });
 
+export const dfdsOktaClientsideAuthApiRef = createApiRef<OAuthApi & OpenIdConnectApi & ProfileInfoApi & BackstageIdentityApi & SessionStateApi>({
+  id: 'core.auth.dfds.okta.clientside',
+  description: 'Provides client-side Okta auth for DFDS org'
+});
+
 /**
  * Provides authentication towards Gitlab APIs.
  *

@@ -23,6 +23,7 @@ import {
   oktaAuthApiRef,
   useApi,
   configApiRef,
+  dfdsOktaClientsideAuthApiRef
 } from '@backstage/core-api';
 import Collapse from '@material-ui/core/Collapse';
 import SignOutIcon from '@material-ui/icons/MeetingRoom';
@@ -35,6 +36,7 @@ import {
   OIDCProviderSettings,
   UserProfile as SidebarUserProfile,
 } from './Settings';
+import { ClientSideProviderSettings } from './Settings/ClientSideProviderSettings';
 
 export function SidebarUserSettings() {
   const { isOpen: sidebarOpen } = useContext(SidebarContext);
@@ -53,6 +55,18 @@ export function SidebarUserSettings() {
     <>
       <SidebarUserProfile open={open} setOpen={setOpen} />
       <Collapse in={open} timeout="auto">
+        {providers.includes('okta') && (
+          <OIDCProviderSettings
+            title="DFDS |Okta clientside"
+            apiRef={dfdsOktaClientsideAuthApiRef}
+            icon={Star}
+          />
+        )}
+
+        <ClientSideProviderSettings title="OKTA-JS" icon={Star} apiRef={dfdsOktaClientsideAuthApiRef}>
+
+        </ClientSideProviderSettings>
+
         {providers.includes('google') && (
           <OIDCProviderSettings
             title="Google"
@@ -80,7 +94,7 @@ export function SidebarUserSettings() {
             apiRef={oktaAuthApiRef}
             icon={Star}
           />
-        )}
+        )}   
         {providers.includes('oauth2') && (
           <OIDCProviderSettings
             title="YourOrg"
