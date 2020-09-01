@@ -69,7 +69,7 @@ export class ProviderAAuthProvider implements OAuthProviderHandlers {
   }
 
   async start() {}
-  async handler() {}
+  async handle() {}
 }
 ```
 
@@ -95,7 +95,7 @@ export class ProviderAAuthProvider implements AuthProviderRouteHandlers {
   }
 
   async start() {}
-  async frameHandler() {}
+  async handle() {}
   async logout() {}
   async refresh() {} // If supported
 }
@@ -182,8 +182,8 @@ By doing this `auth-backend` automatically adds these endpoints:
 
 ```ts
 router.get('/auth/providerA/start');
-router.get('/auth/providerA/handler/frame');
-router.post('/auth/providerA/handler/frame');
+router.get('/auth/providerA/handle/frame');
+router.post('/auth/providerA/handle/frame');
 router.post('/auth/providerA/logout');
 router.get('/auth/providerA/refresh'); // if supported
 ```
@@ -204,7 +204,7 @@ web browser and you should be able to trigger the authorization flow.
 ```ts
 export interface OAuthProviderHandlers {
   start(req: express.Request, options: any): Promise<any>;
-  handler(req: express.Request): Promise<any>;
+  handle(req: express.Request): Promise<any>;
   refresh?(refreshToken: string, scope: string): Promise<any>;
   logout?(): Promise<any>;
 }
@@ -215,7 +215,7 @@ export interface OAuthProviderHandlers {
 ```ts
 export interface AuthProviderRouteHandlers {
   start(req: express.Request, res: express.Response): Promise<any>;
-  frameHandler(req: express.Request, res: express.Response): Promise<any>;
+  handle(req: express.Request, res: express.Response): Promise<any>;
   refresh?(req: express.Request, res: express.Response): Promise<any>;
   logout(req: express.Request, res: express.Response): Promise<any>;
 }

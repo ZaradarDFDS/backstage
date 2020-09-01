@@ -26,6 +26,7 @@ import {
   AuthProviderConfig,
   RedirectInfo,
   OAuthProviderOptions,
+  OAuthRequest,
   OAuthResponse,
   PassportDoneCallback,
 } from '../types';
@@ -94,7 +95,7 @@ export class GitlabAuthProvider implements OAuthProviderHandlers {
     return {
       providerInfo,
       profile,
-      backstageIdentity: {
+      identity: {
         id,
       },
     };
@@ -125,16 +126,17 @@ export class GitlabAuthProvider implements OAuthProviderHandlers {
     );
   }
 
-  async start(
-    req: express.Request,
-    options: Record<string, string>,
-  ): Promise<RedirectInfo> {
-    return await executeRedirectStrategy(req, this._strategy, options);
+  async start(req: OAuthRequest): Promise<RedirectInfo> {
+    return await executeRedirectStrategy(
+      req as express.Request,
+      this._strategy,
+      req?.options as Record<string, string>,
+    );
   }
 
-  async handler(req: express.Request): Promise<{ response: OAuthResponse }> {
+  async handle(req: OAuthRequest): Promise<{ response: OAuthResponse }> {
     return await executeFrameHandlerStrategy<OAuthResponse>(
-      req,
+      req as express.Request,
       this._strategy,
     );
   }

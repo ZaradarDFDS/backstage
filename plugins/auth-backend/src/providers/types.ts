@@ -18,26 +18,29 @@ import express from 'express';
 import { Logger } from 'winston';
 import { TokenIssuer } from '../identity';
 import { Config } from '@backstage/config';
-import { OAuthProvider } from '../lib/OAuthProvider';
-import { SamlAuthProvider } from './saml/provider';
 
-export type OAuthProviderOptions = {
+/**
+ * Auth identify.
+ */
+export type AuthIdentity = {
   /**
-   * Client ID of the auth provider.
+   * The backstage user ID.
    */
-  clientId: string;
-  /**
-   * Client Secret of the auth provider.
-   */
-  clientSecret: string;
-  /**
-   * Callback URL to be passed to the auth provider to redirect to after the user signs in.
-   */
-  callbackUrl: string;
-
-  pkce?: boolean;
+  id: string;
 };
 
+/**
+ * AuthProvider response.
+ */
+export type AuthResponse<ProviderInfo> = Partial<express.Response> & {
+  providerInfo: ProviderInfo;
+  profile?: ProfileInfo;
+  identity?: AuthIdentity | BackstageIdentity;
+};
+
+/**
+ * AuthProvider config.
+ */
 export type AuthProviderConfig = {
   /**
    * The protocol://domain[:port] where the app is hosted. This is used to construct the
@@ -52,60 +55,28 @@ export type AuthProviderConfig = {
 };
 
 /**
- * Any OAuth provider needs to implement this interface which has provider specific
- * handlers for different methods to perform authentication, get access tokens,
- * refresh tokens and perform sign out.
+ * AuthProvider.
  */
-export interface OAuthProviderHandlers {
-  /**
-   * This method initiates a sign in request with an auth provider.
-   * @param {express.Request} req
-   * @param options
-   */
-  start(
-    req: express.Request,
-    options: Record<string, string>,
-  ): Promise<RedirectInfo>;
-
-  /**
-   * Handles the redirect from the auth provider when the user has signed in.
-   * @param {express.Request} req
-   */
-  handler(
-    req: express.Request,
-  ): Promise<{
-    response: AuthResponse<OAuthProviderInfo>;
-    refreshToken?: string;
-  }>;
-
-  /**
-   * (Optional) Given a refresh token and scope fetches a new access token from the auth provider.
-   * @param {string} refreshToken
-   * @param {string} scope
-   */
-  refresh?(
-    refreshToken: string,
-    scope: string,
-  ): Promise<AuthResponse<OAuthProviderInfo>>;
-
-  /**
-   * (Optional) Sign out of the auth provider.
-   */
-  logout?(): Promise<void>;
-}
+export type AuthProvider = {
+  // config: AuthProviderConfig,
+  // handler: AuthProviderHandler,
+};
 
 /**
- * Any Auth provider needs to implement this interface which handles the routes in the
- * auth backend. Any auth API requests from the frontend reaches these methods.
- *
- * The routes in the auth backend API are tied to these methods like below
- *
- * /auth/[provider]/start -> start
- * /auth/[provider]/handler/frame -> frameHandler
- * /auth/[provider]/refresh -> refresh
- * /auth/[provider]/logout -> logout
+ * AuthProviderFactory.
  */
-export interface AuthProviderRouteHandlers {
+export type AuthProviderFactory = (
+  globalConfig: AuthProviderConfig,
+  env: string,
+  envConfig: Config,
+  logger: Logger,
+  issuer: TokenIssuer,
+) => AuthProvider | undefined;
+
+/**
+ * AuthProvider handler.
+ */
+export interface AuthProviderHandler extends AuthProvider {
   /**
    * Handles the start route of the API. This initiates a sign in request with an auth provider.
    *
@@ -118,7 +89,10 @@ export interface AuthProviderRouteHandlers {
    * @param {express.Request} req
    * @param {express.Response} res
    */
-  start(req: express.Request, res: express.Response): Promise<void>;
+  start(
+    req: Partial<express.Request>,
+    res?: Partial<express.Response>,
+  ): Promise<void> | Promise<any>;
 
   /**
    * Once the user signs in or consents in the OAuth screen, the auth provider redirects to the
@@ -133,7 +107,10 @@ export interface AuthProviderRouteHandlers {
    * @param {express.Request} req
    * @param {express.Response} res
    */
-  frameHandler(req: express.Request, res: express.Response): Promise<void>;
+  handle(
+    req: Partial<express.Request>,
+    res?: Partial<express.Response>,
+  ): Promise<void> | Promise<any>;
 
   /**
    * (Optional) If the auth provider supports refresh tokens then this method handles
@@ -147,7 +124,10 @@ export interface AuthProviderRouteHandlers {
    * @param {express.Request} req
    * @param {express.Response} res
    */
-  refresh?(req: express.Request, res: express.Response): Promise<void>;
+  refresh?(
+    req: Partial<express.Request>,
+    res?: Partial<express.Response>,
+  ): Promise<void> | Promise<any>;
 
   /**
    * (Optional) Handles sign out requests
@@ -158,8 +138,24 @@ export interface AuthProviderRouteHandlers {
    * @param {express.Request} req
    * @param {express.Response} res
    */
-  logout?(req: express.Request, res: express.Response): Promise<void>;
+  logout?(
+    req?: Partial<express.Request>,
+    res?: Partial<express.Response>,
+  ): Promise<void> | Promise<any>;
+}
 
+/**
+ * Any Auth provider needs to implement this interface which handles the routes in the
+ * auth backend. Any auth API requests from the frontend reaches these methods.
+ *
+ * The routes in the auth backend API are tied to these methods like below
+ *
+ * /auth/[provider]/start -> start
+ * /auth/[provider]/handler/frame -> handle
+ * /auth/[provider]/refresh -> refresh
+ * /auth/[provider]/logout -> logout
+ */
+export interface AuthProviderRouteHandlers extends AuthProviderHandler {
   /**
    *(Optional) A method to identify the environment Context of the Request
    *
@@ -167,36 +163,61 @@ export interface AuthProviderRouteHandlers {
    *- contains the environment context information encoded in the request
    *  @param {express.Request} req
    */
-  identifyEnv?(req: express.Request): string | undefined;
+  identifyEnv?(req: Partial<express.Request>): string | undefined;
 }
 
-export type AuthProviderFactory = (
-  globalConfig: AuthProviderConfig,
-  env: string,
-  envConfig: Config,
-  logger: Logger,
-  issuer: TokenIssuer,
-) => OAuthProvider | SamlAuthProvider | undefined;
+/**
+ * Any OAuth provider needs to implement this interface which has provider specific
+ * handlers for different methods to perform authentication, get access tokens,
+ * refresh tokens and perform sign out.
+ */
+export interface OAuthProviderHandlers extends AuthProviderHandler {
+  start(req: OAuthRequest): Promise<RedirectInfo>;
 
-export type AuthResponse<ProviderInfo> = {
-  providerInfo: ProviderInfo;
-  profile: ProfileInfo;
-  backstageIdentity?: BackstageIdentity;
+  handle(
+    req: OAuthRequest,
+  ): Promise<{
+    response: AuthResponse<OAuthProviderInfo>;
+    refreshToken?: string;
+  }>;
+
+  refresh?(req: OAuthRequest): Promise<AuthResponse<OAuthProviderInfo>>;
+}
+
+export type OAuthProviderOptions = {
+  /**
+   * Client ID of the auth provider.
+   */
+  clientId: string;
+  /**
+   * Client Secret of the auth provider.
+   */
+  clientSecret: string;
+  /**
+   * Callback URL to be passed to the auth provider to redirect to after the user signs in.
+   */
+  callbackUrl: string;
+  /**
+   * Public (true) or confidential client (false)? ("state" MUST be true when dealing with public clients)
+   */
+  pkce?: boolean;
+};
+
+/**
+ * A type for the serialized value in the `state` parameter of the OAuth authorization flow
+ */
+export type OAuthState = {
+  nonce: string;
+  env: string;
+};
+
+export type OAuthRequest = Partial<express.Request> & {
+  options?: Record<string, string>;
+  refreshToken?: string;
+  scope?: string;
 };
 
 export type OAuthResponse = AuthResponse<OAuthProviderInfo>;
-
-export type BackstageIdentity = {
-  /**
-   * The backstage user ID.
-   */
-  id: string;
-
-  /**
-   * An ID token that can be used to authenticate the user within Backstage.
-   */
-  idToken?: string;
-};
 
 export type OAuthProviderInfo = {
   /**
@@ -224,35 +245,20 @@ export type OAuthPrivateInfo = {
   refreshToken: string;
 };
 
-/**
- * Payload sent as a post message after the auth request is complete.
- * If successful then has a valid payload with Auth information else contains an error.
- */
-export type WebMessageResponse =
-  | {
-      type: 'authorization_response';
-      response: AuthResponse<unknown>;
-    }
-  | {
-      type: 'authorization_response';
-      error: Error;
-    };
+export type SAMLProviderConfig = {
+  entryPoint: string;
+  issuer: string;
+};
 
-export type PassportDoneCallback<Res, Private = never> = (
-  err?: Error,
-  response?: Res,
-  privateInfo?: Private,
-) => void;
+export type SAMLEnvironmentProviderConfig = {
+  [key: string]: SAMLProviderConfig;
+};
 
-export type RedirectInfo = {
+export type BackstageIdentity = AuthIdentity & {
   /**
-   * URL to redirect to
+   * An ID token that can be used to authenticate the user within Backstage.
    */
-  url: string;
-  /**
-   * Status code to use for the redirect
-   */
-  status?: number;
+  idToken?: string;
 };
 
 /**
@@ -277,7 +283,11 @@ export type ProfileInfo = {
   picture?: string;
 };
 
-export type RefreshTokenResponse = {
+export type EnvironmentIdentifierFn = (
+  req: Partial<express.Request>,
+) => string | undefined;
+
+export type RefreshTokenResponse = Partial<express.Response> & {
   /**
    * An access token issued for the signed in user.
    */
@@ -285,26 +295,37 @@ export type RefreshTokenResponse = {
   params: any;
 };
 
+/**
+ * Payload sent as a post message after the auth request is complete.
+ * If successful then has a valid payload with Auth information else contains an error.
+ */
+export type WebMessageResponse =
+  | {
+      type: 'authorization_response';
+      response: AuthResponse<unknown>;
+    }
+  | {
+      type: 'authorization_response';
+      error: Error;
+    };
+
+export type RedirectInfo = {
+  /**
+   * URL to redirect to
+   */
+  url: string;
+  /**
+   * Status code to use for the redirect
+   */
+  status?: number;
+};
+
 export type ProviderStrategy = {
   userProfile(accessToken: string, callback: Function): void;
 };
 
-export type SAMLProviderConfig = {
-  entryPoint: string;
-  issuer: string;
-};
-
-export type SAMLEnvironmentProviderConfig = {
-  [key: string]: SAMLProviderConfig;
-};
-
-export type OAuthState = {
-  /* A type for the serialized value in the `state` parameter of the OAuth authorization flow
-   */
-  nonce: string;
-  env: string;
-};
-
-export type EnvironmentIdentifierFn = (
-  req: express.Request,
-) => string | undefined;
+export type PassportDoneCallback<Res, Private = never> = (
+  err?: Error,
+  response?: Res,
+  privateInfo?: Private,
+) => void;

@@ -60,12 +60,9 @@ For this flow to work you need to supply a valid configuration for the "${env}" 
     await provider?.start(req, res);
   }
 
-  async frameHandler(
-    req: express.Request,
-    res: express.Response,
-  ): Promise<void> {
+  async handle(req: express.Request, res: express.Response): Promise<void> {
     const provider = this.getProviderForEnv(req, res);
-    await provider?.frameHandler(req, res);
+    await provider?.handle(req, res);
   }
 
   async refresh(req: express.Request, res: express.Response): Promise<void> {

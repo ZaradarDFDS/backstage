@@ -23,6 +23,7 @@ import {
   WebMessageResponse,
   BackstageIdentity,
   OAuthState,
+  OAuthRequest,
   AuthProviderConfig,
 } from '../providers/types';
 import { InputError } from '@backstage/backend-common';
@@ -167,16 +168,14 @@ export class OAuthProvider implements AuthProviderRouteHandlers {
 
     const stateObject = { nonce: nonce, env: env };
     const stateParameter = encodeState(stateObject);
-
     const queryParameters = {
       scope,
       state: stateParameter,
     };
 
-    const { url, status } = await this.providerHandlers.start(
-      req,
-      queryParameters,
-    );
+    const oauthRequest: OAuthRequest = { ...req, ...queryParameters };
+
+    const { url, status } = await this.providerHandlers.start(oauthRequest);
 
     res.statusCode = status || 302;
     res.setHeader('Location', url);
@@ -184,15 +183,12 @@ export class OAuthProvider implements AuthProviderRouteHandlers {
     res.end();
   }
 
-  async frameHandler(
-    req: express.Request,
-    res: express.Response,
-  ): Promise<void> {
+  async handle(req: express.Request, res: express.Response): Promise<void> {
     try {
       // verify nonce cookie and state cookie on callback
       verifyNonce(req, this.options.providerId);
 
-      const { response, refreshToken } = await this.providerHandlers.handler(
+      const { response, refreshToken } = await this.providerHandlers.handle(
         req,
       );
 
@@ -201,6 +197,7 @@ export class OAuthProvider implements AuthProviderRouteHandlers {
           req,
           this.options.providerId,
         );
+
         response.providerInfo.scope = grantedScopes;
       }
 
@@ -213,7 +210,7 @@ export class OAuthProvider implements AuthProviderRouteHandlers {
         this.setRefreshTokenCookie(res, refreshToken);
       }
 
-      await this.populateIdentity(response.backstageIdentity);
+      await this.populateIdentity(response.identity);
 
       // post message back to popup if successful
       return postMessageResponse(res, this.options.appOrigin, {
@@ -268,11 +265,12 @@ export class OAuthProvider implements AuthProviderRouteHandlers {
       }
 
       const scope = req.query.scope?.toString() ?? '';
+      const oAuthRequest: OAuthRequest = { ...req, refreshToken, scope };
 
       // get new access_token
-      const response = await this.providerHandlers.refresh(refreshToken, scope);
+      const response = await this.providerHandlers.refresh(oAuthRequest);
 
-      await this.populateIdentity(response.backstageIdentity);
+      await this.populateIdentity(response.identity);
 
       res.send(response);
     } catch (error) {

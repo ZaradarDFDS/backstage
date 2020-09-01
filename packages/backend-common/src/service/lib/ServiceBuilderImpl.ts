@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-import { ConfigReader } from '@backstage/config';
 import compression from 'compression';
 import cors from 'cors';
 import express, { Router } from 'express';
 import session from 'express-session';
-import helmet from 'helmet';
 import * as http from 'http';
+import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
 import stoppable from 'stoppable';
+import { ConfigReader } from '@backstage/config';
 import { Logger } from 'winston';
 import { useHotCleanup } from '../../hot';
 import { getRootLogger } from '../../logging';
@@ -129,17 +130,15 @@ export class ServiceBuilderImpl implements ServiceBuilder {
     } = this.getOptions();
 
     app.use(helmet());
+
     if (corsOptions) {
       app.use(cors(corsOptions));
     }
+
     app.use(compression());
     app.use(express.json());
     app.use(requestLoggingHandler());
-    for (const [root, route] of this.routers) {
-      app.use(root, route);
-    }
-    app.use(notFoundHandler());
-    app.use(errorHandler());
+    app.use(cookieParser());
 
     app.use(
       session({
@@ -149,6 +148,13 @@ export class ServiceBuilderImpl implements ServiceBuilder {
         cookie: { secure: true },
       }),
     );
+
+    for (const [root, route] of this.routers) {
+      app.use(root, route);
+    }
+
+    app.use(notFoundHandler());
+    app.use(errorHandler());
 
     return new Promise((resolve, reject) => {
       app.on('error', e => {

@@ -119,7 +119,7 @@ describe('OAuthProvider Utils', () => {
           profile: {
             email: 'foo@bar.com',
           },
-          backstageIdentity: {
+          identity: {
             id: 'a',
             idToken: 'a.b.c',
           },
@@ -190,7 +190,7 @@ describe('OAuthProvider', () => {
         status: 301,
       };
     }
-    async handler() {
+    async handle() {
       return {
         response: mockResponseData,
         refreshToken: 'token',
@@ -271,7 +271,7 @@ describe('OAuthProvider', () => {
       end: jest.fn().mockReturnThis(),
     } as unknown) as express.Response;
 
-    await oauthProvider.frameHandler(mockRequest, mockResponse);
+    await oauthProvider.handle(mockRequest, mockResponse);
     expect(mockResponse.cookie).toHaveBeenCalledTimes(1);
     expect(mockResponse.cookie).toHaveBeenCalledWith(
       expect.stringContaining('test-provider-refresh-token'),
@@ -304,7 +304,7 @@ describe('OAuthProvider', () => {
       end: jest.fn().mockReturnThis(),
     } as unknown) as express.Response;
 
-    await oauthProvider.frameHandler(mockRequest, mockResponse);
+    await oauthProvider.handle(mockRequest, mockResponse);
     expect(mockResponse.cookie).toHaveBeenCalledTimes(0);
   });
 

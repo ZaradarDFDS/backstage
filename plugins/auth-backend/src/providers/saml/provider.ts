@@ -70,10 +70,7 @@ export class SamlAuthProvider implements AuthProviderRouteHandlers {
     res.redirect(url);
   }
 
-  async frameHandler(
-    req: express.Request,
-    res: express.Response,
-  ): Promise<void> {
+  async handle(req: express.Request, res: express.Response): Promise<void> {
     try {
       const {
         response: { userId, profile },
@@ -89,7 +86,7 @@ export class SamlAuthProvider implements AuthProviderRouteHandlers {
         response: {
           providerInfo: {},
           profile,
-          backstageIdentity: { id, idToken },
+          identity: { id, idToken },
         },
       });
     } catch (error) {

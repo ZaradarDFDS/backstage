@@ -28,6 +28,7 @@ import {
   RedirectInfo,
   AuthProviderConfig,
   OAuthProviderOptions,
+  OAuthRequest,
   OAuthResponse,
   PassportDoneCallback,
 } from '../types';
@@ -82,25 +83,26 @@ export class GoogleAuthProvider implements OAuthProviderHandlers {
     );
   }
 
-  async start(
-    req: express.Request,
-    options: Record<string, string>,
-  ): Promise<RedirectInfo> {
+  async start(req: OAuthRequest): Promise<RedirectInfo> {
     const providerOptions = {
-      ...options,
+      ...req?.options,
       accessType: 'offline',
       prompt: 'consent',
     };
-    return await executeRedirectStrategy(req, this._strategy, providerOptions);
+    return await executeRedirectStrategy(
+      req as express.Request,
+      this._strategy,
+      providerOptions,
+    );
   }
 
-  async handler(
-    req: express.Request,
+  async handle(
+    req: OAuthRequest,
   ): Promise<{ response: OAuthResponse; refreshToken: string }> {
     const { response, privateInfo } = await executeFrameHandlerStrategy<
       OAuthResponse,
       PrivateInfo
-    >(req, this._strategy);
+    >(req as express.Request, this._strategy);
 
     return {
       response: await this.populateIdentity(response),
@@ -108,11 +110,11 @@ export class GoogleAuthProvider implements OAuthProviderHandlers {
     };
   }
 
-  async refresh(refreshToken: string, scope: string): Promise<OAuthResponse> {
+  async refresh(req: OAuthRequest): Promise<OAuthResponse> {
     const { accessToken, params } = await executeRefreshTokenStrategy(
       this._strategy,
-      refreshToken,
-      scope,
+      req?.refreshToken as string,
+      req?.scope as string,
     );
 
     const profile = await executeFetchUserProfileStrategy(
@@ -137,14 +139,14 @@ export class GoogleAuthProvider implements OAuthProviderHandlers {
   ): Promise<OAuthResponse> {
     const { profile } = response;
 
-    if (!profile.email) {
+    if (!profile?.email) {
       throw new Error('Google profile contained no email');
     }
 
     // TODO(Rugvip): Hardcoded to the local part of the email for now
     const id = profile.email.split('@')[0];
 
-    return { ...response, backstageIdentity: { id } };
+    return { ...response, identity: { id } };
   }
 }
 

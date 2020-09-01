@@ -26,6 +26,7 @@ import { createSamlProvider } from './saml';
 import { createAuth0Provider } from './auth0';
 import { createMicrosoftProvider } from './microsoft';
 import {
+  AuthProviderRouteHandlers,
   AuthProviderConfig,
   AuthProviderFactory,
   EnvironmentIdentifierFn,
@@ -66,7 +67,13 @@ export const createAuthProviderRouter = (
 
   for (const env of envs) {
     const envConfig = providerConfig.getConfig(env);
-    const provider = factory(globalConfig, env, envConfig, logger, issuer);
+    const provider = factory(
+      globalConfig,
+      env,
+      envConfig,
+      logger,
+      issuer,
+    ) as AuthProviderRouteHandlers;
     if (provider) {
       envProviders[env] = provider;
       envIdentifier = provider.identifyEnv;
@@ -84,8 +91,8 @@ export const createAuthProviderRouter = (
   );
 
   router.get('/start', handler.start.bind(handler));
-  router.get('/handler/frame', handler.frameHandler.bind(handler));
-  router.post('/handler/frame', handler.frameHandler.bind(handler));
+  router.get('/handle/frame', handler.handle.bind(handler));
+  router.post('/handle/frame', handler.handle.bind(handler));
   if (handler.logout) {
     router.post('/logout', handler.logout.bind(handler));
   }

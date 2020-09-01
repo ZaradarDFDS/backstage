@@ -31,6 +31,7 @@ import {
   RedirectInfo,
   AuthProviderConfig,
   OAuthProviderOptions,
+  OAuthRequest,
   OAuthResponse,
   PassportDoneCallback,
 } from '../types';
@@ -114,20 +115,21 @@ export class MicrosoftAuthProvider implements OAuthProviderHandlers {
     );
   }
 
-  async start(
-    req: express.Request,
-    options: Record<string, string>,
-  ): Promise<RedirectInfo> {
-    return await executeRedirectStrategy(req, this._strategy, options);
+  async start(req: OAuthRequest): Promise<RedirectInfo> {
+    return await executeRedirectStrategy(
+      req as express.Request,
+      this._strategy,
+      req?.options as Record<string, string>,
+    );
   }
 
-  async handler(
-    req: express.Request,
+  async handle(
+    req: OAuthRequest,
   ): Promise<{ response: OAuthResponse; refreshToken: string }> {
     const { response, privateInfo } = await executeFrameHandlerStrategy<
       OAuthResponse,
       PrivateInfo
-    >(req, this._strategy);
+    >(req as express.Request, this._strategy);
 
     return {
       response: await this.populateIdentity(response),
@@ -135,11 +137,11 @@ export class MicrosoftAuthProvider implements OAuthProviderHandlers {
     };
   }
 
-  async refresh(refreshToken: string, scope: string): Promise<OAuthResponse> {
+  async refresh(req: OAuthRequest): Promise<OAuthResponse> {
     const { accessToken, params } = await executeRefreshTokenStrategy(
       this._strategy,
-      refreshToken,
-      scope,
+      req?.refreshToken as string,
+      req?.scope as string,
     );
 
     const profile = await executeFetchUserProfileStrategy(
@@ -194,14 +196,14 @@ export class MicrosoftAuthProvider implements OAuthProviderHandlers {
   ): Promise<OAuthResponse> {
     const { profile } = response;
 
-    if (!profile.email) {
+    if (!profile?.email) {
       throw new Error('Microsoft profile contained no email');
     }
 
     // Like Google implementation, setting this to local part of email for now
     const id = profile.email.split('@')[0];
 
-    return { ...response, backstageIdentity: { id } };
+    return { ...response, identity: { id } };
   }
 }
 
