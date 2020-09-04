@@ -57,7 +57,7 @@ export type OktaAuthResponse = {
 };
 
 const DEFAULT_PROVIDER = {
-  id: 'okta',
+  id: 'okta-pkce',
   title: 'Okta',
   icon: OktaIcon,
 };

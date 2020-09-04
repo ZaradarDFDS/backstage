@@ -122,7 +122,7 @@ export class OktaAuthProvider implements OAuthHandlers {
     >(req, this._strategy);
 
     return {
-      response: await this.populateIdentity(response),
+      response: response,
       refreshToken: privateInfo.refreshToken,
     };
   }

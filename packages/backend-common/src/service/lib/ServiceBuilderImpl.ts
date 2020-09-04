@@ -18,6 +18,7 @@ import { ConfigReader } from '@backstage/config';
 import compression from 'compression';
 import cors from 'cors';
 import express, { Router } from 'express';
+import expressSession from 'express-session';
 import helmet from 'helmet';
 import * as http from 'http';
 import stoppable from 'stoppable';
@@ -130,6 +131,8 @@ export class ServiceBuilderImpl implements ServiceBuilder {
       httpsSettings,
     } = this.getOptions();
 
+    app.set('trust proxy', 1);
+
     app.use(helmet());
     if (corsOptions) {
       app.use(cors(corsOptions));
@@ -139,6 +142,15 @@ export class ServiceBuilderImpl implements ServiceBuilder {
       app.use(metricsHandler());
     }
     app.use(requestLoggingHandler());
+    app.use(
+      expressSession({
+        secret: 'keyboard cat',
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: true },
+      }),
+    );
+
     for (const [root, route] of this.routers) {
       app.use(root, route);
     }

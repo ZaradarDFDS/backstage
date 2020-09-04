@@ -35,7 +35,7 @@ const factories: { [providerId: string]: AuthProviderFactory } = {
   gitlab: createGitlabProvider,
   saml: createSamlProvider,
   okta: createOktaProvider,
-  oktaPkce: createOktaPkceProvider,
+  'okta-pkce': createOktaPkceProvider,
   auth0: createAuth0Provider,
   microsoft: createMicrosoftProvider,
   oauth2: createOAuth2Provider,
