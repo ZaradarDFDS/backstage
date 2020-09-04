@@ -13,43 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Logger } from 'winston';
 import express from 'express';
 import passport from 'passport';
 import OAuth2Strategy from 'passport-oauth2';
-import { OAuthProvider } from '../../lib/OAuthProvider';
-import { OktaAuthProviderOptions } from '../okta/provider';
 import {
-  executeFrameHandlerStrategy,
-  executeRedirectStrategy,
-  executeRefreshTokenStrategy,
-  executeFetchUserProfileStrategy,
-} from '../../lib/PassportStrategyHelper';
-import {
-  OAuthProviderHandlers,
-  RedirectInfo,
-  AuthProviderConfig,
+  OAuthAdapter,
+  OAuthProviderOptions,
+  OAuthHandlers,
   OAuthResponse,
-  PassportDoneCallback,
-} from '../types';
-import { TokenIssuer } from '../../identity';
-import { Config } from '@backstage/config';
+  OAuthEnvironmentHandler,
+} from '../../lib/oauth';
+import { PassportDoneCallback } from '../../lib/passport';
+import { RedirectInfo, AuthProviderFactory } from '../types';
 
 type PrivateInfo = {
   refreshToken: string;
 };
 
-export class OktaPkceAuthProvider implements OAuthProviderHandlers {
+export type OktaPkceAuthProviderOptions = OAuthProviderOptions & {
+  audience: string;
+  pkce: boolean;
+};
+
+export class OktaPkceAuthProvider implements OAuthHandlers {
   private readonly _strategy: any;
 
-  constructor(options: OktaAuthProviderOptions) {
+  constructor(options: OktaPkceAuthProviderOptions) {
     const oAuthOptions: OAuth2Strategy.StrategyOptions = {
       authorizationURL: `https://dfds-devex.okta.com/oauth2/${options.audience}/v1/authorize`,
       tokenURL: `https://dfds-devex.okta.com/oauth2/${options.audience}/v1/token`,
       state: true,
       clientID: options.clientId,
       clientSecret: options.clientSecret,
-      pkce: false,
+      pkce: options.pkce,
       callbackURL: options.callbackUrl,
     };
 
@@ -74,91 +70,61 @@ export class OktaPkceAuthProvider implements OAuthProviderHandlers {
     req: express.Request,
     options: Record<string, string>,
   ): Promise<RedirectInfo> {
-    const providerOptions = {
-      ...options,
-      accessType: 'offline',
-      prompt: 'consent',
-    };
-    return await executeRedirectStrategy(req, this._strategy, providerOptions);
+    console.log('Starting request', req, options);
+    // TODO: Finish
+
+    return { url: '', status: 200 };
   }
 
   async handler(
     req: express.Request,
   ): Promise<{ response: OAuthResponse; refreshToken: string }> {
-    const { response, privateInfo } = await executeFrameHandlerStrategy<
-      OAuthResponse,
-      PrivateInfo
-    >(req, this._strategy);
-
+    console.log('Handling request', req);
+    // TODO: Finish
     return {
-      response: await this.populateIdentity(response),
-      refreshToken: privateInfo.refreshToken,
+      response: {
+        providerInfo: { accessToken: '', scope: '' },
+        profile: {},
+      },
+      refreshToken: '',
     };
   }
 
   async refresh(refreshToken: string, scope: string): Promise<OAuthResponse> {
-    const { accessToken, params } = await executeRefreshTokenStrategy(
-      this._strategy,
-      refreshToken,
-      scope,
-    );
+    console.log('Refresh request', refreshToken, scope);
+    // TODO: Finish
 
-    const profile = await executeFetchUserProfileStrategy(
-      this._strategy,
-      accessToken,
-      params.id_token,
-    );
+    return {
+      providerInfo: { accessToken: '', scope: '' },
+      profile: {},
+    };
+  }
+}
 
-    return this.populateIdentity({
-      providerInfo: {
-        accessToken,
-        idToken: params.id_token,
-        expiresInSeconds: params.expires_in,
-        scope: params.scope,
-      },
-      profile,
+export const createOktaPkceProvider: AuthProviderFactory = ({
+  globalConfig,
+  config,
+  tokenIssuer,
+}) =>
+  OAuthEnvironmentHandler.mapConfig(config, envConfig => {
+    const providerId = 'okta-pkce';
+    const clientId = envConfig.getString('clientId');
+    const clientSecret = envConfig.getString('clientSecret');
+    const audience = envConfig.getString('audience');
+    const pkce = envConfig.getBoolean('pkce');
+    const callbackUrl = `${globalConfig.baseUrl}/${providerId}/handler/frame`;
+
+    const provider = new OktaPkceAuthProvider({
+      pkce,
+      audience,
+      clientId,
+      clientSecret,
+      callbackUrl,
     });
-  }
 
-  private async populateIdentity(
-    response: OAuthResponse,
-  ): Promise<OAuthResponse> {
-    const { profile } = response;
-
-    if (!profile.email) {
-      throw new Error('Okta profile contained no email');
-    }
-
-    // TODO(Rugvip): Hardcoded to the local part of the email for now
-    const id = profile.email.split('@')[0];
-
-    return { ...response, backstageIdentity: { id } };
-  }
-}
-
-export function createOktaPkceProvider(
-  config: AuthProviderConfig,
-  _: string,
-  envConfig: Config,
-  _logger: Logger,
-  tokenIssuer: TokenIssuer,
-) {
-  const providerId = 'okta';
-  const clientId = envConfig.getString('clientId');
-  const clientSecret = envConfig.getString('clientSecret');
-  const audience = envConfig.getString('audience');
-  const callbackUrl = `${config.baseUrl}/${providerId}/handler/frame`;
-
-  const provider = new OktaPkceAuthProvider({
-    audience,
-    clientId,
-    clientSecret,
-    callbackUrl,
+    return OAuthAdapter.fromConfig(globalConfig, provider, {
+      disableRefresh: true,
+      providerId,
+      tokenIssuer,
+    });
   });
-
-  return OAuthProvider.fromConfig(config, provider, {
-    disableRefresh: false,
-    providerId,
-    tokenIssuer,
-  });
-}
