@@ -26,16 +26,8 @@ import { createOktaPkceProvider } from './okta-pkce';
 import { createSamlProvider } from './saml';
 import { createAuth0Provider } from './auth0';
 import { createMicrosoftProvider } from './microsoft';
-import {
-  AuthProviderConfig,
-  AuthProviderFactory,
-  EnvironmentIdentifierFn,
-} from './types';
+import { AuthProviderConfig, AuthProviderFactory } from './types';
 import { Config } from '@backstage/config';
-import {
-  EnvironmentHandlers,
-  EnvironmentHandler,
-} from '../lib/EnvironmentHandler';
 
 const factories: { [providerId: string]: AuthProviderFactory } = {
   google: createGoogleProvider,
@@ -52,9 +44,9 @@ const factories: { [providerId: string]: AuthProviderFactory } = {
 export const createAuthProviderRouter = (
   providerId: string,
   globalConfig: AuthProviderConfig,
-  providerConfig: Config,
+  config: Config,
   logger: Logger,
-  issuer: TokenIssuer,
+  tokenIssuer: TokenIssuer,
 ) => {
   const factory = factories[providerId];
   if (!factory) {
@@ -62,28 +54,8 @@ export const createAuthProviderRouter = (
   }
 
   const router = Router();
-  const envs = providerConfig.keys();
-  const envProviders: EnvironmentHandlers = {};
-  let envIdentifier: EnvironmentIdentifierFn | undefined;
 
-  for (const env of envs) {
-    const envConfig = providerConfig.getConfig(env);
-    const provider = factory(globalConfig, env, envConfig, logger, issuer);
-    if (provider) {
-      envProviders[env] = provider;
-      envIdentifier = provider.identifyEnv;
-    }
-  }
-
-  if (typeof envIdentifier === 'undefined') {
-    throw Error(`No envIdentifier provided for '${providerId}'`);
-  }
-
-  const handler = new EnvironmentHandler(
-    providerId,
-    envProviders,
-    envIdentifier,
-  );
+  const handler = factory({ globalConfig, config, logger, tokenIssuer });
 
   router.get('/start', handler.start.bind(handler));
   router.get('/handler/frame', handler.frameHandler.bind(handler));
