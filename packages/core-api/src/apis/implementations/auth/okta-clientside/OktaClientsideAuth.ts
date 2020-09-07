@@ -1,7 +1,7 @@
 import { OAuthApi, ProfileInfoApi, BackstageIdentityApi, SessionStateApi, OpenIdConnectApi, SessionState } from "../../../definitions";
 import { Observable } from "../../../../types";
 import { OAuthRequestApi, AuthProvider } from '../../../definitions';
-import { DefaultAuthConnector } from '../../../../lib/AuthConnector';
+import { DefaultAuthConnector, ClientSideAuthConnector } from '../../../../lib/AuthConnector';
 import { RefreshingAuthSessionManager } from '../../../../lib/AuthSessionManager';
 import { StaticAuthSessionManager } from '../../../../lib/AuthSessionManager';
 import { SessionManager } from '../../../../lib/AuthSessionManager/types';
@@ -23,16 +23,33 @@ const DEFAULT_PROVIDER = {
   icon: null as any,
 };
 
+const OKTA_OIDC_SCOPES: Set<String> = new Set(
+  ['openid', 'profile', 'email', 'phone', 'address', 'groups', 'offline_access']
+)
+
+const OKTA_SCOPE_PREFIX: string = 'okta.'
 
 class OktaClientsideAuth implements OAuthApi, OpenIdConnectApi, ProfileInfoApi, BackstageIdentityApi, SessionStateApi {
+  static redirectUri = 'http://localhost:3000/backend/okta/redirect';
+  static issuer = 'https://dfds-devex.okta.com';
+  static clientId = '0oar9mg01dw76fjUe4x6';
+
 
   static create({apiOrigin, basePath, environment = 'development', provider = DEFAULT_PROVIDER, oauthRequestApi} : CreateOptions) {
+  // @ts-ignore
     const connector = new DefaultAuthConnector({
       apiOrigin,
       basePath,
       environment,
       provider,
       oauthRequestApi: oauthRequestApi
+    });
+
+    const clientSideConnector = new ClientSideAuthConnector({
+      apiOrigin,
+      redirectUri: OktaClientsideAuth.redirectUri,
+      issuer: OktaClientsideAuth.issuer,
+      clientId: OktaClientsideAuth.clientId,
     });
 
   // @ts-ignore
@@ -53,7 +70,7 @@ class OktaClientsideAuth implements OAuthApi, OpenIdConnectApi, ProfileInfoApi, 
     });
 
     const sessionManager = new StaticAuthSessionManager({
-      connector,
+      connector: clientSideConnector, 
       defaultScopes: new Set(['openid', 'email', 'profile', 'offline_access']),
       sessionScopes: session => session.scopes,
     });
@@ -65,25 +82,48 @@ class OktaClientsideAuth implements OAuthApi, OpenIdConnectApi, ProfileInfoApi, 
   constructor(private readonly sessionManager: SessionManager<any>) {}
 
   // @ts-ignore
-  getAccessToken(scope?: string | string[] | undefined, options?: import("../../../definitions").AuthRequestOptions | undefined): Promise<string> {
+  async getAccessToken(scope?: string | string[] | undefined, options?: import("../../../definitions").AuthRequestOptions | undefined): Promise<string> {
+    // let queries = new URLSearchParams(window.location.search);
+
+    // const oktaAuth = new OktaAuth({
+    //   issuer: 'https://dfds-devex.okta.com',
+    //   clientId: '0oar9mg01dw76fjUe4x6',
+    //   redirectUri: 'http://localhost:3000/backend/okta/redirect'
+    // });
+
+    // if (queries.has('code')) {
+    //   oktaAuth.token.parseFromUrl().then((resp) => {
+    //     console.log(resp);
+    //   });
+    // } else {
+    //   oktaAuth.token.getWithRedirect({
+    //     scopes: ['openid', 'email']
+    //   });  
+    // }
+
+    const session = await this.sessionManager.getSession({
+      ...options,
+      scopes: OktaClientsideAuth.normalizeScopes(scope),
+    });
+
     let queries = new URLSearchParams(window.location.search);
 
     const oktaAuth = new OktaAuth({
-      issuer: 'https://dfds-devex.okta.com',
-      clientId: '0oar9mg01dw76fjUe4x6',
-      redirectUri: 'http://localhost:3000/backend/okta/redirect'
+      redirectUri: OktaClientsideAuth.redirectUri,
+      issuer: OktaClientsideAuth.issuer,
+      clientId: OktaClientsideAuth.clientId,
     });
 
     if (queries.has('code')) {
+      console.log("Code detected");
       oktaAuth.token.parseFromUrl().then((resp) => {
         console.log(resp);
+        //return resp;
       });
-    } else {
-      oktaAuth.token.getWithRedirect({
-        scopes: ['openid', 'email']
-      });  
     }
 
+    console.log("Calling sessionManager for accessToken");
+    return session?.providerInfo.accessToken ?? '';
 
 
     // throw new Error("Method not implemented.");
@@ -106,6 +146,30 @@ class OktaClientsideAuth implements OAuthApi, OpenIdConnectApi, ProfileInfoApi, 
   sessionState$(): Observable<SessionState> {
     return this.sessionManager.sessionState$();
     throw new Error("Method not implemented.");
+  }
+
+  static normalizeScopes(scopes?: string | string[]): Set<string> {
+    if (!scopes) {
+      return new Set();
+    }
+
+    const scopeList = Array.isArray(scopes)
+      ? scopes
+      : scopes.split(/[\s|,]/).filter(Boolean);
+
+    const normalizedScopes = scopeList.map(scope => {
+      if (OKTA_OIDC_SCOPES.has(scope)) {
+        return scope;
+      }
+
+      if (scope.startsWith(OKTA_SCOPE_PREFIX)) {
+        return scope;
+      }
+      
+      return `${OKTA_SCOPE_PREFIX}${scope}`
+    });
+
+    return new Set(normalizedScopes);
   }
 
 }

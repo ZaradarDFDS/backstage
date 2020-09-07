@@ -15,4 +15,5 @@
  */
 
 export { DefaultAuthConnector } from './DefaultAuthConnector';
+export { ClientSideAuthConnector } from './ClientSideAuthConnector';
 export * from './types';
