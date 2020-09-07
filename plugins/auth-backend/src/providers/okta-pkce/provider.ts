@@ -49,7 +49,7 @@ export class OktaPkceAuthProvider implements OAuthHandlers {
       state: true,
       clientID: options.clientId,
       clientSecret: options.clientSecret,
-      pkce: options.pkce,
+      pkce: true,
       callbackURL: options.callbackUrl,
     };
 

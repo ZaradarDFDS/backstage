@@ -146,8 +146,9 @@ export class ServiceBuilderImpl implements ServiceBuilder {
       expressSession({
         secret: 'keyboard cat',
         resave: false,
+        proxy: true,
         saveUninitialized: true,
-        cookie: { secure: true },
+        cookie: { secure: true, sameSite: 'lax' },
       }),
     );
 

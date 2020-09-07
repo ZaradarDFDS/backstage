@@ -1,9 +1,9 @@
 app:
   title: Backstage Example App
-  baseUrl: http://localhost:3000
+  baseUrl: https://localhost:3000
 
 backend:
-  baseUrl: http://localhost:7000
+  baseUrl: https://localhost:7000
   listen:
     port: 7000
   cors:
@@ -13,6 +13,13 @@ backend:
   database:
     client: sqlite3
     connection: ':memory:'
+  https:
+    certificate:
+      size: 2048
+      algorithm: sha256
+      days: 30
+      attributes: 
+        commonName: 'contoso.com'
 
 # See README.md in the proxy-backend plugin for information on the configuration format
 proxy:

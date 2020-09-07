@@ -32,7 +32,6 @@ export const postMessageResponse = (
   // TODO: Make target app origin configurable globally
   const script = `
     (window.opener || window.parent).postMessage(JSON.parse(atob('${base64Data}')), '${appOrigin}')
-    window.close()
   `;
   const hash = crypto.createHash('sha256').update(script).digest('base64');
   res.setHeader('Content-Security-Policy', `script-src 'sha256-${hash}'`);

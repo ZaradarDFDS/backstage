@@ -70,6 +70,8 @@ export class OAuthAdapter implements AuthProviderRouteHandlers {
   ) {}
 
   async start(req: express.Request, res: express.Response): Promise<void> {
+    console.log('Start session req', req.session);
+
     // retrieve scopes from request
     const scope = req.query.scope?.toString() ?? '';
     const env = req.query.env?.toString();
@@ -96,6 +98,8 @@ export class OAuthAdapter implements AuthProviderRouteHandlers {
 
     const { url, status } = await this.handlers.start(req, queryParameters);
 
+    console.log('end session req', req.session);
+
     res.statusCode = status || 302;
     res.setHeader('Location', url);
     res.setHeader('Content-Length', '0');
@@ -109,9 +113,9 @@ export class OAuthAdapter implements AuthProviderRouteHandlers {
     try {
       // verify nonce cookie and state cookie on callback
       verifyNonce(req, this.options.providerId);
-
+      console.log('frame session req', req.session);
       const { response, refreshToken } = await this.handlers.handler(req);
-
+      console.log('frame end session req', req.session);
       if (this.options.persistScopes) {
         const grantedScopes = this.getScopesFromCookie(
           req,
