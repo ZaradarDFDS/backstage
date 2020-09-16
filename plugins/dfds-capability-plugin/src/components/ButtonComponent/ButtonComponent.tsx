@@ -13,17 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createPlugin, createRouteRef } from '@backstage/core';
-import OverviewPage from './pages/OverviewPage';
+import React from 'react';
+import { Button } from '@dfds-ui/react-components';
+import { css } from '@emotion/core';
 
-export const rootRouteRef = createRouteRef({
-  path: '/dfds-capability-plugin',
-  title: 'Overview',
-});
+export type ButtonComponentProps = {
+  onClick?: (event?: React.MouseEvent) => void;
+};
 
-export const plugin = createPlugin({
-  id: 'dfds-capability-plugin',
-  register({ router }) {
-    router.addRoute(rootRouteRef, OverviewPage);
-  },
-});
+const buttonStyle = css`
+  width: 100%;
+`;
+
+const ButtonComponent: React.FC<ButtonComponentProps> = ({
+  onClick,
+  children,
+}) => {
+  return (
+    <Button onClick={onClick} css={buttonStyle}>
+      {children}
+    </Button>
+  );
+};
+
+export default ButtonComponent;

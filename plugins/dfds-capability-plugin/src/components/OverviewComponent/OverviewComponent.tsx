@@ -14,46 +14,14 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Typography, Grid } from '@material-ui/core';
-import {
-  InfoCard,
-  Header,
-  Page,
-  pageTheme,
-  Content,
-  ContentHeader,
-  HeaderLabel,
-  SupportButton,
-} from '@backstage/core';
-import MembersFetchComponent from '../MembersFetchComponent';
+import { Typography } from '@material-ui/core';
+import { InfoCard } from '@backstage/core';
 
 const OverviewComponent: FC<{}> = () => (
-  <Page theme={pageTheme.tool}>
-    <Header title="Welcome to the Capability plugin!" subtitle="@DFDS-SSU">
-      <HeaderLabel label="Owner" value="DevX" />
-      <HeaderLabel label="Lifecycle" value="Alpha" />
-    </Header>
-    <Content>
-      <ContentHeader title="Overview">
-        <SupportButton>Capability cockpit v. 1</SupportButton>
-      </ContentHeader>
-      <Grid container spacing={3} direction="column">
-        <Grid item>
-          <InfoCard title="Information card">
-            <Typography variant="body1">
-              Capability id: foobar
-              <br />
-              AWS account id: foobar
-              <br />
-            </Typography>
-          </InfoCard>
-        </Grid>
-        <Grid item>
-          <MembersFetchComponent />
-        </Grid>
-      </Grid>
-    </Content>
-  </Page>
+  <InfoCard title="Information card">
+    <Typography variant="body1">Capability id: foobar</Typography>
+    <Typography variant="body1">AWS account id: foobar</Typography>
+  </InfoCard>
 );
 
 export default OverviewComponent;
