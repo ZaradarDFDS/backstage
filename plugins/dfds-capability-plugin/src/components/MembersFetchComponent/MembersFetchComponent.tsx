@@ -43,7 +43,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
   return (
     <Table
-      title="Members (fetching data from randomuser.me)"
+      title="Members (randomuser.me api)"
       options={{ search: true, paging: true }}
       columns={columns}
       data={memberData}

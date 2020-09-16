@@ -29,6 +29,7 @@ const StatusColorContainer = styled.div`
 const StatusColor = styled.div`
   width: 4rem;
   height: 4rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50%;
 `;
 

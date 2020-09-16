@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Button } from '@dfds-ui/react-components';
+import { Button } from '@material-ui/core';
 import { css } from '@emotion/core';
 
 export type ButtonComponentProps = {
@@ -30,7 +30,12 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
   children,
 }) => {
   return (
-    <Button onClick={onClick} css={buttonStyle}>
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={onClick}
+      css={buttonStyle}
+    >
       {children}
     </Button>
   );
