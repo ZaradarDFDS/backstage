@@ -17,7 +17,7 @@ import React from 'react';
 import { Tooltip } from '@material-ui/core';
 import { InfoCard } from '@backstage/core';
 import styled from '@emotion/styled';
-import data from './data';
+import { data } from '../../data.json';
 
 const StatusColorContainer = styled.div`
   display: grid;
@@ -47,22 +47,26 @@ const StatusFetchComponent: React.FC<{}> = () => {
     <InfoCard title="Status">
       <Wrapper>
         <StatusColorContainer>
-          {data.map(item => (
-            <Tooltip key={item.id} title={item.tooltip}>
+          {Object.entries(data).map(item => (
+            <Tooltip key={item[1].id} title={item[1].tooltip}>
               <StatusColor
                 style={{
                   backgroundColor: `${
-                    item.statusOn ? item.statusColorOn : item.statusColorOff
+                    item[1].statusOn
+                      ? item[1].statusColorOn
+                      : item[1].statusColorOff
                   }`,
                 }}
               />
             </Tooltip>
           ))}
         </StatusColorContainer>
-        {data.map(
+        {Object.entries(data).map(
           item =>
-            item.statusOn && (
-              <MessageContainer key={item.id}>{item.message}</MessageContainer>
+            item[1].statusOn && (
+              <MessageContainer key={item[1].id}>
+                {item[1].message}
+              </MessageContainer>
             ),
         )}
       </Wrapper>
