@@ -13,17 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createPlugin, createRouteRef } from '@backstage/core';
-import App from './app';
-
-export const rootRouteRef = createRouteRef({
-  path: '/dfds-capability-plugin',
-  title: 'Overview',
-});
-
-export const plugin = createPlugin({
-  id: 'dfds-capability-plugin',
-  register({ router }) {
-    router.addRoute(rootRouteRef, App);
-  },
-});
+export { default } from './CICDPage';

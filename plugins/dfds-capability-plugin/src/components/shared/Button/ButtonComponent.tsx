@@ -13,17 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createPlugin, createRouteRef } from '@backstage/core';
-import App from './app';
+import React from 'react';
+import { Button } from '@material-ui/core';
 
-export const rootRouteRef = createRouteRef({
-  path: '/dfds-capability-plugin',
-  title: 'Overview',
-});
+export type ButtonComponentProps = {
+  onClick?: (event?: React.MouseEvent) => void;
+};
 
-export const plugin = createPlugin({
-  id: 'dfds-capability-plugin',
-  register({ router }) {
-    router.addRoute(rootRouteRef, App);
-  },
-});
+const ButtonComponent: React.FC<ButtonComponentProps> = ({
+  onClick,
+  children,
+}) => {
+  return (
+    <Button variant="contained" color="primary" onClick={onClick}>
+      {children}
+    </Button>
+  );
+};
+
+export default ButtonComponent;

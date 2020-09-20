@@ -13,17 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createPlugin, createRouteRef } from '@backstage/core';
-import App from './app';
+import React from 'react';
+import { ContentHeader, SupportButton } from '@backstage/core';
 
-export const rootRouteRef = createRouteRef({
-  path: '/dfds-capability-plugin',
-  title: 'Overview',
-});
+export type HeaderComponentProps = {
+  title: string;
+};
 
-export const plugin = createPlugin({
-  id: 'dfds-capability-plugin',
-  register({ router }) {
-    router.addRoute(rootRouteRef, App);
-  },
-});
+const HeaderComponent: React.FC<HeaderComponentProps> = ({ title }) => {
+  return (
+    <ContentHeader title={title}>
+      <SupportButton>Capability cockpit v. 1</SupportButton>
+    </ContentHeader>
+  );
+};
+
+export default HeaderComponent;

@@ -13,17 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createPlugin, createRouteRef } from '@backstage/core';
-import App from './app';
+import React from 'react';
 
-export const rootRouteRef = createRouteRef({
-  path: '/dfds-capability-plugin',
-  title: 'Overview',
-});
+const MonitoringPage: React.FC<{}> = () => {
+  return (
+    <React.Fragment>
+      <div>Monitoring</div>
+    </React.Fragment>
+  );
+};
 
-export const plugin = createPlugin({
-  id: 'dfds-capability-plugin',
-  register({ router }) {
-    router.addRoute(rootRouteRef, App);
-  },
-});
+export default MonitoringPage;

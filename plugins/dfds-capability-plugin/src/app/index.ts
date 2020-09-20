@@ -13,32 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
-import { Button } from '@material-ui/core';
-import { css } from '@emotion/core';
-
-export type ButtonComponentProps = {
-  onClick?: (event?: React.MouseEvent) => void;
-};
-
-const buttonStyle = css`
-  width: 100%;
-`;
-
-const ButtonComponent: React.FC<ButtonComponentProps> = ({
-  onClick,
-  children,
-}) => {
-  return (
-    <Button
-      variant="contained"
-      color="primary"
-      onClick={onClick}
-      css={buttonStyle}
-    >
-      {children}
-    </Button>
-  );
-};
-
-export default ButtonComponent;
+export { default } from './app';
