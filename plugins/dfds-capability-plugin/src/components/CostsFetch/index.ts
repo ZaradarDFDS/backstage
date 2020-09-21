@@ -13,17 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
-import { Typography } from '@material-ui/core';
-import { InfoCard } from '@backstage/core';
-
-const OverviewComponent: FC<{}> = () => (
-  <InfoCard title="Information">
-    <Typography variant="body1">Capability id: foobar</Typography>
-    <Typography variant="body1">
-      AWS account <b>ID</b>: foobar
-    </Typography>
-  </InfoCard>
-);
-
-export default OverviewComponent;
+export { default } from './CostsFetchComponent';

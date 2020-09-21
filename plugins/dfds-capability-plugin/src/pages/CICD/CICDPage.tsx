@@ -13,13 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import React from 'react';
+
+import HeaderComponent from '../../components/shared/Header';
+import PipelineFetchComponent from '../../components/PipelineFetch';
 
 const CICDPage: React.FC<{}> = () => {
   return (
     <React.Fragment>
-      <div>cicd</div>
+      <HeaderComponent title="CI/CD" />
+      <PipelineFetchComponent />
     </React.Fragment>
   );
 };

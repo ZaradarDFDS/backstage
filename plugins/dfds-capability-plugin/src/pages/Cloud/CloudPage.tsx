@@ -15,10 +15,14 @@
  */
 import React from 'react';
 
+import HeaderComponent from '../../components/shared/Header';
+import CloudFetchComponent from '../../components/CloudFetch';
+
 const CloudPage: React.FC<{}> = () => {
   return (
     <React.Fragment>
-      <div>Cloud</div>
+      <HeaderComponent title="Cloud" />
+      <CloudFetchComponent />
     </React.Fragment>
   );
 };

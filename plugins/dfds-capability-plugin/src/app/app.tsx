@@ -15,7 +15,14 @@
  */
 import React from 'react';
 import { Page, Header, HeaderLabel, pageTheme, Tabs } from '@backstage/core';
+import styled from '@emotion/styled';
+
 import OverviewPage from '../pages/Overview';
+import CICDPage from '../pages/CICD';
+import KubernetesPage from '../pages/Kubernetes';
+import CloudPage from '../pages/Cloud';
+import MonitoringPage from '../pages/Monitoring';
+import CostsPage from '../pages/Costs';
 
 const tabs = [
   {
@@ -24,25 +31,30 @@ const tabs = [
   },
   {
     label: 'CI/CD',
-    content: 'CI/CD',
+    content: <CICDPage />,
   },
   {
     label: 'Kubernetes',
-    content: 'Kubernetesss',
+    content: <KubernetesPage />,
   },
   {
     label: 'Cloud',
-    content: 'cloudss',
+    content: <CloudPage />,
   },
   {
     label: 'Monitoring',
-    content: 'monitorings',
+    content: <MonitoringPage />,
   },
   {
     label: 'Costs',
-    content: 'cotsss',
+    content: <CostsPage />,
   },
 ];
+
+const StyledTabsContainer = styled.div`
+  width: calc(100vw - 4.5rem);
+`;
+
 const App: React.FC<{}> = () => {
   return (
     <Page theme={pageTheme.tool}>
@@ -50,12 +62,14 @@ const App: React.FC<{}> = () => {
         <HeaderLabel label="Owner" value="DevX" />
         <HeaderLabel label="Lifecycle" value="Alpha" />
       </Header>
-      <Tabs
-        tabs={tabs.map(tab => ({
-          label: tab.label,
-          content: tab.content,
-        }))}
-      />
+      <StyledTabsContainer>
+        <Tabs
+          tabs={tabs.map(tab => ({
+            label: tab.label,
+            content: tab.content,
+          }))}
+        />
+      </StyledTabsContainer>
     </Page>
   );
 };

@@ -15,10 +15,12 @@
  */
 import React from 'react';
 
+import HeaderComponent from '../../components/shared/Header';
+
 const KubernetesPage: React.FC<{}> = () => {
   return (
     <React.Fragment>
-      <div>kubernetes</div>
+      <HeaderComponent title="Kubernetes" />
     </React.Fragment>
   );
 };

@@ -24,34 +24,32 @@ type DenseTableProps = {
 
 export const DenseTable: FC<DenseTableProps> = props => {
   const columns: TableColumn[] = [
-    { title: 'Squad', field: 'squad' },
-    { title: 'Tribe', field: 'tribe' },
-    { title: 'Chapter', field: 'chapter' },
-    { title: 'Location', field: 'location' },
-    { title: 'Joined', field: 'joined' },
+    { title: 'Name', field: 'name' },
+    { title: 'Run Success', field: 'runSuccess' },
+    { title: 'Deep Link To Azure DevOps', field: 'deepLinkToAzureDevOps' },
+    { title: 'Comments', field: 'comments' },
   ];
 
-  const memberData = props.dataSource.map(entry => {
+  const pipelineData = props.dataSource.map(entry => {
     return {
-      squad: `${entry.name.first}`,
-      tribe: `${entry.name.first} ${entry.name.last}`,
-      chapter: `${entry.name.first} ${entry.name.last} ${entry.nat}`,
-      location: `${entry.location.timezone.description}`,
-      joined: `${entry.registered.date}`,
+      name: `${entry.name.first} ${entry.name.last}`,
+      runSuccess: `${entry.nat}`,
+      deepLinkToAzureDevOps: `${entry.picture.thumbnail}`,
+      comments: `${entry.login.md5} ${entry.login.salt} ${entry.login.sha1} ${entry.login.uuid} `,
     };
   });
 
   return (
     <Table
-      title="Members"
-      options={{ search: true, paging: true }}
+      title="Pipeline"
+      options={{ paging: true, search: false }}
       columns={columns}
-      data={memberData}
+      data={pipelineData}
     />
   );
 };
 
-const MembersFetchComponent: FC<{}> = () => {
+const PipelineFetchComponent: FC<{}> = () => {
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const response = await fetch('https://randomuser.me/api/?results=20');
     const data = await response.json();
@@ -67,4 +65,4 @@ const MembersFetchComponent: FC<{}> = () => {
   return <DenseTable dataSource={value || []} />;
 };
 
-export default MembersFetchComponent;
+export default PipelineFetchComponent;

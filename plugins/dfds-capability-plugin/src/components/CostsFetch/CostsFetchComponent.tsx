@@ -24,34 +24,30 @@ type DenseTableProps = {
 
 export const DenseTable: FC<DenseTableProps> = props => {
   const columns: TableColumn[] = [
-    { title: 'Squad', field: 'squad' },
-    { title: 'Tribe', field: 'tribe' },
-    { title: 'Chapter', field: 'chapter' },
-    { title: 'Location', field: 'location' },
-    { title: 'Joined', field: 'joined' },
+    { title: 'AWS Resource ID', field: 'awsResourceId' },
+    { title: 'Service Type', field: 'serviceType' },
+    { title: 'Total cost', field: 'totalCost' },
   ];
 
-  const memberData = props.dataSource.map(entry => {
+  const costsData = props.dataSource.map(entry => {
     return {
-      squad: `${entry.name.first}`,
-      tribe: `${entry.name.first} ${entry.name.last}`,
-      chapter: `${entry.name.first} ${entry.name.last} ${entry.nat}`,
-      location: `${entry.location.timezone.description}`,
-      joined: `${entry.registered.date}`,
+      awsResourceId: `${entry.id.value}`,
+      serviceType: `${entry.nat}`,
+      totalCost: `${entry.dob.age} $`,
     };
   });
 
   return (
     <Table
-      title="Members"
-      options={{ search: true, paging: true }}
+      title="Costs"
+      options={{ search: false, paging: true }}
       columns={columns}
-      data={memberData}
+      data={costsData}
     />
   );
 };
 
-const MembersFetchComponent: FC<{}> = () => {
+const CostsFetchComponent: FC<{}> = () => {
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const response = await fetch('https://randomuser.me/api/?results=20');
     const data = await response.json();
@@ -67,4 +63,4 @@ const MembersFetchComponent: FC<{}> = () => {
   return <DenseTable dataSource={value || []} />;
 };
 
-export default MembersFetchComponent;
+export default CostsFetchComponent;

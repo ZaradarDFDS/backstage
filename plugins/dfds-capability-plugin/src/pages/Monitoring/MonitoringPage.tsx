@@ -15,10 +15,12 @@
  */
 import React from 'react';
 
+import HeaderComponent from '../../components/shared/Header';
+
 const MonitoringPage: React.FC<{}> = () => {
   return (
     <React.Fragment>
-      <div>Monitoring</div>
+      <HeaderComponent title="Monitoring" />
     </React.Fragment>
   );
 };

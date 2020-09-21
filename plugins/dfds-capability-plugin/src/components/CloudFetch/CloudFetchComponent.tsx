@@ -24,34 +24,36 @@ type DenseTableProps = {
 
 export const DenseTable: FC<DenseTableProps> = props => {
   const columns: TableColumn[] = [
-    { title: 'Squad', field: 'squad' },
-    { title: 'Tribe', field: 'tribe' },
-    { title: 'Chapter', field: 'chapter' },
-    { title: 'Location', field: 'location' },
-    { title: 'Joined', field: 'joined' },
+    { title: 'S3 bucket', field: 's3Bucket' },
+    { title: 'IAM accounts', field: 'IAMAccounts' },
+    { title: 'RDS`er', field: 'rdser' },
+    { title: 'Cloud Watch', field: 'cloudWatch' },
+    { title: 'Topics', field: 'topics' },
+    { title: 'Communication Channels', field: 'communication' },
   ];
 
-  const memberData = props.dataSource.map(entry => {
+  const cloudData = props.dataSource.map(entry => {
     return {
-      squad: `${entry.name.first}`,
-      tribe: `${entry.name.first} ${entry.name.last}`,
-      chapter: `${entry.name.first} ${entry.name.last} ${entry.nat}`,
-      location: `${entry.location.timezone.description}`,
-      joined: `${entry.registered.date}`,
+      s3Bucket: `${entry.location.state}`,
+      IAMAccounts: `${entry.email}`,
+      rdser: `${entry.location.street.name}`,
+      cloudWatch: `${entry.phone}`,
+      topics: `${entry.nat}`,
+      communication: `${entry.login.uuid}`,
     };
   });
 
   return (
     <Table
-      title="Members"
+      title="Cloud"
       options={{ search: true, paging: true }}
       columns={columns}
-      data={memberData}
+      data={cloudData}
     />
   );
 };
 
-const MembersFetchComponent: FC<{}> = () => {
+const CloudFetchComponent: FC<{}> = () => {
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const response = await fetch('https://randomuser.me/api/?results=20');
     const data = await response.json();
@@ -67,4 +69,4 @@ const MembersFetchComponent: FC<{}> = () => {
   return <DenseTable dataSource={value || []} />;
 };
 
-export default MembersFetchComponent;
+export default CloudFetchComponent;

@@ -13,13 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import React from 'react';
+import styled from '@emotion/styled';
+
+import HeaderComponent from '../../components/shared/Header';
+import ButtonComponent from '../../components/shared/Button';
+import CostsFetchComponent from '../../components/CostsFetch';
+
+const Container = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+`;
 
 const CostsPage: React.FC<{}> = () => {
   return (
     <React.Fragment>
-      <div>Costs</div>
+      <HeaderComponent title="Costs" />
+      <Container>
+        <CostsFetchComponent />
+        <ButtonComponent>Generate projection</ButtonComponent>
+      </Container>
     </React.Fragment>
   );
 };
