@@ -16,9 +16,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import HeaderComponent from '../../components/shared/Header';
-import ButtonComponent from '../../components/shared/Button';
-import CostsFetchComponent from '../../components/CostsFetch';
+import HeaderComponent from '../../components/shared/HeaderComponent';
+import ButtonComponent from '../../components/shared/ButtonComponent';
+import CostsFetchComponent from '../../components/CostsComponent';
 
 const Container = styled.div`
   display: grid;

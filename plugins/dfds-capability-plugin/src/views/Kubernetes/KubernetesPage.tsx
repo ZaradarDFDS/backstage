@@ -15,7 +15,7 @@
  */
 import React from 'react';
 
-import HeaderComponent from '../../components/shared/Header';
+import HeaderComponent from '../../components/shared/HeaderComponent';
 
 const KubernetesPage: React.FC<{}> = () => {
   return (

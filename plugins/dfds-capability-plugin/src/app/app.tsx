@@ -17,12 +17,12 @@ import React from 'react';
 import { Page, Header, HeaderLabel, pageTheme, Tabs } from '@backstage/core';
 import styled from '@emotion/styled';
 
-import OverviewPage from '../pages/Overview';
-import CICDPage from '../pages/CICD';
-import KubernetesPage from '../pages/Kubernetes';
-import CloudPage from '../pages/Cloud';
-import MonitoringPage from '../pages/Monitoring';
-import CostsPage from '../pages/Costs';
+import OverviewPage from '../views/Overview';
+import CICDPage from '../views/CICD';
+import KubernetesPage from '../views/Kubernetes';
+import CloudPage from '../views/Cloud';
+import MonitoringPage from '../views/Monitoring';
+import CostsPage from '../views/Costs';
 
 const tabs = [
   {

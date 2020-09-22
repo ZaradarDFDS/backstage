@@ -14,21 +14,17 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Button } from '@material-ui/core';
 
-export type ButtonComponentProps = {
-  onClick?: (event?: React.MouseEvent) => void;
-};
+import HeaderComponent from '../../components/shared/HeaderComponent';
+import PipelineFetchComponent from '../../components/PipelineComponent';
 
-const ButtonComponent: React.FC<ButtonComponentProps> = ({
-  onClick,
-  children,
-}) => {
+const CICDPage: React.FC<{}> = () => {
   return (
-    <Button variant="contained" color="primary" onClick={onClick}>
-      {children}
-    </Button>
+    <React.Fragment>
+      <HeaderComponent title="CI/CD" />
+      <PipelineFetchComponent />
+    </React.Fragment>
   );
 };
 
-export default ButtonComponent;
+export default CICDPage;

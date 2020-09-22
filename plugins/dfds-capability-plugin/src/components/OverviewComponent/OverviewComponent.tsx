@@ -13,18 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
+import React, { FC } from 'react';
+import { Typography } from '@material-ui/core';
+import { InfoCard } from '@backstage/core';
 
-import HeaderComponent from '../../components/shared/Header';
-import CloudFetchComponent from '../../components/CloudFetch';
+const OverviewComponent: FC<{}> = () => (
+  <InfoCard title="Information">
+    <Typography variant="body1">
+      Capability <b>ID</b>: foobar
+    </Typography>
+    <Typography variant="body1">
+      AWS account <b>ID</b>: foobar
+    </Typography>
+  </InfoCard>
+);
 
-const CloudPage: React.FC<{}> = () => {
-  return (
-    <React.Fragment>
-      <HeaderComponent title="Cloud" />
-      <CloudFetchComponent />
-    </React.Fragment>
-  );
-};
-
-export default CloudPage;
+export default OverviewComponent;

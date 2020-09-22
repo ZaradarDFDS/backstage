@@ -16,11 +16,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import OverviewComponent from '../../components/Overview';
-import MembersFetchComponent from '../../components/MembersFetch';
-import StatusFetchComponent from '../../components/StatusFetch';
-import ButtonComponent from '../../components/shared/Button';
-import HeaderComponent from '../../components/shared/Header';
+import OverviewComponent from '../../components/OverviewComponent';
+import MembersFetchComponent from '../../components/MembersComponent';
+import StatusFetchComponent from '../../components/StatusComponent';
+import ButtonComponent from '../../components/shared/ButtonComponent';
+import HeaderComponent from '../../components/shared/HeaderComponent';
 
 const LeftContainer = styled.div`
   display: grid;

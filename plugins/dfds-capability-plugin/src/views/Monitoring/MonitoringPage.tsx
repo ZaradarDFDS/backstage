@@ -15,16 +15,14 @@
  */
 import React from 'react';
 
-import HeaderComponent from '../../components/shared/Header';
-import PipelineFetchComponent from '../../components/PipelineFetch';
+import HeaderComponent from '../../components/shared/HeaderComponent';
 
-const CICDPage: React.FC<{}> = () => {
+const MonitoringPage: React.FC<{}> = () => {
   return (
     <React.Fragment>
-      <HeaderComponent title="CI/CD" />
-      <PipelineFetchComponent />
+      <HeaderComponent title="Monitoring" />
     </React.Fragment>
   );
 };
 
-export default CICDPage;
+export default MonitoringPage;

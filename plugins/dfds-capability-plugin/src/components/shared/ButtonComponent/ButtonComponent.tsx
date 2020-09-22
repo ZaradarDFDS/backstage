@@ -14,15 +14,28 @@
  * limitations under the License.
  */
 import React from 'react';
+import { Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-import HeaderComponent from '../../components/shared/Header';
+export type ButtonComponentProps = {
+  onClick?: (event?: React.MouseEvent) => void;
+};
 
-const MonitoringPage: React.FC<{}> = () => {
+const StyledButton = withStyles({
+  root: {
+    maxHeight: 40,
+  },
+})(Button);
+
+const ButtonComponent: React.FC<ButtonComponentProps> = ({
+  onClick,
+  children,
+}) => {
   return (
-    <React.Fragment>
-      <HeaderComponent title="Monitoring" />
-    </React.Fragment>
+    <StyledButton variant="contained" color="primary" onClick={onClick}>
+      {children}
+    </StyledButton>
   );
 };
 
-export default MonitoringPage;
+export default ButtonComponent;
