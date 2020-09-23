@@ -23,7 +23,7 @@ export type ButtonComponentProps = {
 
 const StyledButton = withStyles({
   root: {
-    maxHeight: 40,
+    height: '2.5rem',
   },
 })(Button);
 

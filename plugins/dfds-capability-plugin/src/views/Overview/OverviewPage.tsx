@@ -31,7 +31,6 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 2rem;
-  margin: 0;
 
   @media screen and (max-width: 1280px) {
     grid-template-columns: 1fr;
