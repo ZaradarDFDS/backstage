@@ -32,10 +32,10 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
   const pipelineData = props.dataSource.map(entry => {
     return {
-      name: `${entry.name.first} ${entry.name.last}`,
-      runSuccess: `${entry.nat}`,
-      deepLinkToAzureDevOps: `${entry.picture.thumbnail}`,
-      comments: `${entry.login.md5} ${entry.login.salt} ${entry.login.sha1} ${entry.login.uuid} `,
+      name: `${entry.pipelineName}`,
+      runSuccess: `${entry.result}`,
+      deepLinkToAzureDevOps: `${entry.buildPageLink}`,
+      comments: `project ID: ${entry.projectId}, source branch: ${entry.sourceBranch}, build number: ${entry.buildNumber}`,
     };
   });
 
@@ -51,9 +51,15 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
 const PipelineFetchComponent: FC<{}> = () => {
   const { value, loading, error } = useAsync(async (): Promise<any> => {
-    const response = await fetch('https://randomuser.me/api/?results=20');
+    const response = await fetch(
+      'https://backstage.dfds.cloud/ado/builds/builds',
+      {
+        method: 'POST',
+        body: JSON.stringify({ project: 'DevelopmentExcellence' }),
+      },
+    );
     const data = await response.json();
-    return data.results;
+    return data;
   }, []);
 
   if (loading) {
