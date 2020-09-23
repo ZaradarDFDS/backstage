@@ -23,7 +23,7 @@
  */
 
 import {
-  createDatabase,
+  createDatabaseClient,
   createServiceBuilder,
   loadBackendConfig,
   getRootLogger,
@@ -34,12 +34,14 @@ import healthcheck from './plugins/healthcheck';
 import auth from './plugins/auth';
 import catalog from './plugins/catalog';
 import identity from './plugins/identity';
+import kubernetes from './plugins/kubernetes';
 import rollbar from './plugins/rollbar';
 import scaffolder from './plugins/scaffolder';
 import sentry from './plugins/sentry';
 import proxy from './plugins/proxy';
 import techdocs from './plugins/techdocs';
 import graphql from './plugins/graphql';
+import app from './plugins/app';
 import { PluginEnvironment } from './types';
 
 function makeCreateEnv(loadedConfigs: AppConfig[]) {
@@ -47,11 +49,14 @@ function makeCreateEnv(loadedConfigs: AppConfig[]) {
 
   return (plugin: string): PluginEnvironment => {
     const logger = getRootLogger().child({ type: 'plugin', plugin });
-    const database = createDatabase(config.getConfig('backend.database'), {
-      connection: {
-        database: `backstage_plugin_${plugin}`,
+    const database = createDatabaseClient(
+      config.getConfig('backend.database'),
+      {
+        connection: {
+          database: `backstage_plugin_${plugin}`,
+        },
       },
-    });
+    );
     return { logger, database, config };
   };
 }
@@ -60,7 +65,6 @@ async function main() {
   const configs = await loadBackendConfig();
   const configReader = ConfigReader.fromConfigs(configs);
   const createEnv = makeCreateEnv(configs);
-
   const healthcheckEnv = useHotMemoize(module, () => createEnv('healthcheck'));
   const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));
   const scaffolderEnv = useHotMemoize(module, () => createEnv('scaffolder'));
@@ -70,7 +74,9 @@ async function main() {
   const rollbarEnv = useHotMemoize(module, () => createEnv('rollbar'));
   const sentryEnv = useHotMemoize(module, () => createEnv('sentry'));
   const techdocsEnv = useHotMemoize(module, () => createEnv('techdocs'));
+  const kubernetesEnv = useHotMemoize(module, () => createEnv('kubernetes'));
   const graphqlEnv = useHotMemoize(module, () => createEnv('graphql'));
+  const appEnv = useHotMemoize(module, () => createEnv('app'));
 
   const service = createServiceBuilder(module)
     .loadConfig(configReader)
@@ -82,8 +88,10 @@ async function main() {
     .addRouter('/auth', await auth(authEnv))
     .addRouter('/identity', await identity(identityEnv))
     .addRouter('/techdocs', await techdocs(techdocsEnv))
-    .addRouter('/proxy', await proxy(proxyEnv))
-    .addRouter('/graphql', await graphql(graphqlEnv));
+    .addRouter('/kubernetes', await kubernetes(kubernetesEnv))
+    .addRouter('/proxy', await proxy(proxyEnv, '/proxy'))
+    .addRouter('/graphql', await graphql(graphqlEnv))
+    .addRouter('', await app(appEnv));
 
   await service.start().catch(err => {
     console.log(err);

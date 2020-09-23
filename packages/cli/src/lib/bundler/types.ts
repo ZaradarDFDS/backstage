@@ -26,7 +26,9 @@ export type BundlingOptions = {
   buildType: String;
 };
 
-export type BackendBundlingOptions = Omit<BundlingOptions, 'baseUrl'>;
+export type BackendBundlingOptions = Omit<BundlingOptions, 'baseUrl'> & {
+  inspectEnabled: boolean;
+};
 
 export type ServeOptions = BundlingPathsOptions & {
   checksEnabled: boolean;

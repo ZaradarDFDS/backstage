@@ -15,19 +15,19 @@
  */
 
 import React, { FC, useState } from 'react';
+import { BackstageTheme } from '@backstage/theme';
 import {
   Button,
   FormControl,
   FormHelperText,
-  TextField,
   LinearProgress,
-  Select,
   MenuItem,
   InputLabel,
+  Select,
+  TextField,
 } from '@material-ui/core';
-import { useForm } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
-import { BackstageTheme } from '@backstage/theme';
+import { Controller, useForm } from 'react-hook-form';
 import { ComponentIdValidators } from '../../util/validate';
 
 const useStyles = makeStyles<BackstageTheme>(theme => ({
@@ -39,20 +39,23 @@ const useStyles = makeStyles<BackstageTheme>(theme => ({
   submit: {
     marginTop: theme.spacing(1),
   },
+  select: {
+    minWidth: 120,
+  },
 }));
 
 export type Props = {
   onSubmit: (formData: Record<string, string>) => Promise<void>;
-  submitting: boolean;
+  submitting?: boolean;
 };
 
-const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
-  const { register, handleSubmit, errors, formState, setValue } = useForm({
+export const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
+  const { register, handleSubmit, errors, formState, setValue, control } = useForm({
     mode: 'onChange',
   });
   const classes = useStyles();
   const hasErrors = !!errors.componentLocation;
-  const dirty = formState?.dirty;
+  const dirty = formState?.isDirty;
   const initialLocationSelection = "github";
 
   React.useEffect(() => {
@@ -82,14 +85,14 @@ const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
         <TextField
           id="registerComponentInput"
           variant="outlined"
-          label="Component file URL"
+          label="Entity file URL"
           data-testid="componentLocationInput"
           error={hasErrors}
-          placeholder="https://example.com/user/some-service/blob/master/component.yaml"
+          placeholder="https://example.com/user/some-service/blob/master/catalog-info.yaml"
           name="componentLocation"
           required
           margin="normal"
-          helperText="Enter the full path to the component.yaml file in GitHub to start tracking your component. It must be in a public repo."
+          helperText="Enter the full path to the catalog-info.yaml file in GitHub, GitLab, Bitbucket or Azure to start tracking your component."
           inputRef={register({
             required: true,
             validate: ComponentIdValidators,
@@ -120,8 +123,31 @@ const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
           </Select>
       </FormControl>
 
+      <FormControl variant="outlined" className={classes.select}>
+        <InputLabel id="scmLabel">Host type</InputLabel>
+        <Controller
+          control={control}
+          name="scmType"
+          defaultValue="AUTO"
+          render={({ onChange, onBlur, value }) => (
+            <Select
+              labelId="scmLabel"
+              id="scmSelect"
+              label="scmLabel"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+            >
+              <MenuItem value="AUTO">Auto-detect</MenuItem>
+              <MenuItem value="gitlab">GitLab</MenuItem>
+              <MenuItem value="bitbucket/api">Bitbucket</MenuItem>
+              <MenuItem value="azure/api">Azure</MenuItem>
+              <MenuItem value={"azuredevops"}>Azure DevOps</MenuItem>
+            </Select>
+          )}
+        />
+      </FormControl>
       <Button
-        id="registerComponentFormSubmit"
         variant="contained"
         color="primary"
         type="submit"
@@ -133,5 +159,3 @@ const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
     </form>
   );
 };
-
-export default RegisterComponentForm;

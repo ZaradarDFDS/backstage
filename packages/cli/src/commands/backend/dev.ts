@@ -23,12 +23,14 @@ import { serveBackend } from '../../lib/bundler/backend';
 export default async (cmd: Command) => {
   const buildType = cmd.buildtype;
   const appConfigs = await loadConfig({
-    env: 'development',
+    env: process.env.NODE_ENV ?? 'development',
     rootPaths: [paths.targetRoot, paths.targetDir],
   });
+
   const waitForExit = await serveBackend({
     entry: 'src/index',
     checksEnabled: cmd.check,
+    inspectEnabled: cmd.inspect,
     config: ConfigReader.fromConfigs(appConfigs),
     appConfigs,
     buildType: buildType,

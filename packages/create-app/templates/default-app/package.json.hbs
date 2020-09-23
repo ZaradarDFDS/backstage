@@ -9,13 +9,14 @@
     "start": "yarn workspace app start",
     "build": "lerna run build",
     "tsc": "tsc",
+    "tsc:full": "tsc --skipLibCheck false --incremental false",
     "clean": "backstage-cli clean && lerna run clean",
     "diff": "lerna run diff --",
     "test": "lerna run test --since origin/master -- --coverage",
     "test:all": "lerna run test -- --coverage",
     "lint": "lerna run lint --since origin/master --",
     "lint:all": "lerna run lint --",
-    "create-plugin": "backstage-cli create-plugin",
+    "create-plugin": "backstage-cli create-plugin --scope backstage --no-private",
     "remove-plugin": "backstage-cli remove-plugin"
   },
   "workspaces": {
@@ -41,6 +42,11 @@
     ],
     "*.{json,md}": [
       "prettier --write"
+    ]
+  },
+  "jest": {
+    "transformModules": [
+      "@kyma-project/asyncapi-react"
     ]
   }
 }

@@ -25,11 +25,14 @@ import {
   yesPromptFunc,
 } from '../../lib/diff';
 import { paths } from '../../lib/paths';
-import { version } from '../../lib/version';
+import { version as backstageVersion } from '../../lib/version';
 
 export type PluginData = {
   id: string;
   name: string;
+  privatePackage: string;
+  version: string;
+  npmRegistry: string;
 };
 
 const fileHandlers = [
@@ -64,7 +67,7 @@ export default async (cmd: Command) => {
 
   const data = await readPluginData();
   const templateFiles = await diffTemplateFiles('default-plugin', {
-    version,
+    backstageVersion,
     ...data,
   });
   await handleAllFiles(fileHandlers, templateFiles, promptFunc);
@@ -74,9 +77,19 @@ export default async (cmd: Command) => {
 // Reads templating data from the existing plugin
 async function readPluginData(): Promise<PluginData> {
   let name: string;
+  let privatePackage: string;
+  let version: string;
+  let npmRegistry: string;
   try {
     const pkg = require(paths.resolveTarget('package.json'));
     name = pkg.name;
+    privatePackage = pkg.private;
+    version = pkg.version;
+    const scope = name.split('/')[0];
+    if (`${scope}:registry` in pkg.publishConfig) {
+      const registryURL = pkg.publishConfig[`${scope}:registry`];
+      npmRegistry = `"${scope}:registry" : "${registryURL}"`;
+    } else npmRegistry = '';
   } catch (error) {
     throw new Error(`Failed to read target package, ${error}`);
   }
@@ -93,5 +106,5 @@ async function readPluginData(): Promise<PluginData> {
 
   const id = pluginIdMatch[1];
 
-  return { id, name };
+  return { id, name, privatePackage, version, npmRegistry };
 }

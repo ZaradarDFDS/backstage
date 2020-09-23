@@ -19,13 +19,17 @@ import { DefaultAuthConnector } from '../../../../lib/AuthConnector';
 import { GithubSession } from './types';
 import {
   OAuthApi,
-  SessionStateApi,
+  SessionApi,
   SessionState,
   ProfileInfo,
   BackstageIdentity,
   AuthRequestOptions,
 } from '../../../definitions/auth';
-import { OAuthRequestApi, AuthProvider } from '../../../definitions';
+import {
+  OAuthRequestApi,
+  AuthProvider,
+  DiscoveryApi,
+} from '../../../definitions';
 import { SessionManager } from '../../../../lib/AuthSessionManager/types';
 import {
   AuthSessionStore,
@@ -34,10 +38,7 @@ import {
 import { Observable } from '../../../../types';
 
 type CreateOptions = {
-  // TODO(Rugvip): These two should be grabbed from global config when available, they're not unique to GithubAuth
-  apiOrigin: string;
-  basePath: string;
-
+  discoveryApi: DiscoveryApi;
   oauthRequestApi: OAuthRequestApi;
 
   environment?: string;
@@ -60,17 +61,15 @@ const DEFAULT_PROVIDER = {
   icon: GithubIcon,
 };
 
-class GithubAuth implements OAuthApi, SessionStateApi {
+class GithubAuth implements OAuthApi, SessionApi {
   static create({
-    apiOrigin,
-    basePath,
+    discoveryApi,
     environment = 'development',
     provider = DEFAULT_PROVIDER,
     oauthRequestApi,
   }: CreateOptions) {
     const connector = new DefaultAuthConnector({
-      apiOrigin,
-      basePath,
+      discoveryApi,
       environment,
       provider,
       oauthRequestApi: oauthRequestApi,
@@ -103,11 +102,19 @@ class GithubAuth implements OAuthApi, SessionStateApi {
     return new GithubAuth(authSessionStore);
   }
 
+  constructor(private readonly sessionManager: SessionManager<GithubSession>) {}
+
+  async signIn() {
+    await this.getAccessToken();
+  }
+
+  async signOut() {
+    await this.sessionManager.removeSession();
+  }
+
   sessionState$(): Observable<SessionState> {
     return this.sessionManager.sessionState$();
   }
-
-  constructor(private readonly sessionManager: SessionManager<GithubSession>) {}
 
   async getAccessToken(scope?: string, options?: AuthRequestOptions) {
     const session = await this.sessionManager.getSession({
@@ -127,10 +134,6 @@ class GithubAuth implements OAuthApi, SessionStateApi {
   async getProfile(options: AuthRequestOptions = {}) {
     const session = await this.sessionManager.getSession(options);
     return session?.profile;
-  }
-
-  async logout() {
-    await this.sessionManager.removeSession();
   }
 
   static normalizeScope(scope?: string): Set<string> {
