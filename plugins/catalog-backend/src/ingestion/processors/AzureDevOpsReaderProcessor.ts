@@ -29,7 +29,11 @@ export class AzureDevOpsReaderProcessor implements LocationProcessor {
     };
 
     if (this.authCredentials !== '') {
-      headers.Authorization = `Basic ${this.authCredentials}`;
+      // headers.Authorization = `Basic ${this.authCredentials}`;
+      headers.Authorization = `Basic ${Buffer.from(
+        `:${this.authCredentials}`,
+        'utf8',
+      ).toString('base64')}`;
     }
 
     const requestOptions: RequestInit = {

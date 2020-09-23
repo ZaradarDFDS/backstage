@@ -106,7 +106,7 @@ export const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
         )}
       </FormControl>
 
-      <FormControl>
+      {/* <FormControl>
         <InputLabel id="registerComponentLocationSelection-label">Location</InputLabel>
         <Select
           labelId="registerComponentLocationSelection-label"
@@ -121,7 +121,7 @@ export const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
             <MenuItem value={"github/api"}>GitHub - Private repos</MenuItem>
             <MenuItem value={"azuredevops"}>Azure DevOps</MenuItem>
           </Select>
-      </FormControl>
+      </FormControl> */}
 
       <FormControl variant="outlined" className={classes.select}>
         <InputLabel id="scmLabel">Host type</InputLabel>
@@ -139,6 +139,8 @@ export const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
               onBlur={onBlur}
             >
               <MenuItem value="AUTO">Auto-detect</MenuItem>
+              <MenuItem value={"github"}>GitHub</MenuItem>
+              <MenuItem value={"github/api"}>GitHub - Private repos</MenuItem>
               <MenuItem value="gitlab">GitLab</MenuItem>
               <MenuItem value="bitbucket/api">Bitbucket</MenuItem>
               <MenuItem value="azure/api">Azure</MenuItem>

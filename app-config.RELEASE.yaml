@@ -107,3 +107,18 @@ auth:
         tokenURL:
           $secret:
             env: AUTH_OAUTH2_TOKEN_URL
+
+catalog:
+  rules:
+    - allow: [Component, API, Group, Template, Location]
+  processors:
+    github:
+      providers:
+        - target: https://github.com
+          token:
+            $secret:
+              env: GITHUB_PRIVATE_TOKEN
+    azureApi:
+      privateToken:
+        $secret:
+          env: AZUREDEVOPS_AUTH_CREDENTIALS
