@@ -14,8 +14,14 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Page, Header, HeaderLabel, pageTheme, Tabs } from '@backstage/core';
-import styled from '@emotion/styled';
+import {
+  Page,
+  Header,
+  HeaderLabel,
+  Content,
+  pageTheme,
+  Tabs,
+} from '@backstage/core';
 
 import OverviewPage from '../views/Overview';
 import CICDPage from '../views/CICD';
@@ -51,10 +57,6 @@ const tabs = [
   },
 ];
 
-const StyledTabsContainer = styled.div`
-  width: calc(100vw - 4.5rem);
-`;
-
 const App: React.FC<{}> = () => {
   return (
     <Page theme={pageTheme.tool}>
@@ -62,14 +64,14 @@ const App: React.FC<{}> = () => {
         <HeaderLabel label="Owner" value="DevX" />
         <HeaderLabel label="Lifecycle" value="Alpha" />
       </Header>
-      <StyledTabsContainer>
+      <Content noPadding>
         <Tabs
           tabs={tabs.map(tab => ({
             label: tab.label,
             content: tab.content,
           }))}
         />
-      </StyledTabsContainer>
+      </Content>
     </Page>
   );
 };
