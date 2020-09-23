@@ -46,6 +46,6 @@ RUN mkdir -p /assets && curl https://s3.amazonaws.com/rds-downloads/rds-ca-2019-
 RUN yarn install
 
 WORKDIR /backstage/packages/backend
-RUN yarn tsc && yarn build
+RUN yarn tsc
 
 CMD yarn start
