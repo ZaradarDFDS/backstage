@@ -35,3 +35,4 @@ export { plugin as DfdsWebApi } from '@backstage/plugin-dfds-web-api';
 export { plugin as GithubPullRequests } from '@roadiehq/backstage-plugin-github-pull-requests';
 export { plugin as GcpProjects } from '@backstage/plugin-gcp-projects';
 export { plugin as Kubernetes } from '@backstage/plugin-kubernetes';
+export { plugin as DfdsCapabilityPlugin } from '@backstage/plugin-dfds-capability-plugin';
