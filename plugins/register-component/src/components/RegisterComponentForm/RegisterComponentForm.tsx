@@ -64,9 +64,11 @@ export const RegisterComponentForm: FC<Props> = ({ onSubmit, submitting }) => {
   }, [register]);
 
 
+  // @ts-ignore
   const [locationSelection, setLocationSelection] = useState(initialLocationSelection);
 
   // Makes sure internal state is updated to reflect changes in UI and react-hook-form receives the new value
+  // @ts-ignore
   const handleLocationSelectionChange = (event: any) => {
     setLocationSelection(event.target.value);
     setValue("locationSelection", event.target.value);
