@@ -6,6 +6,7 @@ WORKDIR /backstage
 
 #Copy files to container file system.
 COPY ./packages/backend ./packages/backend
+COPY ./packages/app ./packages/app
 COPY ./packages/backend-common ./packages/backend-common
 COPY ./packages/config ./packages/config
 COPY ./packages/config-loader ./packages/config-loader
@@ -17,6 +18,8 @@ COPY ./plugins/rollbar-backend ./plugins/rollbar-backend
 COPY ./plugins/scaffolder-backend ./plugins/scaffolder-backend
 COPY ./plugins/sentry-backend ./plugins/sentry-backend
 COPY ./plugins/techdocs-backend ./plugins/techdocs-backend
+COPY ./plugins/gcp-projects ./plugins/gcp-projects
+COPY ./plugins/dfds-capability-plugin ./plugins/dfds-capability-plugin
 COPY ./packages/catalog-model ./packages/catalog-model
 COPY ./packages/cli ./packages/cli
 
