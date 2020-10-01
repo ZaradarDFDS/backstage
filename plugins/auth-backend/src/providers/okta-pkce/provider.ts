@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 import express from 'express';
-import passport from 'passport';
-import OAuth2Strategy from 'passport-oauth2';
+import axios from 'axios';
+import cryptoJs from 'crypto-js';
+import { v4 as generateUuidv4 } from 'uuid';
+import generateNonce from 'nonce';
 import {
   OAuthAdapter,
   OAuthProviderOptions,
@@ -23,102 +25,106 @@ import {
   OAuthResponse,
   OAuthEnvironmentHandler,
 } from '../../lib/oauth';
-import {
-  executeRedirectStrategy,
-  executeFrameHandlerStrategy,
-  PassportDoneCallback,
-} from '../../lib/passport';
 import { RedirectInfo, AuthProviderFactory } from '../types';
-
-type PrivateInfo = {
-  refreshToken: string;
-};
 
 export type OktaPkceAuthProviderOptions = OAuthProviderOptions & {
   audience: string;
   pkce: boolean;
 };
 
+export const generateRandomString = (
+  numberOfChars: number,
+  seed: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+): string => {
+  let text: string = '';
+
+  for (let i = 0; i < numberOfChars; i++)
+    text += seed.charAt(Math.floor(Math.random() * seed.length));
+
+  return text;
+};
+
 export class OktaPkceAuthProvider implements OAuthHandlers {
-  private readonly _strategy: any;
+  private readonly _options: OktaPkceAuthProviderOptions;
 
   constructor(options: OktaPkceAuthProviderOptions) {
-    const oAuthOptions: OAuth2Strategy.StrategyOptions = {
-      authorizationURL: `https://dfds-devex.okta.com/oauth2/${options.audience}/v1/authorize`,
-      tokenURL: `https://dfds-devex.okta.com/oauth2/${options.audience}/v1/token`,
-      state: true,
-      clientID: options.clientId,
-      clientSecret: options.clientSecret,
-      pkce: true,
-      callbackURL: options.callbackUrl,
-    };
-
-    const verifyFunction: OAuth2Strategy.VerifyFunction = (
-      accessToken: any,
-      refreshToken: any,
-      params: any,
-      rawProfile: passport.Profile,
-      done: PassportDoneCallback<OAuthResponse, PrivateInfo>,
-    ) => {
-      console.log('token', accessToken, refreshToken);
-      console.log('params', params);
-      console.log('profile', rawProfile);
-
-      done();
-    };
-
-    this._strategy = new OAuth2Strategy(oAuthOptions, verifyFunction);
+    this._options = options;
   }
 
   async start(
     req: express.Request,
     options: Record<string, string>,
   ): Promise<RedirectInfo> {
-    // TODO: Finish
-    // Request to initialize flow
-    // https://dev-micah.okta.com/oauth2/default/v1/authorize?client_id=0oapu4btsL2xI0y8y356&
-    // redirect_uri=http://localhost:8080/callback&response_type=code&
-    // response_mode=fragment&
-    // state=MdXrGikS5LACsWs2HZFqS7IC9zMC6F9thOiWDa5gxKRqoMf7bCkTetrrwKw5JIAA&
-    // nonce=iAXdcF77sQ2ejthPM5xZtytYUjqZkJTXcHkgdyY2NinFx6y83nKssxEzlBtvnSY2&
-    // code_challenge=elU6u5zyqQT2f92GRQUq6PautAeNDf4DQPayyR0ek_c&
-    // code_challenge_method=S256&
-    // scope=openid profile email
+    if (!req.session) {
+      throw new Error('Provider requires express-session!');
+    }
 
-    // Example of callback containing an authorization code (which can be exchange for tokens)
-    // http://localhost:8080/callback#
-    // code=ZIhxKbQyh-vC32deCWpM&
-    // state=MdXrGikS5LACsWs2HZFqS7IC9zMC6F9thOiWDa5gxKRqoMf7bCkTetrrwKw5JIAA
-    const providerOptions = {
-      ...options,
-      accessType: 'offline',
-      prompt: 'consent',
-    };
+    console.log(
+      'Fuck you Husky for making me do this so I can commit my code.',
+      options,
+    );
 
-    return await executeRedirectStrategy(req, this._strategy, providerOptions);
+    const scopes = 'openid profile email';
+    const correlationId = generateUuidv4();
+    const nonce = generateNonce();
+    const codeVerifier = generateRandomString(43);
+    const codeChallenge = cryptoJs.Base64.stringify(
+      cryptoJs.sha256(nonce + codeVerifier),
+    );
+
+    req.session.codeChallenge = codeChallenge;
+    req.session.codeVerifier = codeVerifier;
+    req.session.correlationId = correlationId;
+    req.session.scopes = scopes;
+    req.session.save((err: any) => {
+      console.log(err);
+    });
+
+    const authorizeResponse = await axios.get(
+      `https://dfds-devex-admin.okta.com/oauth2/default/v1/authorize?client_id=${this._options.clientId}&redirect_uri=${this._options.callbackUrl}&response_type=code&response_mode=fragment&state=${correlationId}&nonce=${nonce}&code_challenge=${codeChallenge}&code_challenge_method=S256&scope=${scopes}`,
+    );
+
+    // TODO: Figure out what this URL should be?
+    const result: RedirectInfo = { url: '', status: authorizeResponse.status };
+
+    return new Promise(resolve => {
+      resolve(result);
+    });
   }
 
   async handler(
     req: express.Request,
   ): Promise<{ response: OAuthResponse; refreshToken: string }> {
-    // Request to exchange auth code for tokens
-    // https://dev-micah.okta.com/oauth2/ausneyiq5fyDfRMvZ356/v1/token
-    // client_id=0oapu4btsL2xI0y8y356&
-    // code_verifier=7073d688b6dcb02b9a2332e0792be265b9168fda7a6&
-    // redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fcallback&
-    // grant_type=authorization_code&
-    // code=AyfnwMyCi2S9-op2xToh
-    const { response, privateInfo } = await executeFrameHandlerStrategy<
-      OAuthResponse,
-      PrivateInfo
-    >(req, this._strategy);
+    if (req.query.state !== req.session?.correlationId) {
+      throw new Error(
+        `State: ${req.query.state} does not match correlationId: ${req.session?.correlationId}!`,
+      );
+    }
 
-    return {
-      response: response,
-      refreshToken: privateInfo.refreshToken,
+    const tokenRequest = await axios.get(
+      `https://dfds-devex-admin.okta.com/oauth2/default/v1/token?client_id=${this._options.clientId}code_verifier=${req.session?.codeVerifier}&redirect_uri=${this._options.callbackUrl}&grant_type=authorization_code&code=${req.query.code}`,
+    );
+    const payload = JSON.parse(tokenRequest.data);
+
+    // TODO: Figure out what the profile is supposed to be?
+    // TODO: This is NOT the right token. Figure out if we can us it to acquire a refresh token.
+    const result: { response: OAuthResponse; refreshToken: string } = {
+      response: {
+        providerInfo: {
+          accessToken: payload.accessToken,
+          scope: payload.scope,
+        },
+        profile: {},
+      },
+      refreshToken: payload.id_token,
     };
+
+    return new Promise(resolve => {
+      resolve(result);
+    });
   }
 
+  // TODO: Figure out if this can be done.
   async refresh(refreshToken: string, scope: string): Promise<OAuthResponse> {
     console.log('Refresh request', refreshToken, scope);
     // TODO: Finish
