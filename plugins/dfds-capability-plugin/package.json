@@ -27,9 +27,11 @@
     "@material-ui/core": "^4.9.1",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "4.0.0-alpha.45",
+    "@types/recharts": "^1.8.16",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-use": "^15.3.3"
+    "react-use": "^15.3.3",
+    "recharts": "^1.8.5"
   },
   "devDependencies": {
     "@backstage/cli": "^0.1.1-alpha.21",

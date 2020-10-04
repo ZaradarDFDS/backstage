@@ -13,25 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
+import styled from '@emotion/styled';
 
-import HeaderComponent from '../../components/shared/HeaderComponent';
-import {
-  PerformanceFetchComponent,
-  LogsFetchComponent,
-} from '../../components/PerformanceComponents';
-import { Container } from '../../components/styles';
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 2rem;
 
-const MonitoringPage: React.FC<{}> = () => {
-  return (
-    <React.Fragment>
-      <HeaderComponent title="Monitoring" />
-      <Container>
-        <PerformanceFetchComponent />
-        <LogsFetchComponent />
-      </Container>
-    </React.Fragment>
-  );
-};
-
-export default MonitoringPage;
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: 1fr;
+  }
+`;

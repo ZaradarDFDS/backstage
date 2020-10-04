@@ -13,25 +13,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
-
-import HeaderComponent from '../../components/shared/HeaderComponent';
-import {
-  PerformanceFetchComponent,
-  LogsFetchComponent,
-} from '../../components/PerformanceComponents';
-import { Container } from '../../components/styles';
-
-const MonitoringPage: React.FC<{}> = () => {
-  return (
-    <React.Fragment>
-      <HeaderComponent title="Monitoring" />
-      <Container>
-        <PerformanceFetchComponent />
-        <LogsFetchComponent />
-      </Container>
-    </React.Fragment>
-  );
-};
-
-export default MonitoringPage;
+export { default as PerformanceFetchComponent } from './PerformanceFetchComponent';
+export { default as LogsFetchComponent } from './LogsFetchComponent';
