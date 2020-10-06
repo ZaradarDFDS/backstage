@@ -46,7 +46,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
   return (
     <Table
       title="Cloud"
-      options={{ search: true, paging: true }}
+      options={{ search: true, paging: true, pageSize: 10 }}
       columns={columns}
       data={cloudData}
     />

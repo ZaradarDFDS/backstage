@@ -19,8 +19,10 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 2rem;
+  min-height: calc(100vh - 18rem);
 
   @media screen and (max-width: 1280px) {
     grid-template-columns: 1fr;
+    height: auto;
   }
 `;

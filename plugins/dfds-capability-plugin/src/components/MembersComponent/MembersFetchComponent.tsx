@@ -44,7 +44,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
   return (
     <Table
       title="Members"
-      options={{ search: true, paging: true }}
+      options={{ search: true, paging: true, pageSize: 10 }}
       columns={columns}
       data={memberData}
     />

@@ -42,7 +42,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
   return (
     <Table
       title="Pipeline"
-      options={{ paging: true, search: false }}
+      options={{ paging: true, search: false, pageSize: 10 }}
       columns={columns}
       data={pipelineData}
     />

@@ -40,7 +40,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
   return (
     <Table
       title="Costs"
-      options={{ search: false, paging: true }}
+      options={{ search: false, paging: true, pageSize: 10 }}
       columns={columns}
       data={costsData}
     />
