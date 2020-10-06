@@ -13,18 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
-
-import HeaderComponent from '../../components/shared/HeaderComponent';
-import K8sFetchComponent from '../../components/K8sComponent';
-
-const KubernetesPage: React.FC<{}> = () => {
-  return (
-    <React.Fragment>
-      <HeaderComponent title="Kubernetes" />
-      <K8sFetchComponent />
-    </React.Fragment>
-  );
-};
-
-export default KubernetesPage;
+export { default } from './K8sFetchComponent';
