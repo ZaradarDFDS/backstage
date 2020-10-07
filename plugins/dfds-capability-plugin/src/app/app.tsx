@@ -58,7 +58,7 @@ const tabs = [
 ];
 
 const App: React.FC<{}> = () => {
-  const [selectedTab, setSelectedTab] = React.useState<number>(2);
+  const [selectedTab, setSelectedTab] = React.useState<number>(0);
   return (
     <Page theme={pageTheme.tool}>
       <Header title="Welcome to the Capability plugin!" subtitle="@DFDS-SSU">
