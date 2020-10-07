@@ -20,7 +20,7 @@ import {
   HeaderLabel,
   Content,
   pageTheme,
-  Tabs,
+  HeaderTabs,
 } from '@backstage/core';
 
 import OverviewPage from '../views/Overview';
@@ -58,20 +58,23 @@ const tabs = [
 ];
 
 const App: React.FC<{}> = () => {
+  const [selectedTab, setSelectedTab] = React.useState<number>(2);
   return (
     <Page theme={pageTheme.tool}>
       <Header title="Welcome to the Capability plugin!" subtitle="@DFDS-SSU">
         <HeaderLabel label="Owner" value="DevX" />
         <HeaderLabel label="Lifecycle" value="Alpha" />
       </Header>
-      <Content noPadding>
-        <Tabs
-          tabs={tabs.map(tab => ({
-            label: tab.label,
-            content: tab.content,
-          }))}
-        />
-      </Content>
+      <HeaderTabs
+        selectedIndex={selectedTab}
+        onChange={index => setSelectedTab(index)}
+        tabs={tabs.map(({ label, content }, index) => ({
+          id: index.toString(),
+          label,
+          content,
+        }))}
+      />
+      <Content>{tabs[selectedTab].content}</Content>
     </Page>
   );
 };
