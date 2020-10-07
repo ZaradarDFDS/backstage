@@ -14,7 +14,14 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Table, TableColumn, Progress } from '@backstage/core';
+import {
+  Table,
+  TableColumn,
+  Progress,
+  StatusOK,
+  StatusWarning,
+  StatusError,
+} from '@backstage/core';
 import Alert from '@material-ui/lab/Alert';
 import { useAsync } from 'react-use';
 
@@ -33,12 +40,21 @@ export const DenseTable: FC<DenseTableProps> = props => {
   ];
 
   const memberData = props.dataSource.map(entry => {
+    const status = () => {
+      if (entry.dob.age < 45) {
+        return <StatusOK>{entry.nat}</StatusOK>;
+      } else if (entry.dob.age < 65) {
+        return <StatusWarning>{entry.nat}</StatusWarning>;
+      }
+      return <StatusError>{entry.nat}</StatusError>;
+    };
+
     return {
       name: `${entry.name.first}`,
       kind: `${entry.name.first} ${entry.name.last}`,
       cluster: `${entry.name.first} ${entry.name.last} ${entry.nat}`,
       node: `${entry.dob.age}`,
-      status: `${entry.location.timezone.description}`,
+      status: status(),
       comment: `${entry.registered.date}`,
     };
   });
