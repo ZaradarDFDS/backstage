@@ -14,15 +14,11 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import {
-  Table,
-  TableColumn,
-  Progress,
-  StatusOK,
-  StatusWarning,
-  StatusError,
-} from '@backstage/core';
+import { Table, TableColumn, Progress } from '@backstage/core';
 import Alert from '@material-ui/lab/Alert';
+import { Tooltip } from '@material-ui/core';
+import { StatusColor } from '../styles';
+import { css, cx } from 'emotion';
 import { useAsync } from 'react-use';
 
 type DenseTableProps = {
@@ -39,14 +35,40 @@ export const DenseTable: FC<DenseTableProps> = props => {
     { title: 'Comment', field: 'comment' },
   ];
 
+  const sizes = css`
+    width: 1.5rem;
+    height: 1.5rem;
+  `;
+
   const memberData = props.dataSource.map(entry => {
     const status = () => {
       if (entry.dob.age < 45) {
-        return <StatusOK>{entry.nat}</StatusOK>;
+        return (
+          <Tooltip title={entry.nat}>
+            <StatusColor
+              className={cx(sizes)}
+              style={{ backgroundColor: 'rgb(20, 177, 171)' }} // green
+            />
+          </Tooltip>
+        );
       } else if (entry.dob.age < 65) {
-        return <StatusWarning>{entry.nat}</StatusWarning>;
+        return (
+          <Tooltip title={entry.nat}>
+            <StatusColor
+              className={cx(sizes)}
+              style={{ backgroundColor: 'rgb(249, 213, 110)' }} // yellow
+            />
+          </Tooltip>
+        );
       }
-      return <StatusError>{entry.nat}</StatusError>;
+      return (
+        <Tooltip title={entry.nat}>
+          <StatusColor
+            className={cx(sizes)}
+            style={{ backgroundColor: 'rgb(232, 80, 91)' }} // red
+          />
+        </Tooltip>
+      );
     };
 
     return {

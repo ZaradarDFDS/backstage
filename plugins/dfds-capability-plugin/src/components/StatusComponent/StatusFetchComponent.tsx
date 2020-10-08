@@ -18,19 +18,13 @@ import { Tooltip } from '@material-ui/core';
 import { InfoCard } from '@backstage/core';
 import styled from '@emotion/styled';
 import { data } from '../../data.json';
+import { StatusColor } from '../styles';
 
 const StatusColorContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   margin-bottom: 2rem;
-`;
-
-const StatusColor = styled.div`
-  width: 4rem;
-  height: 4rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 50%;
 `;
 
 const MessageContainer = styled.div`
@@ -51,6 +45,8 @@ const StatusFetchComponent: React.FC<{}> = () => {
             <Tooltip key={item[1].id} title={item[1].tooltip}>
               <StatusColor
                 style={{
+                  width: '4rem',
+                  height: '4rem',
                   backgroundColor: `${
                     item[1].statusOn
                       ? item[1].statusColorOn

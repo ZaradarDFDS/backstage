@@ -26,3 +26,8 @@ export const Container = styled.div`
     height: auto;
   }
 `;
+
+export const StatusColor = styled.div`
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+`;
