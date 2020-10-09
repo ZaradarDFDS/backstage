@@ -84,7 +84,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
   return (
     <Table
       title="Kubernetes"
-      options={{ search: true, paging: true, pageSize: 10 }}
+      options={{ search: false, paging: true, pageSize: 10 }}
       columns={columns}
       data={memberData}
     />

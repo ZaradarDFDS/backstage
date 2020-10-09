@@ -61,6 +61,11 @@ const marginAuto = css`
   margin: auto;
 `;
 
+const smooth = css`
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+`;
+
 const PerformanceFetchComponent: React.FC<{}> = () => {
   const totalNameSpace = '(total/namespace)';
   return (
@@ -105,6 +110,7 @@ const PerformanceFetchComponent: React.FC<{}> = () => {
           >
             <PieChart>
               <Pie
+                className={cx(smooth)}
                 data={chart}
                 nameKey="name"
                 dataKey="value"

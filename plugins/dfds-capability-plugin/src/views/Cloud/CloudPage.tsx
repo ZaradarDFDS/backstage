@@ -16,12 +16,16 @@
 import React from 'react';
 
 import HeaderComponent from '../../components/shared/HeaderComponent';
-import CloudFetchComponent from '../../components/CloudComponent';
+import {
+  CloudFetchComponent,
+  AutocompleteFetchComponent,
+} from '../../components/CloudComponent';
 
 const CloudPage: React.FC<{}> = () => {
   return (
     <React.Fragment>
       <HeaderComponent title="Cloud" />
+      <AutocompleteFetchComponent />
       <CloudFetchComponent />
     </React.Fragment>
   );
