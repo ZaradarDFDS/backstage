@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import { TextField, Box } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Box from '@material-ui/core/Box';
 
 const top100Films = [
   { title: 'The Shawshank Redemption', year: 1994 },

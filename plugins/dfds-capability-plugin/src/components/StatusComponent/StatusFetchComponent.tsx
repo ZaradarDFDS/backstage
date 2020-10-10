@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Tooltip } from '@material-ui/core';
+import { Tooltip, Typography } from '@material-ui/core';
 import { InfoCard } from '@backstage/core';
 import styled from '@emotion/styled';
 import { data } from '../../data.json';
@@ -57,6 +57,14 @@ const StatusFetchComponent: React.FC<{}> = () => {
             </Tooltip>
           ))}
         </StatusColorContainer>
+        {Object.entries(data).map(
+          item =>
+            item[1].statusOn && (
+              <Typography variant="h4" key={item[1].id}>
+                {item[1].title}
+              </Typography>
+            ),
+        )}
         {Object.entries(data).map(
           item =>
             item[1].statusOn && (
