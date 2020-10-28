@@ -28,11 +28,11 @@ type DenseTableProps = {
 export const DenseTable: FC<DenseTableProps> = props => {
   const columns: TableColumn[] = [
     { title: 'Name', field: 'name' },
+    { title: 'Namespace', field: 'namespace' },
     { title: 'Kind', field: 'kind' },
     { title: 'Cluster', field: 'cluster' },
     { title: 'Node', field: 'node' },
     { title: 'Status', field: 'status' },
-    { title: 'Comment', field: 'comment' },
   ];
 
   const sizes = css`
@@ -42,18 +42,18 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
   const memberData = props.dataSource.map(entry => {
     const status = () => {
-      if (entry.dob.age < 45) {
+      if (entry.status.value === 'Green') {
         return (
-          <Tooltip title={entry.nat}>
+          <Tooltip title={entry.status.comments}>
             <StatusColor
               className={cx(sizes)}
               style={{ backgroundColor: 'rgb(20, 177, 171)' }} // green
             />
           </Tooltip>
         );
-      } else if (entry.dob.age < 65) {
+      } else if (entry.status.value === 'Yellow') {
         return (
-          <Tooltip title={entry.nat}>
+          <Tooltip title={entry.status.comments}>
             <StatusColor
               className={cx(sizes)}
               style={{ backgroundColor: 'rgb(249, 213, 110)' }} // yellow
@@ -62,7 +62,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
         );
       }
       return (
-        <Tooltip title={entry.nat}>
+        <Tooltip title={entry.status.comments}>
           <StatusColor
             className={cx(sizes)}
             style={{ backgroundColor: 'rgb(232, 80, 91)' }} // red
@@ -72,12 +72,12 @@ export const DenseTable: FC<DenseTableProps> = props => {
     };
 
     return {
-      name: `${entry.name.first}`,
-      kind: `${entry.name.first} ${entry.name.last}`,
-      cluster: `${entry.name.first} ${entry.name.last} ${entry.nat}`,
-      node: `${entry.dob.age}`,
+      name: `${entry.name}`,
+      comment: `${entry.namespace}`,
+      kind: `${entry.kind}`,
+      cluster: `${entry.cluster}`,
+      node: `${entry.node}`,
       status: status(),
-      comment: `${entry.registered.date}`,
     };
   });
 
@@ -93,9 +93,11 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
 const K8sFetchComponent: FC<{}> = () => {
   const { value, loading, error } = useAsync(async (): Promise<any> => {
-    const response = await fetch('https://randomuser.me/api/?results=20');
+    const response = await fetch(
+      'https://private-aa6799-zaradardfds.apiary-mock.com/k8s/1234',
+    );
     const data = await response.json();
-    return data.results;
+    return data;
   }, []);
   const [options, setOptions] = useState([value]);
 
@@ -114,7 +116,7 @@ const K8sFetchComponent: FC<{}> = () => {
       <Box width="auto" mb="2rem">
         <Autocomplete
           options={options}
-          getOptionLabel={option => option.name.first}
+          getOptionLabel={option => option.name}
           renderInput={params => (
             <TextField {...params} label="Search ..." variant="outlined" />
           )}

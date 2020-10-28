@@ -28,7 +28,7 @@ import CICDPage from '../views/CICD';
 import KubernetesPage from '../views/Kubernetes';
 import CloudPage from '../views/Cloud';
 import MonitoringPage from '../views/Monitoring';
-import CostsPage from '../views/Costs';
+import ExpensePage from '../views/Expense';
 
 const tabs = [
   {
@@ -52,8 +52,8 @@ const tabs = [
     content: <MonitoringPage />,
   },
   {
-    label: 'Costs',
-    content: <CostsPage />,
+    label: 'Expense',
+    content: <ExpensePage />,
   },
 ];
 

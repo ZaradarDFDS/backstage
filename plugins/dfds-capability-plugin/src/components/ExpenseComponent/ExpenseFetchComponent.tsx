@@ -31,7 +31,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
   const costsData = props.dataSource.map(entry => {
     return {
-      awsResourceId: `${entry.id.value}`,
+      wsResourceId: `${entry.id.value}`,
       serviceType: `${entry.nat}`,
       totalCost: `${entry.dob.age} $`,
     };
@@ -39,7 +39,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
   return (
     <Table
-      title="Costs"
+      title="Expense"
       options={{ search: false, paging: true, pageSize: 10 }}
       columns={columns}
       data={costsData}
@@ -47,11 +47,11 @@ export const DenseTable: FC<DenseTableProps> = props => {
   );
 };
 
-const CostsFetchComponent: FC<{}> = () => {
+const ExpenseFetchComponent: FC<{}> = () => {
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const response = await fetch('https://randomuser.me/api/?results=20');
     const data = await response.json();
-    return data.results;
+    return data;
   }, []);
 
   if (loading) {
@@ -63,4 +63,4 @@ const CostsFetchComponent: FC<{}> = () => {
   return <DenseTable dataSource={value || []} />;
 };
 
-export default CostsFetchComponent;
+export default ExpenseFetchComponent;

@@ -16,8 +16,10 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Table, TableColumn, Progress } from '@backstage/core';
 import { Alert, Autocomplete } from '@material-ui/lab';
-import { TextField, Box } from '@material-ui/core';
+import { TextField, Box, Tooltip } from '@material-ui/core';
 import { useAsync } from 'react-use';
+import { StatusColor } from '../styles';
+import { css, cx } from 'emotion';
 
 type DenseTableProps = {
   dataSource: any[];
@@ -25,22 +27,60 @@ type DenseTableProps = {
 
 export const DenseTable: FC<DenseTableProps> = props => {
   const columns: TableColumn[] = [
-    { title: 'S3 bucket', field: 's3Bucket' },
-    { title: 'IAM accounts', field: 'IAMAccounts' },
-    { title: 'RDS`er', field: 'rdser' },
-    { title: 'Cloud Watch', field: 'cloudWatch' },
-    { title: 'Topics', field: 'topics' },
-    { title: 'Communication Channels', field: 'communication' },
+    { title: 'Name', field: 'name' },
+    { title: 'Kind', field: 'kind' },
+    { title: 'API Version', field: 'apiVersion' },
+    { title: 'Status', field: 'status' },
+    { title: 'Properties', field: 'properties' },
   ];
 
+  const sizes = css`
+    width: 1.5rem;
+    height: 1.5rem;
+  `;
+
   const cloudData = props.dataSource.map(entry => {
+    const status = () => {
+      if (entry.status.value === 'Green') {
+        return (
+          <a href={entry.status.reasonUri} target="_blank">
+            <Tooltip title={entry.status.reasonPhrase}>
+              <StatusColor
+                className={cx(sizes)}
+                style={{ backgroundColor: 'rgb(20, 177, 171)' }} // green
+              />
+            </Tooltip>
+          </a>
+        );
+      } else if (entry.status.value === 'Yellow') {
+        return (
+          <a href={entry.status.reasonUri} target="_blank">
+            <Tooltip title={entry.status.reasonPhrase}>
+              <StatusColor
+                className={cx(sizes)}
+                style={{ backgroundColor: 'rgb(249, 213, 110)' }} // yellow
+              />
+            </Tooltip>
+          </a>
+        );
+      }
+      return (
+        <a href={entry.status.reasonUri} target="_blank">
+          <Tooltip title={entry.status.reasonPhrase}>
+            <StatusColor
+              className={cx(sizes)}
+              style={{ backgroundColor: 'rgb(232, 80, 91)' }} // red
+            />
+          </Tooltip>
+        </a>
+      );
+    };
     return {
-      s3Bucket: `${entry.location.state}`,
-      IAMAccounts: `${entry.email}`,
-      rdser: `${entry.location.street.name}`,
-      cloudWatch: `${entry.phone}`,
-      topics: `${entry.nat}`,
-      communication: `${entry.login.uuid}`,
+      name: `${entry.name}`,
+      kind: `${entry.kind}`,
+      apiVersion: `${entry.apiVersion}`,
+      status: status(),
+      properties: entry.properties.map((property: any) => property),
     };
   });
 
@@ -56,9 +96,11 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
 const CloudFetchComponent: FC<{}> = () => {
   const { value, loading, error } = useAsync(async (): Promise<any> => {
-    const response = await fetch('https://randomuser.me/api/?results=20');
+    const response = await fetch(
+      'https://private-aa6799-zaradardfds.apiary-mock.com/servicebroker/1234',
+    );
     const data = await response.json();
-    return data.results;
+    return data;
   }, []);
   const [options, setOptions] = useState([value]);
 
@@ -77,7 +119,7 @@ const CloudFetchComponent: FC<{}> = () => {
       <Box width="auto" mb="2rem">
         <Autocomplete
           options={options}
-          getOptionLabel={option => option.name.first}
+          getOptionLabel={option => option.name}
           renderInput={params => (
             <TextField {...params} label="Search ..." variant="outlined" />
           )}

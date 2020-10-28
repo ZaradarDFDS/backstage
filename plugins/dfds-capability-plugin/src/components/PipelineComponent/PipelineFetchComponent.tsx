@@ -32,10 +32,14 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
   const pipelineData = props.dataSource.map(entry => {
     return {
-      name: `${entry.pipelineName}`,
-      runSuccess: `${entry.result}`,
-      deepLinkToAzureDevOps: `${entry.buildPageLink}`,
-      comments: `project ID: ${entry.projectId}, source branch: ${entry.sourceBranch}, build number: ${entry.buildNumber}`,
+      name: `${entry.name}`,
+      runSuccess: `${entry.success}`,
+      deepLinkToAzureDevOps: (
+        <a href={entry.link} target="_blank" style={{ color: '#2E77D0' }}>
+          {entry.link}
+        </a>
+      ),
+      comments: `${entry.comments}`,
     };
   });
 
@@ -52,11 +56,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
 const PipelineFetchComponent: FC<{}> = () => {
   const { value, loading, error } = useAsync(async (): Promise<any> => {
     const response = await fetch(
-      'https://backstage.dfds.cloud/ado/builds/builds',
-      {
-        method: 'POST',
-        body: JSON.stringify({ project: 'DevelopmentExcellence' }),
-      },
+      'https://private-aa6799-zaradardfds.apiary-mock.com/pipelines/1234',
     );
     const data = await response.json();
     return data;

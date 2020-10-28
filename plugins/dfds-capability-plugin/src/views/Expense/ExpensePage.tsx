@@ -18,7 +18,7 @@ import styled from '@emotion/styled';
 
 import HeaderComponent from '../../components/shared/HeaderComponent';
 import ButtonComponent from '../../components/shared/ButtonComponent';
-import CostsFetchComponent from '../../components/CostsComponent';
+import CostsFetchComponent from '../../components/ExpenseComponent';
 
 const Container = styled.div`
   display: grid;
@@ -28,7 +28,7 @@ const Container = styled.div`
 const CostsPage: React.FC<{}> = () => {
   return (
     <React.Fragment>
-      <HeaderComponent title="Costs" />
+      <HeaderComponent title="Expense" />
       <Container>
         <CostsFetchComponent />
         <ButtonComponent>Generate projection</ButtonComponent>
