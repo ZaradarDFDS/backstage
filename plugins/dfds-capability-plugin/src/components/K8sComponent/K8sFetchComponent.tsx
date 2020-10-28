@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Table, TableColumn, Progress } from '@backstage/core';
-import Alert from '@material-ui/lab/Alert';
-import { Tooltip } from '@material-ui/core';
+import { Alert, Autocomplete } from '@material-ui/lab';
+import { Tooltip, TextField, Box } from '@material-ui/core';
 import { StatusColor } from '../styles';
 import { css, cx } from 'emotion';
 import { useAsync } from 'react-use';
@@ -97,6 +97,11 @@ const K8sFetchComponent: FC<{}> = () => {
     const data = await response.json();
     return data.results;
   }, []);
+  const [options, setOptions] = useState([value]);
+
+  useEffect(() => {
+    setOptions(value);
+  }, [value]);
 
   if (loading) {
     return <Progress />;
@@ -104,7 +109,20 @@ const K8sFetchComponent: FC<{}> = () => {
     return <Alert severity="error">{error.message}</Alert>;
   }
 
-  return <DenseTable dataSource={value || []} />;
+  return (
+    <React.Fragment>
+      <Box width="auto" mb="2rem">
+        <Autocomplete
+          options={options}
+          getOptionLabel={option => option.name.first}
+          renderInput={params => (
+            <TextField {...params} label="Search ..." variant="outlined" />
+          )}
+        />
+      </Box>
+      <DenseTable dataSource={value || []} />
+    </React.Fragment>
+  );
 };
 
 export default K8sFetchComponent;

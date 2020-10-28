@@ -16,16 +16,12 @@
 import React from 'react';
 
 import HeaderComponent from '../../components/shared/HeaderComponent';
-import {
-  K8sFetchComponent,
-  AutocompleteFetchComponent,
-} from '../../components/K8sComponent';
+import K8sFetchComponent from '../../components/K8sComponent';
 
 const KubernetesPage: React.FC<{}> = () => {
   return (
     <React.Fragment>
       <HeaderComponent title="Kubernetes" />
-      <AutocompleteFetchComponent />
       <K8sFetchComponent />
     </React.Fragment>
   );
