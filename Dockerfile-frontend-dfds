@@ -1,5 +1,5 @@
 #Setup build image
-FROM node:lts-buster AS build-env
+FROM node:12.19.0-buster AS build-env
 
 #Set container filesystem to /build (and create folder if it doesnt exist)
 WORKDIR /build

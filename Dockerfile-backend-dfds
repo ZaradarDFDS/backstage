@@ -1,5 +1,5 @@
 #Setup build image
-FROM node:lts-buster
+FROM node:12.19.0-buster
 
 # Set container filesystem to /build (and create folder if it doesn't exist)
 WORKDIR /backstage
