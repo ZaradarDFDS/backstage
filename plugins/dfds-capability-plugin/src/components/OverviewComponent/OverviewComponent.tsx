@@ -17,13 +17,26 @@ import React, { FC } from 'react';
 import { Typography } from '@material-ui/core';
 import { InfoCard } from '@backstage/core';
 
-const OverviewComponent: FC<{}> = () => (
+type OverviewComponentProps = {
+  capabilityId?: string;
+  description?: string;
+  createdAt?: string;
+};
+
+const OverviewComponent: FC<OverviewComponentProps> = ({
+  capabilityId,
+  description,
+  createdAt,
+}) => (
   <InfoCard title="Information">
     <Typography variant="body1">
-      Capability <b>ID</b>: foobar
+      <b>C</b>apability <b>ID</b> - {capabilityId}
     </Typography>
     <Typography variant="body1">
-      AWS account <b>ID</b>: foobar
+      <b>Description</b> - {description}
+    </Typography>
+    <Typography variant="body1">
+      <b>C</b>reated <b>at</b> - {createdAt}
     </Typography>
   </InfoCard>
 );

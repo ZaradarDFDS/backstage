@@ -14,57 +14,47 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Table, TableColumn, Progress } from '@backstage/core';
-import Alert from '@material-ui/lab/Alert';
-import { useAsync } from 'react-use';
+import { Table, TableColumn } from '@backstage/core';
 
 type DenseTableProps = {
   dataSource: any[];
 };
 
+type MembersFetchComponentProps = {
+  data?: any[];
+};
+
 export const DenseTable: FC<DenseTableProps> = props => {
   const columns: TableColumn[] = [
+    { title: 'Joined', field: 'joined' },
+    { title: 'Location', field: 'location' },
+    { title: 'Name', field: 'name' },
     { title: 'Squad', field: 'squad' },
     { title: 'Tribe', field: 'tribe' },
-    { title: 'Chapter', field: 'chapter' },
-    { title: 'Location', field: 'location' },
-    { title: 'Joined', field: 'joined' },
   ];
 
   const memberData = props.dataSource.map(entry => {
     return {
-      squad: `${entry.name.first}`,
-      tribe: `${entry.name.first} ${entry.name.last}`,
-      chapter: `${entry.name.first} ${entry.name.last} ${entry.nat}`,
-      location: `${entry.location.timezone.description}`,
-      joined: `${entry.registered.date}`,
+      joined: `${entry.joined}`,
+      location: `${entry.location}`,
+      name: `${entry.name}`,
+      squad: `${entry.squad}`,
+      tribe: `${entry.tribe}`,
     };
   });
 
   return (
     <Table
       title="Members"
-      options={{ search: true, paging: true, pageSize: 10 }}
+      options={{ search: true, paging: true, pageSize: 5 }}
       columns={columns}
       data={memberData}
     />
   );
 };
 
-const MembersFetchComponent: FC<{}> = () => {
-  const { value, loading, error } = useAsync(async (): Promise<any> => {
-    const response = await fetch('https://randomuser.me/api/?results=20');
-    const data = await response.json();
-    return data.results;
-  }, []);
-
-  if (loading) {
-    return <Progress />;
-  } else if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
-  }
-
-  return <DenseTable dataSource={value || []} />;
+const MembersFetchComponent: FC<MembersFetchComponentProps> = ({ data }) => {
+  return <DenseTable dataSource={data || []} />;
 };
 
 export default MembersFetchComponent;

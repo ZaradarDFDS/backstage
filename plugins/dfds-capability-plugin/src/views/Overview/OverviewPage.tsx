@@ -15,6 +15,7 @@
  */
 import React from 'react';
 import styled from '@emotion/styled';
+import { useAsync } from 'react-use';
 
 import OverviewComponent from '../../components/OverviewComponent';
 import MembersFetchComponent from '../../components/MembersComponent';
@@ -22,6 +23,8 @@ import StatusFetchComponent from '../../components/StatusComponent';
 import ButtonComponent from '../../components/shared/ButtonComponent';
 import HeaderComponent from '../../components/shared/HeaderComponent';
 import { Container } from '../../components/styles';
+import { Progress } from '@backstage/core';
+import Alert from '@material-ui/lab/Alert';
 
 const LeftContainer = styled.div`
   display: grid;
@@ -30,6 +33,20 @@ const LeftContainer = styled.div`
 
 const OverviewPage: React.FC<{}> = () => {
   const [joinLeaveButton, setJoinLeaveButton] = React.useState<string>('Join');
+
+  const { value, loading, error } = useAsync(async (): Promise<any> => {
+    const response = await fetch(
+      'https://private-aa6799-zaradardfds.apiary-mock.com/overview/1234',
+    );
+    const data = await response.json();
+    return data;
+  }, []);
+  // console.log(value)
+  if (loading) {
+    return <Progress />;
+  } else if (error) {
+    return <Alert severity="error">{error.message}</Alert>;
+  }
 
   const handleClick = () => {
     if (joinLeaveButton === 'Join') {
@@ -41,16 +58,25 @@ const OverviewPage: React.FC<{}> = () => {
 
   return (
     <React.Fragment>
-      <HeaderComponent title="Overview" />
+      <HeaderComponent title={value.name} />
       <Container>
         <LeftContainer>
-          <OverviewComponent />
-          <MembersFetchComponent />
+          <OverviewComponent
+            capabilityId={value.id}
+            description={value.description}
+            createdAt={value.created}
+          />
+          <MembersFetchComponent data={value.members} />
           <ButtonComponent onClick={handleClick}>
             {joinLeaveButton}
           </ButtonComponent>
         </LeftContainer>
-        <StatusFetchComponent />
+        <StatusFetchComponent
+          statusColor={value.status.value}
+          tooltip={value.status.reasonPhrase}
+          comments={value.status.comments}
+          reasonUri={value.status.reasonUri}
+        />
       </Container>
     </React.Fragment>
   );
