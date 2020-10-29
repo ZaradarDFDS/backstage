@@ -40,11 +40,11 @@ export const DenseTable: FC<DenseTableProps> = props => {
   `;
 
   const cloudData = props.dataSource.map(entry => {
-    const status = () => {
-      if (entry.status.value === 'Green') {
+    const status = (e: any) => {
+      if (e.status.value === 'Green') {
         return (
-          <a href={entry.status.reasonUri} target="_blank">
-            <Tooltip title={entry.status.reasonPhrase}>
+          <a href={e.status.reasonUri} target="_blank">
+            <Tooltip title={e.status.reasonPhrase}>
               <StatusColor
                 className={cx(sizes)}
                 style={{ backgroundColor: 'rgb(20, 177, 171)' }} // green
@@ -52,10 +52,10 @@ export const DenseTable: FC<DenseTableProps> = props => {
             </Tooltip>
           </a>
         );
-      } else if (entry.status.value === 'Yellow') {
+      } else if (e.status.value === 'Yellow') {
         return (
-          <a href={entry.status.reasonUri} target="_blank">
-            <Tooltip title={entry.status.reasonPhrase}>
+          <a href={e.status.reasonUri} target="_blank">
+            <Tooltip title={e.status.reasonPhrase}>
               <StatusColor
                 className={cx(sizes)}
                 style={{ backgroundColor: 'rgb(249, 213, 110)' }} // yellow
@@ -65,8 +65,8 @@ export const DenseTable: FC<DenseTableProps> = props => {
         );
       }
       return (
-        <a href={entry.status.reasonUri} target="_blank">
-          <Tooltip title={entry.status.reasonPhrase}>
+        <a href={e.status.reasonUri} target="_blank">
+          <Tooltip title={e.status.reasonPhrase}>
             <StatusColor
               className={cx(sizes)}
               style={{ backgroundColor: 'rgb(232, 80, 91)' }} // red
@@ -79,8 +79,8 @@ export const DenseTable: FC<DenseTableProps> = props => {
       name: `${entry.name}`,
       kind: `${entry.kind}`,
       apiVersion: `${entry.apiVersion}`,
-      status: status(),
-      properties: entry.properties.map((property: any) => property),
+      status: status(entry),
+      // properties: entry.properties,
     };
   });
 
@@ -100,7 +100,8 @@ const CloudFetchComponent: FC<{}> = () => {
       'https://private-aa6799-zaradardfds.apiary-mock.com/servicebroker/1234',
     );
     const data = await response.json();
-    return data;
+
+    return data.data;
   }, []);
   const [options, setOptions] = useState([value]);
 
