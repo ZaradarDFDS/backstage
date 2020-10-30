@@ -80,7 +80,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
       kind: `${entry.kind}`,
       apiVersion: `${entry.apiVersion}`,
       status: status(entry),
-      // properties: entry.properties,
+      properties: entry.properties.map((e: any) => `${e.key} - ${e.value} / `),
     };
   });
 
@@ -100,7 +100,6 @@ const CloudFetchComponent: FC<{}> = () => {
       'https://private-aa6799-zaradardfds.apiary-mock.com/servicebroker/1234',
     );
     const data = await response.json();
-
     return data.data;
   }, []);
   const [options, setOptions] = useState([value]);
