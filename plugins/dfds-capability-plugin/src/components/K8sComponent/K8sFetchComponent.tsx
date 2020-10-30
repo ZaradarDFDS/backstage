@@ -73,7 +73,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
     return {
       name: `${entry.name}`,
-      comment: `${entry.namespace}`,
+      namespace: `${entry.namespace}`,
       kind: `${entry.kind}`,
       cluster: `${entry.cluster}`,
       node: `${entry.node}`,
