@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
+import React, { FC } from 'react';
 import {
   PieChart,
   Pie,
@@ -30,9 +30,15 @@ import {
 } from 'recharts';
 import { InfoCard } from '@backstage/core';
 import { Typography } from '@material-ui/core';
-import { chart, line } from '../../data.json';
 import styled from '@emotion/styled';
 import { css, cx } from 'emotion';
+
+type PerformanceFetchComponentProps = {
+  cpuData?: any[];
+  memoryData?: any[];
+  diskIoData?: any[];
+  networkIoData?: any[];
+};
 
 const Wrapper = styled.div`
   display: grid;
@@ -61,12 +67,12 @@ const marginAuto = css`
   margin: auto;
 `;
 
-const smooth = css`
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-`;
-
-const PerformanceFetchComponent: React.FC<{}> = () => {
+const PerformanceFetchComponent: FC<PerformanceFetchComponentProps> = ({
+  cpuData,
+  networkIoData,
+  memoryData,
+  diskIoData,
+}) => {
   const totalNameSpace = '(total/namespace)';
   return (
     <InfoCard title="Performance">
@@ -81,21 +87,21 @@ const PerformanceFetchComponent: React.FC<{}> = () => {
             className={cx(marginAuto)}
           >
             <LineChart
-              data={line}
+              data={cpuData}
               margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
             >
-              <XAxis dataKey="name" />
+              <XAxis dataKey="toolTip" />
               <YAxis />
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
               <Legend />
               <Line
                 type="monotone"
-                dataKey="pv"
+                dataKey="something"
                 stroke="#8884d8"
                 activeDot={{ r: 8 }}
               />
-              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+              <Line type="monotone" dataKey="somethingElse" stroke="#82ca9d" />
             </LineChart>
           </ResponsiveContainer>
         </Container>
@@ -110,9 +116,8 @@ const PerformanceFetchComponent: React.FC<{}> = () => {
           >
             <PieChart>
               <Pie
-                className={cx(smooth)}
-                data={chart}
-                nameKey="name"
+                data={memoryData}
+                nameKey="toolTip"
                 dataKey="value"
                 outerRadius={100}
                 fill="#8884d8"
@@ -131,14 +136,14 @@ const PerformanceFetchComponent: React.FC<{}> = () => {
             height={300}
             className={cx(marginAuto)}
           >
-            <BarChart width={400} height={300} data={line}>
+            <BarChart width={400} height={300} data={diskIoData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
+              <XAxis dataKey="toolTip" />
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="pv" fill="#8884d8" />
-              <Bar dataKey="uv" fill="#82ca9d" />
+              <Bar dataKey="something" fill="#8884d8" />
+              <Bar dataKey="somethingElse" fill="#82ca9d" />
             </BarChart>
           </ResponsiveContainer>
         </Container>
@@ -151,19 +156,19 @@ const PerformanceFetchComponent: React.FC<{}> = () => {
             height={300}
             className={cx(marginAuto)}
           >
-            <LineChart width={400} height={300} data={line}>
-              <XAxis dataKey="name" />
+            <LineChart width={400} height={300} data={networkIoData}>
+              <XAxis dataKey="toolTip" />
               <YAxis />
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
               <Legend />
               <Line
                 type="monotone"
-                dataKey="pv"
+                dataKey="something"
                 stroke="#8884d8"
                 activeDot={{ r: 8 }}
               />
-              <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+              <Line type="monotone" dataKey="somethingElse" stroke="#82ca9d" />
             </LineChart>
           </ResponsiveContainer>
         </Container>

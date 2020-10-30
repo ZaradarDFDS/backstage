@@ -41,7 +41,7 @@ const OverviewPage: React.FC<{}> = () => {
     const data = await response.json();
     return data;
   }, []);
-  // console.log(value)
+
   if (loading) {
     return <Progress />;
   } else if (error) {

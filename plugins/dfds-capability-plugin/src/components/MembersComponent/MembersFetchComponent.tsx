@@ -26,11 +26,11 @@ type MembersFetchComponentProps = {
 
 export const DenseTable: FC<DenseTableProps> = props => {
   const columns: TableColumn[] = [
-    { title: 'Joined', field: 'joined' },
-    { title: 'Location', field: 'location' },
     { title: 'Name', field: 'name' },
     { title: 'Squad', field: 'squad' },
     { title: 'Tribe', field: 'tribe' },
+    { title: 'Location', field: 'location' },
+    { title: 'Joined', field: 'joined' },
   ];
 
   const memberData = props.dataSource.map(entry => {
@@ -46,7 +46,7 @@ export const DenseTable: FC<DenseTableProps> = props => {
   return (
     <Table
       title="Members"
-      options={{ search: true, paging: true, pageSize: 5 }}
+      options={{ search: true, paging: true, pageSize: 5, padding: 'dense' }}
       columns={columns}
       data={memberData}
     />

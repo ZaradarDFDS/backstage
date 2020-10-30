@@ -28,33 +28,33 @@
       "message": "GREEN ON Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     }
   ],
-  "chart": [
+  "pie": [
     {
-      "name": "Group A",
+      "toolTip": "Group A",
       "value": 400
     },
     {
-      "name": "Group B",
+      "toolTip": "Group B",
       "value": 300
     },
     {
-      "name": "Group C",
+      "toolTip": "Group C",
       "value": 300
     },
     {
-      "name": "Group D",
+      "toolTip": "Group D",
       "value": 200
     },
     {
-      "name": "Group E",
+      "toolTip": "Group E",
       "value": 278
     }
   ],
   "line": [
-    { "name": "Page A", "uv": 4000, "pv": 2400, "amt": 2400 },
-    { "name": "Page B", "uv": 3000, "pv": 1398, "amt": 2210 },
-    { "name": "Page C", "uv": 2000, "pv": 9800, "amt": 2290 },
-    { "name": "Page D", "uv": 2780, "pv": 3908, "amt": 2000 },
-    { "name": "Page E", "uv": 1890, "pv": 4800, "amt": 2181 }
+    { "toolTip": "Page A", "something": 4000, "somethingElse": 2400 },
+    { "toolTip": "Page B", "something": 3000, "somethingElse": 1398 },
+    { "toolTip": "Page C", "something": 2000, "somethingElse": 9800 },
+    { "toolTip": "Page D", "something": 2780, "somethingElse": 3908 },
+    { "toolTip": "Page E", "something": 1890, "somethingElse": 4800 }
   ]
 }

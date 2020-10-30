@@ -14,32 +14,28 @@
  * limitations under the License.
  */
 import React, { FC } from 'react';
-import { Table, TableColumn, Progress } from '@backstage/core';
-import Alert from '@material-ui/lab/Alert';
-import { useAsync } from 'react-use';
+import { Table, TableColumn } from '@backstage/core';
 
 type DenseTableProps = {
   dataSource: any[];
 };
 
-export const DenseTable: FC<DenseTableProps> = props => {
-  const columns: TableColumn[] = [
-    { title: 'Log ID', field: 'logId' },
-    { title: 'UTC Date', field: 'utcDate' },
-    { title: 'Account', field: 'account' },
-  ];
+type LogsFetchComponentProps = {
+  data?: any[];
+};
 
-  const cloudData = props.dataSource.map(entry => {
+export const DenseTable: FC<DenseTableProps> = ({ dataSource }) => {
+  const columns: TableColumn[] = [{ title: 'Log Tail', field: 'logTail' }];
+
+  const cloudData = dataSource.map(entry => {
     return {
-      logId: `${entry.nat}`,
-      utcDate: `${entry.dob.age}`,
-      account: `${entry.name.last}`,
+      logTail: `${entry}`,
     };
   });
 
   return (
     <Table
-      title="Cloud"
+      title="Log"
       options={{
         search: false,
         paging: true,
@@ -52,20 +48,8 @@ export const DenseTable: FC<DenseTableProps> = props => {
   );
 };
 
-const LogsFetchComponent: FC<{}> = () => {
-  const { value, loading, error } = useAsync(async (): Promise<any> => {
-    const response = await fetch('https://randomuser.me/api/?results=40');
-    const data = await response.json();
-    return data.results;
-  }, []);
-
-  if (loading) {
-    return <Progress />;
-  } else if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
-  }
-
-  return <DenseTable dataSource={value || []} />;
+const LogsFetchComponent = ({ data }: LogsFetchComponentProps) => {
+  return <DenseTable dataSource={data || []} />;
 };
 
 export default LogsFetchComponent;
