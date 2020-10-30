@@ -22,18 +22,20 @@ type DenseTableProps = {
   dataSource: any[];
 };
 
-export const DenseTable: FC<DenseTableProps> = props => {
+export const DenseTable: FC<DenseTableProps> = ({ dataSource }) => {
   const columns: TableColumn[] = [
-    { title: 'AWS Resource ID', field: 'awsResourceId' },
-    { title: 'Service Type', field: 'serviceType' },
-    { title: 'Total cost', field: 'totalCost' },
+    { title: 'ID', field: 'id' },
+    { title: 'Cost', field: 'cost' },
+    { title: 'Comments', field: 'comments' },
+    { title: 'Total Cost', field: 'totalCost' },
   ];
 
-  const costsData = props.dataSource.map(entry => {
+  const costsData = dataSource.map(entry => {
     return {
-      awsResourceId: `${entry.id.value}`,
-      serviceType: `${entry.nat}`,
-      totalCost: `${entry.dob.age} $`,
+      id: `${entry.expense_breakdown.map((e: any) => e.id)}`,
+      cost: `${entry.expense_breakdown.map((e: any) => e.cost)}`,
+      comments: `${entry.expense_breakdown.map((e: any) => e.comments)}`,
+      totalCost: `${entry.total_cost_of_ownership}`,
     };
   });
 
@@ -49,9 +51,12 @@ export const DenseTable: FC<DenseTableProps> = props => {
 
 const ExpenseFetchComponent: FC<{}> = () => {
   const { value, loading, error } = useAsync(async (): Promise<any> => {
-    const response = await fetch('https://randomuser.me/api/?results=20');
+    const response = await fetch(
+      'https://private-aa6799-zaradardfds.apiary-mock.com/expense/1234',
+    );
     const data = await response.json();
-    return data.results;
+
+    return data;
   }, []);
 
   if (loading) {
@@ -60,7 +65,7 @@ const ExpenseFetchComponent: FC<{}> = () => {
     return <Alert severity="error">{error.message}</Alert>;
   }
 
-  return <DenseTable dataSource={value || []} />;
+  return <DenseTable dataSource={[value] || []} />;
 };
 
 export default ExpenseFetchComponent;
