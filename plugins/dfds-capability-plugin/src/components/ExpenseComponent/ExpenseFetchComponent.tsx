@@ -31,10 +31,14 @@ export const DenseTable: FC<DenseTableProps> = ({ dataSource }) => {
   ];
 
   const costsData = dataSource.map(entry => {
+    const getValues = (en: [], value: string) => {
+      return en.map((e: any) => e[value]);
+    };
+
     return {
-      id: `${entry.expense_breakdown.map((e: any) => e.id)}`,
-      cost: `${entry.expense_breakdown.map((e: any) => e.cost)}`,
-      comments: `${entry.expense_breakdown.map((e: any) => e.comments)}`,
+      id: `${getValues(entry.expense_breakdown, 'id')}`,
+      cost: `${getValues(entry.expense_breakdown, 'cost')}`,
+      comments: `${getValues(entry.expense_breakdown, 'comments')}`,
       totalCost: `${entry.total_cost_of_ownership}`,
     };
   });
