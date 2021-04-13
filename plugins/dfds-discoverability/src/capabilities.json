@@ -1,0 +1,3759 @@
+{
+  "items": [
+    {
+      "id": "3bcebdb5-2eb5-48f3-a6cf-c92d8797d79a",
+      "name": "Accounting",
+      "rootId": "accounting-najln",
+      "description": "Accounting of revenue, cost, payments",
+      "members": [
+        {
+          "email": "maosk@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "b0c607c3-58bc-4551-8979-bec0e95ceb4f",
+      "name": "Alhan",
+      "rootId": "alhan-meopj",
+      "description": "",
+      "members": [
+        {
+          "email": "alhan@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "19031a0f-4c17-4fa9-8e28-731438ebdb35",
+      "name": "Astrid",
+      "rootId": "astrid-pxrae",
+      "description": "",
+      "members": [
+        {
+          "email": "argur@dfds.com"
+        },
+        {
+          "email": "segul@dfds.com"
+        },
+        {
+          "email": "ahhud@dfds.com"
+        },
+        {
+          "email": "redum@dfds.com"
+        },
+        {
+          "email": "nekay@dfds.com"
+        },
+        {
+          "email": "aktur@dfds.com"
+        },
+        {
+          "email": "caron@dfds.com"
+        },
+        {
+          "email": "kacel@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "5fa6a7cb-39f5-4255-8579-63322d1e505d",
+          "name": "default",
+          "awsAccountId": "368410109895",
+          "awsRoleArn": "arn:aws:iam::368410109895:role/Capability",
+          "awsRoleEmail": "aws.astrid-pxrae@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "a9631c33-03aa-496f-b8d1-7483426c4612",
+      "name": "Astrid-DEV",
+      "rootId": "astrid-dev-bvqrz",
+      "description": "",
+      "members": [
+        {
+          "email": "nekay@dfds.com"
+        },
+        {
+          "email": "kacel@dfds.com"
+        },
+        {
+          "email": "redum@dfds.com"
+        },
+        {
+          "email": "argur@dfds.com"
+        },
+        {
+          "email": "caron@dfds.com"
+        },
+        {
+          "email": "segul@dfds.com"
+        },
+        {
+          "email": "wicar@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "a3e00e2d-ff24-44b9-8983-13e75548ba03",
+          "name": "default",
+          "awsAccountId": "603652880565",
+          "awsRoleArn": "arn:aws:iam::603652880565:role/Capability",
+          "awsRoleEmail": "aws.astrid-dev-bvqrz@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "3512759e-80b8-4ae2-9117-51e6ba099b19",
+      "name": "Astrid-UAT",
+      "rootId": "astrid-uat-gbjbm",
+      "description": "",
+      "members": [
+        {
+          "email": "argur@dfds.com"
+        },
+        {
+          "email": "segul@dfds.com"
+        },
+        {
+          "email": "kacel@dfds.com"
+        },
+        {
+          "email": "nekay@dfds.com"
+        },
+        {
+          "email": "redum@dfds.com"
+        },
+        {
+          "email": "ahhud@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "ed706a98-125b-4824-b47a-a71fd8033eee",
+          "name": "default",
+          "awsAccountId": "250327004130",
+          "awsRoleArn": "arn:aws:iam::250327004130:role/Capability",
+          "awsRoleEmail": "aws.astrid-uat-gbjbm@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "a016eb52-56fe-4dab-af7b-337b2c85ca90",
+      "name": "Board-Customers",
+      "rootId": "board-customers-meroa",
+      "description": "Provide useful travel information to improve the customer experience getting onto the ship",
+      "members": [
+        {
+          "email": "toban@dfds.com"
+        },
+        {
+          "email": "vobic@dfds.com"
+        },
+        {
+          "email": "samdi@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "8a451fdb-63da-4c96-81a2-1b3281d9d080",
+          "name": "default",
+          "awsAccountId": "858467598052",
+          "awsRoleArn": "arn:aws:iam::858467598052:role/Capability",
+          "awsRoleEmail": "aws.board-customers-meroa@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5a618a2e-49bd-43b1-9d64-25e57ee05170",
+      "name": "Bosphorus",
+      "rootId": "",
+      "description": null,
+      "members": [
+        {
+          "email": "nekay@dfds.com"
+        },
+        {
+          "email": "segul@dfds.com"
+        },
+        {
+          "email": "kacel@dfds.com"
+        },
+        {
+          "email": "ayyag@dfds.com"
+        },
+        {
+          "email": "cadog@dfds.com"
+        },
+        {
+          "email": "antas@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "bd7bffb6-ff24-4039-8f22-967bab66ea9c",
+      "name": "CI-Team-Platform",
+      "rootId": "ci-team-platform-olgok",
+      "description": "Development facility for CI Team software (experiments).",
+      "members": [
+        {
+          "email": "tokan@DFDS.COM"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "20b3ce43-f9bd-45a2-bb7e-2f0ce8be68ff",
+      "name": "Cloudengineering-sandbox",
+      "rootId": "cloudengineering-sandb-kkgma",
+      "description": "Sandbox for Cloud Engineering team",
+      "members": [
+        {
+          "email": "wicar@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "469598c7-ed43-4532-82a4-74dd616df6a7",
+          "name": "default",
+          "awsAccountId": "878280151112",
+          "awsRoleArn": "arn:aws:iam::878280151112:role/Capability",
+          "awsRoleEmail": "aws.cloudengineering-sandb-kkgma@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "ad07cd2d-b2cd-408c-956e-8cf05aa8c844",
+      "name": "CodeAnalysis",
+      "rootId": "codeanalysis-yjlbr",
+      "description": "Capability to contain tools for code analysis",
+      "members": [
+        {
+          "email": "mabun@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "e5960a21-e1b4-421e-9d36-7aa474e38335",
+          "name": "default",
+          "awsAccountId": "215568071028",
+          "awsRoleArn": "arn:aws:iam::215568071028:role/Capability",
+          "awsRoleEmail": "aws.codeanalysis-yjlbr@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "f864ed49-ab7f-46f5-b7f2-64a7370f2399",
+      "name": "ControlCapacity",
+      "rootId": "controlcapacity-xgoja",
+      "description": "",
+      "members": [
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "andkr@dfds.com"
+        },
+        {
+          "email": "trkar@DFDS.COM"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "viosk@dfds.com"
+        },
+        {
+          "email": "chbau@dfds.com"
+        },
+        {
+          "email": "tpet@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "32b69bd1-de86-451c-a096-94e9448f0715",
+          "name": "default",
+          "awsAccountId": "020476805442",
+          "awsRoleArn": "arn:aws:iam::020476805442:role/Capability",
+          "awsRoleEmail": "aws.controlcapacity-xgoja@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "a147c03c-a5e5-4c3f-8679-2f2d5150ca9b",
+      "name": "CRMTeam",
+      "rootId": "crmteam-nzoxg",
+      "description": "Capability for CRM Team",
+      "members": [
+        {
+          "email": "reidr@dfds.com"
+        },
+        {
+          "email": "stdur@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "cc91a65e-e017-4558-882a-f325a42f4f9a",
+          "name": "default",
+          "awsAccountId": "381022262702",
+          "awsRoleArn": "arn:aws:iam::381022262702:role/Capability",
+          "awsRoleEmail": "aws.crmteam-nzoxg@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "4c03e2d9-f590-4900-9303-59adb3ebebb7",
+      "name": "Customer-IAM",
+      "rootId": "customer-iam-ykpqn",
+      "description": "Customer Identity And Access Management",
+      "members": [
+        {
+          "email": "iopar@dfds.com"
+        },
+        {
+          "email": "sschn@dfds.com"
+        },
+        {
+          "email": "rachr@dfds.com"
+        },
+        {
+          "email": "alhan@dfds.com"
+        },
+        {
+          "email": "belju@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "fb6d099f-fd32-4ef5-88ed-2fbfe1344c4d",
+          "name": "default",
+          "awsAccountId": "312479484328",
+          "awsRoleArn": "arn:aws:iam::312479484328:role/Capability",
+          "awsRoleEmail": "aws.customer-iam-ykpqn@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "e2538b24-adb6-4320-b5f8-1fc84483219e",
+      "name": "Customer-Retention",
+      "rootId": "customer-retention-xzrvg",
+      "description": "Capability Customer retention refers to the ability of a company or product to retain its customers",
+      "members": [
+        {
+          "email": "belju@dfds.com"
+        },
+        {
+          "email": "alhan@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "6c5e5278-ba56-490a-9b3d-7edd6221dae7",
+      "name": "Customs",
+      "rootId": "customs-qjjyq",
+      "description": "",
+      "members": [
+        {
+          "email": "fukub@dfds.com"
+        },
+        {
+          "email": "sanar@dfds.com"
+        },
+        {
+          "email": "ugcan@DFDS.COM"
+        },
+        {
+          "email": "emyur@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "185cb99f-c68c-483f-8c99-4eaad6bbbdfb",
+          "name": "default",
+          "awsAccountId": "208398551286",
+          "awsRoleArn": "arn:aws:iam::208398551286:role/Capability",
+          "awsRoleEmail": "aws.customs-qjjyq@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "b8963848-aef4-4b8b-9e69-cd4c83997a73",
+      "name": "Datadelivery",
+      "rootId": "datadelivery-gexyo",
+      "description": "Resources related to the data delivery platform of DnA.",
+      "members": [
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "mwhei@dfds.com"
+        },
+        {
+          "email": "fepou@dfds.com"
+        },
+        {
+          "email": "cvwhi@dfds.com"
+        },
+        {
+          "email": "mealt@dfds.com"
+        },
+        {
+          "email": "magry@dfds.com"
+        },
+        {
+          "email": "alozc@dfds.com"
+        },
+        {
+          "email": "apau@dfds.com"
+        },
+        {
+          "email": "mmari@dfds.com"
+        },
+        {
+          "email": "emcla@dfds.com"
+        },
+        {
+          "email": "svanp@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "9adcc071-061d-4b45-a0e4-80edee9ace4b",
+          "name": "default",
+          "awsAccountId": "297699052910",
+          "awsRoleArn": "arn:aws:iam::297699052910:role/Capability",
+          "awsRoleEmail": "aws.datadelivery-gexyo@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "448d0e03-4d28-4970-b7f4-6a8e971eee6c",
+      "name": "DataPlatform",
+      "rootId": "dataplatform-ajamn",
+      "description": "Capability for testing around the DFDS data platform initiatives",
+      "members": [
+        {
+          "email": "mmari@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "d9ca5c88-1ceb-4185-9528-23bce6a18d96",
+          "name": "default",
+          "awsAccountId": "896435130690",
+          "awsRoleArn": "arn:aws:iam::896435130690:role/Capability",
+          "awsRoleEmail": "aws.dataplatform-ajamn@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "e3642ee3-f731-4aa2-b5bd-cb18d4044381",
+      "name": "DED-Infrastructure",
+      "rootId": "",
+      "description": null,
+      "members": [
+        {
+          "email": "hemor@dfds.com"
+        },
+        {
+          "email": "emcla@dfds.com"
+        },
+        {
+          "email": "jawib@dfds.com"
+        },
+        {
+          "email": "jfhei@dfds.com"
+        },
+        {
+          "email": "janie@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "aca79eb9-6a8c-481b-81c0-0f1cccbdf85f",
+      "name": "DED-playbooks",
+      "rootId": "",
+      "description": null,
+      "members": [
+        {
+          "email": "jawib@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "f45ec4da-e5d8-4c3e-b688-59e9b1de3fd1",
+      "name": "Ded-workshops",
+      "rootId": "ded-workshops-ljmra",
+      "description": "Used for hands-on workshops",
+      "members": [
+        {
+          "email": "ahhud@dfds.com"
+        },
+        {
+          "email": "cadog@dfds.com"
+        },
+        {
+          "email": "emcla@dfds.com"
+        },
+        {
+          "email": "antas@dfds.com"
+        },
+        {
+          "email": "aktur@dfds.com"
+        },
+        {
+          "email": "ruabr@DFDS.COM"
+        },
+        {
+          "email": "sanar@dfds.com"
+        },
+        {
+          "email": "kacel@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "b14e7960-607a-410c-a412-ecddfc6fd267",
+          "name": "default",
+          "awsAccountId": "547767961372",
+          "awsRoleArn": "arn:aws:iam::547767961372:role/Capability",
+          "awsRoleEmail": "aws.ded-workshops-ljmra@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "b917c7f8-98ec-43b5-9d5c-017e2e4bf23d",
+      "name": "Delivery-Confirmation",
+      "rootId": "delivery-confirmation-bkgnq",
+      "description": "",
+      "members": [
+        {
+          "email": "toske@dfds.com"
+        },
+        {
+          "email": "janie@dfds.com"
+        },
+        {
+          "email": "cvwhi@dfds.com"
+        },
+        {
+          "email": "thjuu@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "23f5a51d-9247-434a-84f5-773bcec06b5f",
+          "name": "default",
+          "awsAccountId": "173143243009",
+          "awsRoleArn": "arn:aws:iam::173143243009:role/Capability",
+          "awsRoleEmail": "aws.delivery-confirmation-bkgnq@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "3982dbbb-9064-4f26-88f7-df7eeeafbd33",
+      "name": "DeveloperAutomation",
+      "rootId": "developerautomation-xavgy",
+      "description": "DeveloperAutomation capability maintains the various services, workers and APIs required to maintain the DFDS SSU (Self-service universe)",
+      "members": [
+        {
+          "email": "toban@dfds.com"
+        },
+        {
+          "email": "pwes@dfds.com"
+        },
+        {
+          "email": "wicar@dfds.com"
+        },
+        {
+          "email": "emcla@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "a4419d12-9be3-4dfa-985f-fffae2eed97f",
+          "name": "default",
+          "awsAccountId": "642375522597",
+          "awsRoleArn": "arn:aws:iam::642375522597:role/Capability",
+          "awsRoleEmail": "aws.developerautomation-xavgy@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "846f620c-d2ba-40ab-8e9f-8913b176b86c",
+      "name": "Developer-Platform",
+      "rootId": "developer-platform-gkgeg",
+      "description": "Developer-Platform(not a team) is a capability, used to serve developer/application onboarding e.g.  documentation, storybooks.",
+      "members": [
+        {
+          "email": "samdi@dfds.com"
+        },
+        {
+          "email": "alhan@dfds.com"
+        },
+        {
+          "email": "rachr@dfds.com"
+        },
+        {
+          "email": "iopar@dfds.com"
+        },
+        {
+          "email": "belju@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "c14e7f0e-a9bd-4005-9f49-626b34d60255",
+          "name": "default",
+          "awsAccountId": "749554116127",
+          "awsRoleArn": "arn:aws:iam::749554116127:role/Capability",
+          "awsRoleEmail": "aws.developer-platform-gkgeg@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5570f6a9-ed70-40ff-b505-db638df73ae6",
+      "name": "Direct",
+      "rootId": "direct-obozp",
+      "description": "Capability intended for DFDS Direct FE & BFF",
+      "members": [
+        {
+          "email": "samdi@dfds.com"
+        },
+        {
+          "email": "cjess@dfds.com"
+        },
+        {
+          "email": "igbag@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "6d77af41-d3a9-4c47-9644-2c24bd1f6f48",
+          "name": "default",
+          "awsAccountId": "568728218588",
+          "awsRoleArn": "arn:aws:iam::568728218588:role/Capability",
+          "awsRoleEmail": "aws.direct-obozp@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "e61e2d2a-a40a-4c85-a191-3d513cdfbde7",
+      "name": "Document-Data-Extraction",
+      "rootId": "document-data-extracti-jvyrr",
+      "description": "Capability for extraction of data from documents",
+      "members": [
+        {
+          "email": "crale@dfds.com"
+        },
+        {
+          "email": "matni@dfds.com"
+        },
+        {
+          "email": "nilun@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "12ffd4e5-9faf-41ea-96d9-7dedda41d9ea",
+          "name": "default",
+          "awsAccountId": "010187869974",
+          "awsRoleArn": "arn:aws:iam::010187869974:role/Capability",
+          "awsRoleEmail": "aws.document-data-extracti-jvyrr@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5b8802c1-1d29-4cbe-b99b-e09eb2aaff63",
+      "name": "DojoBootcamp-EDU",
+      "rootId": "dojobootcamp-edu-npjxr",
+      "description": "Used solely for the \"Cloud services within DFDS - An introductory reading\" course",
+      "members": [
+        {
+          "email": "emcla@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "6a892aee-311c-4bf7-b7ca-682603f6e7c5",
+          "name": "default",
+          "awsAccountId": "591750151948",
+          "awsRoleArn": "arn:aws:iam::591750151948:role/Capability",
+          "awsRoleEmail": "aws.dojobootcamp-edu-npjxr@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "b16d2514-7d18-4dae-9828-5d61cd6bd6d6",
+      "name": "Dojo-ENS",
+      "rootId": "dojo-ens-yjvak",
+      "description": "",
+      "members": [
+        {
+          "email": "cadog@dfds.com"
+        },
+        {
+          "email": "emunl@dfds.com"
+        },
+        {
+          "email": "ayyag@dfds.com"
+        },
+        {
+          "email": "sanar@dfds.com"
+        },
+        {
+          "email": "fukub@dfds.com"
+        },
+        {
+          "email": "ugcan@dfds.com"
+        },
+        {
+          "email": "segul@dfds.com"
+        },
+        {
+          "email": "antas@dfds.com"
+        },
+        {
+          "email": "emyur@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "b18a6faf-afca-469f-9de6-dc88afda145d",
+          "name": "default",
+          "awsAccountId": "937250280414",
+          "awsRoleArn": "arn:aws:iam::937250280414:role/Capability",
+          "awsRoleEmail": "aws.dojo-ens-yjvak@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "ad9786ee-7d75-4dac-8821-a08c86323975",
+      "name": "Dotcom-SEO-Analytics",
+      "rootId": "dotcom-seo-analytics-meerp",
+      "description": "Help SEO team to gain capability to take the Organic Traffic and our SEO efforts on Dotcom to the next level depends on the possibility to work with the ServerLog and become truly data-driven",
+      "members": [
+        {
+          "email": "samdi@dfds.com"
+        },
+        {
+          "email": "igplu@dfds.com"
+        },
+        {
+          "email": "davar@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "18476756-a8e4-4c00-9ebf-ff6e8624c549",
+          "name": "default",
+          "awsAccountId": "613062201412",
+          "awsRoleArn": "arn:aws:iam::613062201412:role/Capability",
+          "awsRoleEmail": "aws.dotcom-seo-analytics-meerp@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "ada1b063-5b8d-4218-9b3f-9580d7776bdb",
+      "name": "Dotcom-website-infrastructure",
+      "rootId": "dotcom-website-infrast-kyyzm",
+      "description": "",
+      "members": [
+        {
+          "email": "miande@dfds.com"
+        },
+        {
+          "email": "remun@dfds.com"
+        },
+        {
+          "email": "dosim.ptr@DFDS.COM"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "igbag@dfds.com"
+        },
+        {
+          "email": "kakis.ptr@DFDS.COM"
+        },
+        {
+          "email": "samdi@DFDS.COM"
+        },
+        {
+          "email": "muayi@dfds.com"
+        },
+        {
+          "email": "kodic@dfds.com"
+        },
+        {
+          "email": "esped@dfds.com"
+        },
+        {
+          "email": "aldub@DFDS.COM"
+        },
+        {
+          "email": "jastn@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "c75bb500-4b2d-4aaf-92c7-bace465d9f55",
+          "name": "default",
+          "awsAccountId": "181011257313",
+          "awsRoleArn": "arn:aws:iam::181011257313:role/Capability",
+          "awsRoleEmail": "aws.dotcom-website-infrast-kyyzm@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5a61d3cc-f880-47ac-a637-38cdcb307068",
+      "name": "Driverinstruction-service",
+      "rootId": "driverinstruction-serv-xmjzx",
+      "description": "Service used to raising driver instruction events",
+      "members": [
+        {
+          "email": "hasal@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "5abfd0d0-56d2-489a-a227-11da1e3f32ba",
+          "name": "default",
+          "awsAccountId": "434089335622",
+          "awsRoleArn": "arn:aws:iam::434089335622:role/Capability",
+          "awsRoleEmail": "aws.driverinstruction-serv-xmjzx@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "d91cd08a-5c60-437d-a822-0b57243e05cb",
+      "name": "Dynamic-Forms-DXP",
+      "rootId": "dynamic-forms-dxp-enxjg",
+      "description": "capability for the dynamic forms project in DXP team",
+      "members": [
+        {
+          "email": "samdi@dfds.com"
+        },
+        {
+          "email": "cadue@dfds.com"
+        },
+        {
+          "email": "kodic@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "e015da2c-6783-4532-9245-281c099ab84c",
+          "name": "default",
+          "awsAccountId": "890285613514",
+          "awsRoleArn": "arn:aws:iam::890285613514:role/Capability",
+          "awsRoleEmail": "aws.dynamic-forms-dxp-enxjg@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "6d52a2d9-845b-46dd-a438-39f8e2572976",
+      "name": "Enable-one-dfds-domain-experience",
+      "rootId": "enable-one-dfds-domain-znkro",
+      "description": "Enable DFDS to appear as one organisation to customers and partners visiting DFDS' webpages",
+      "members": [
+        {
+          "email": "jastn@DFDS.COM"
+        },
+        {
+          "email": "vobic@dfds.com"
+        },
+        {
+          "email": "trkar@dfds.com"
+        },
+        {
+          "email": "iopar@dfds.com"
+        },
+        {
+          "email": "jedon@dfds.com"
+        },
+        {
+          "email": "pebir@dfds.com"
+        },
+        {
+          "email": "trspe@dfds.com"
+        },
+        {
+          "email": "sschn@dfds.com"
+        },
+        {
+          "email": "anatu@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "chchr@dfds.com"
+        },
+        {
+          "email": "remun@DFDS.COM"
+        },
+        {
+          "email": "alhan@dfds.com"
+        },
+        {
+          "email": "muayi@dfds.com"
+        },
+        {
+          "email": "jeben@dfds.com"
+        },
+        {
+          "email": "igbag@dfds.com"
+        },
+        {
+          "email": "belju@dfds.com"
+        },
+        {
+          "email": "davar@dfds.com"
+        },
+        {
+          "email": "samdi@DFDS.COM"
+        },
+        {
+          "email": "miande@DFDS.COM"
+        },
+        {
+          "email": "andkr@dfds.com"
+        },
+        {
+          "email": "ansoe@dfds.com"
+        },
+        {
+          "email": "vlbil@dfds.com"
+        },
+        {
+          "email": "esped@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "6c8af8bc-9e1a-4c35-9b65-b5c76e70d1a8",
+          "name": "default",
+          "awsAccountId": "116546250171",
+          "awsRoleArn": "arn:aws:iam::116546250171:role/Capability",
+          "awsRoleEmail": "aws.enable-one-dfds-domain-znkro@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "33feb7ec-414a-4966-8d44-06ea7279220f",
+      "name": "ERPReporting",
+      "rootId": "erpreporting-aplbj",
+      "description": "Access to reporting for Dynamics and ERP",
+      "members": [
+        {
+          "email": "lawon@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "c24615c7-c315-4a8d-8e9d-5ebff0a31d96",
+          "name": "default",
+          "awsAccountId": "433127522975",
+          "awsRoleArn": "arn:aws:iam::433127522975:role/Capability",
+          "awsRoleEmail": "aws.erpreporting-aplbj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "1eee06ff-a51f-4282-967a-34ceeaa70609",
+      "name": "Ferry-cancellation-forecast",
+      "rootId": "ferry-cancellation-for-jpoxj",
+      "description": "",
+      "members": [
+        {
+          "email": "jerav@dfds.com"
+        },
+        {
+          "email": "idfri@dfds.com"
+        },
+        {
+          "email": "klaur@dfds.com"
+        },
+        {
+          "email": "urcha@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "de80ea02-2181-49d8-b163-f846a62d10bf",
+          "name": "default",
+          "awsAccountId": "844721931841",
+          "awsRoleArn": "arn:aws:iam::844721931841:role/Capability",
+          "awsRoleEmail": "aws.ferry-cancellation-for-jpoxj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "8e7283d3-0246-4d16-9b7d-6dda1ce67b9e",
+      "name": "Ferry-Dwelltime",
+      "rootId": "ferry-dwelltime-rjayl",
+      "description": "",
+      "members": [
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "dhans@dfds.com"
+        },
+        {
+          "email": "fepou@dfds.com"
+        },
+        {
+          "email": "idfri@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "9370a83c-a13f-46c7-a9c1-621e8026c8e2",
+          "name": "default",
+          "awsAccountId": "469457075771",
+          "awsRoleArn": "arn:aws:iam::469457075771:role/Capability",
+          "awsRoleEmail": "aws.ferry-dwelltime-rjayl@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "7ef8abbe-7ab6-45d3-b8bc-d1d7a5853183",
+      "name": "Ferry-PriorityDischarge",
+      "rootId": "ferry-prioritydischarg-gkyel",
+      "description": "",
+      "members": [
+        {
+          "email": "fepou@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "a9033e2b-1cb5-4170-b201-653b74bf8b99",
+          "name": "default",
+          "awsAccountId": "333036224408",
+          "awsRoleArn": "arn:aws:iam::333036224408:role/Capability",
+          "awsRoleEmail": "aws.ferry-prioritydischarg-gkyel@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "d96e6d34-eb83-45a0-913a-0f238d4b127b",
+      "name": "Foobarcap",
+      "rootId": "foobarcap-rkbbr",
+      "description": "willi caught fish",
+      "members": [],
+      "contexts": []
+    },
+    {
+      "id": "66fa9966-b88d-41e8-a11d-0f8104628968",
+      "name": "FreightBFF",
+      "rootId": "freightbff-ypgjn",
+      "description": "A backend-for-frontend for the Freight project",
+      "members": [
+        {
+          "email": "jedon@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "27a39a13-2d19-4c0d-a743-69babd034d81",
+          "name": "default",
+          "awsAccountId": "447302769010",
+          "awsRoleArn": "arn:aws:iam::447302769010:role/Capability",
+          "awsRoleEmail": "aws.freightbff-ypgjn@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "b2f71960-5cf8-49d2-9440-663f5880a984",
+      "name": "FreightBooking",
+      "rootId": "freightbooking-xygoq",
+      "description": "Freight Booking ",
+      "members": [
+        {
+          "email": "cbrig@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "c8c21ca0-bc65-43f3-acce-f90a7776349a",
+      "name": "Freight-Book-Ticket",
+      "rootId": "freight-book-ticket-olnma",
+      "description": "e.g DFDS Spot",
+      "members": [
+        {
+          "email": "samdi@DFDS.COM"
+        },
+        {
+          "email": "gasmi@dfds.com"
+        },
+        {
+          "email": "esped@dfds.com"
+        },
+        {
+          "email": "muayi@dfds.com"
+        },
+        {
+          "email": "pebir@dfds.com"
+        },
+        {
+          "email": "remun@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "3a50b41e-0dac-4ac8-afe8-f6d1f5936b13",
+          "name": "default",
+          "awsAccountId": "140664808136",
+          "awsRoleArn": "arn:aws:iam::140664808136:role/Capability",
+          "awsRoleEmail": "aws.freight-book-ticket-olnma@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "9c278868-8ca6-48ec-9832-107803dc9a96",
+      "name": "Freight-Customs",
+      "rootId": "freight-customs-vpkpm",
+      "description": "A capability to hold Customs related Kafka topics for Freight team",
+      "members": [
+        {
+          "email": "jambar@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "d110be77-a876-42cb-a140-ee4c82e455b8",
+      "name": "FreightVoyage",
+      "rootId": "freightvoyage-eynbz",
+      "description": "Freight Voyage",
+      "members": [
+        {
+          "email": "jambar@dfds.com"
+        },
+        {
+          "email": "josmi@dfds.com"
+        },
+        {
+          "email": "rodei@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "ab612f5d-3eb4-4179-92dd-47782a0ceb68",
+          "name": "default",
+          "awsAccountId": "610348104420",
+          "awsRoleArn": "arn:aws:iam::610348104420:role/Capability",
+          "awsRoleEmail": "aws.freightvoyage-eynbz@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5b7f19d3-7c9a-475f-85e4-d2930a9637d6",
+      "name": "GTMS-CargoEvent",
+      "rootId": "gtms-cargoevent-znoaq",
+      "description": "Create, Update and Delete of Cargo for Servcies(Bookings) in GTMS",
+      "members": [
+        {
+          "email": "masil@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "32805995-427a-4941-8511-928a39683ed0",
+      "name": "GTMS-Customs",
+      "rootId": "gtms-customs-yzrxj",
+      "description": "Handles Customs Clearance of Bookings  ",
+      "members": [
+        {
+          "email": "masil@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "1ce48bf1-1312-4643-8062-8cf2c3f9047e",
+      "name": "GTMS-DocumentEvent",
+      "rootId": "gtms-documentevent-vxnma",
+      "description": "Create, Update and Delete of documnets in GTMS",
+      "members": [
+        {
+          "email": "masil@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "f15a38fb-72ae-450b-96dd-8e33eaad14ae",
+      "name": "GTMS-HoldEvent",
+      "rootId": "gtms-holdevent-yvben",
+      "description": "Create, Update and Delete of holds on Services(Bookings) in GTMS",
+      "members": [
+        {
+          "email": "masil@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "60b00a7f-569e-4fd3-8249-a1dfa5267e6e",
+      "name": "GTMS-Prod",
+      "rootId": "gtms-prod-reygq",
+      "description": "Production AWS account for GTMS",
+      "members": [
+        {
+          "email": "dalea@dfds.com"
+        },
+        {
+          "email": "masil@dfds.com"
+        },
+        {
+          "email": "gemcd@dfds.com"
+        },
+        {
+          "email": "pasho@dfds.com"
+        },
+        {
+          "email": "thfis@dfds.com"
+        },
+        {
+          "email": "sbri@dfds.com"
+        },
+        {
+          "email": "rifis@DFDS.COM"
+        },
+        {
+          "email": "sanar@dfds.com"
+        },
+        {
+          "email": "icli@dfds.com"
+        },
+        {
+          "email": "mwood@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "e0c341e5-7aa1-4d59-93a8-a20bd47c9a52",
+          "name": "default",
+          "awsAccountId": "559956337336",
+          "awsRoleArn": "arn:aws:iam::559956337336:role/Capability",
+          "awsRoleEmail": "aws.gtms-prod-reygq@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "6944bda3-d66a-460d-8296-1d14d110b1bf",
+      "name": "GTMS-ServiceEvent",
+      "rootId": "gtms-serviceevent-pylrx",
+      "description": "Create, Update and Delete of Services(Bookings) in GTMS",
+      "members": [
+        {
+          "email": "masil@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "2f3a3304-356f-408b-a64a-afdfc6792409",
+      "name": "HejHej",
+      "rootId": "hejhej-2f3a3304",
+      "description": "du er smuk",
+      "members": [],
+      "contexts": [
+        {
+          "id": "f2952103-cf9e-497e-9699-f2528dcb144f",
+          "name": "default",
+          "awsAccountId": "168238044854",
+          "awsRoleArn": "arn:aws:iam::168238044854:role/Capability",
+          "awsRoleEmail": "aws.hejhej-2f3a3304@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "ba6ee4d1-f21f-4334-8b4d-1ef319540c53",
+      "name": "Intelliplan-Management",
+      "rootId": "intelliplan-management-rnbyz",
+      "description": "Not used!",
+      "members": [],
+      "contexts": []
+    },
+    {
+      "id": "ca80f341-8c1d-48e3-a5a1-bd24b593a7ce",
+      "name": "Logistics-Asset",
+      "rootId": "",
+      "description": "Management of logistics assets such as truck, trailers, drivers, warehouses, terminals, locations, etc…",
+      "members": [
+        {
+          "email": "majep@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "e77302b1-fadb-443e-96fa-dd53cc7b7aeb",
+      "name": "Logistics-CustomsHandling",
+      "rootId": "logistics-customshandl-yvkrg",
+      "description": "",
+      "members": [
+        {
+          "email": "qaraz@dfds.com"
+        },
+        {
+          "email": "crale@dfds.com"
+        },
+        {
+          "email": "nilun@dfds.com"
+        },
+        {
+          "email": "jfhei@dfds.com"
+        },
+        {
+          "email": "namah@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "603781ff-d3d6-433f-9c30-8de3f00dae8f",
+          "name": "default",
+          "awsAccountId": "656332692652",
+          "awsRoleArn": "arn:aws:iam::656332692652:role/Capability",
+          "awsRoleEmail": "aws.logistics-customshandl-yvkrg@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "23a373dd-aac4-4d6f-bc81-8ef4be822e7e",
+      "name": "Logistics-DocumentHandling",
+      "rootId": "logistics-documenthand-mjxpz",
+      "description": "Capability to hold components that service document handling",
+      "members": [
+        {
+          "email": "jfhei@dfds.com"
+        },
+        {
+          "email": "ladan@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "9949c51c-c01b-446e-b534-b9d9b040acda",
+          "name": "default",
+          "awsAccountId": "470073280439",
+          "awsRoleArn": "arn:aws:iam::470073280439:role/Capability",
+          "awsRoleEmail": "aws.logistics-documenthand-mjxpz@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "81484fbc-0bb2-4f94-b622-04203c7cd867",
+      "name": "Logistics-Frontend",
+      "rootId": "logistics-frontend-mlxyk",
+      "description": "DFDS Direct etc.",
+      "members": [
+        {
+          "email": "igbag.ptr@partner.dfds.root"
+        },
+        {
+          "email": "igbag@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "24df1c71-ac55-4015-9387-f25acc79fff3",
+          "name": "default",
+          "awsAccountId": "292726266623",
+          "awsRoleArn": "arn:aws:iam::292726266623:role/Capability",
+          "awsRoleEmail": "aws.logistics-frontend-mlxyk@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "3a6c1fda-35f1-4f7b-97b2-9d515f18ffcc",
+      "name": "Logistics-Instruction",
+      "rootId": "logistics-instruction-lezvq",
+      "description": "",
+      "members": [
+        {
+          "email": "ladan@dfds.com"
+        },
+        {
+          "email": "nilun@dfds.com"
+        },
+        {
+          "email": "thras@dfds.com"
+        },
+        {
+          "email": "cvwhi@dfds.com"
+        },
+        {
+          "email": "abmoh@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "533d2f2c-682e-4b48-aaed-babcaf3d1cc3",
+          "name": "default",
+          "awsAccountId": "283605453877",
+          "awsRoleArn": "arn:aws:iam::283605453877:role/Capability",
+          "awsRoleEmail": "aws.logistics-instruction-lezvq@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "8dd85e66-b7ab-42e4-8487-1c424a6eba2f",
+      "name": "Logistics-Instructions-Test",
+      "rootId": "logistics-instructions-boomq",
+      "description": "A test cap",
+      "members": [
+        {
+          "email": "danfr@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "15c2ba79-2199-4750-ae35-df6c86742da6",
+          "name": "default",
+          "awsAccountId": "773860767829",
+          "awsRoleArn": "arn:aws:iam::773860767829:role/Capability",
+          "awsRoleEmail": "aws.logistics-instructions-boomq@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "627b3f15-a69f-455f-9a16-6be1a07d55e2",
+      "name": "Logistics-IntegrateDiagnostics",
+      "rootId": "logistics-integratedia-bqyxe",
+      "description": "Capability in which components that help create a seamless cloud experience lives",
+      "members": [
+        {
+          "email": "jfhei@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "32181e22-de00-4fab-87c7-7c12bab62e6b",
+          "name": "default",
+          "awsAccountId": "109885255062",
+          "awsRoleArn": "arn:aws:iam::109885255062:role/Capability",
+          "awsRoleEmail": "aws.logistics-integratedia-bqyxe@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "f871e516-5b12-455e-883e-21564e00de2f",
+      "name": "Logistics-Location",
+      "rootId": "logistics-location-gozxp",
+      "description": "Set of services providing cloud access to locations from the on-premise XServer",
+      "members": [
+        {
+          "email": "qaraz@dfds.com"
+        },
+        {
+          "email": "johas@dfds.com"
+        },
+        {
+          "email": "tojes@dfds.com"
+        },
+        {
+          "email": "jfhei@dfds.com"
+        },
+        {
+          "email": "mmari@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "229a3d94-5e0f-4cfd-9239-77eb276e6fcc",
+          "name": "default",
+          "awsAccountId": "562504075852",
+          "awsRoleArn": "arn:aws:iam::562504075852:role/Capability",
+          "awsRoleEmail": "aws.logistics-location-gozxp@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "4b0c226e-8988-4d7d-a74f-d2184ead15ae",
+      "name": "Logistics-Map",
+      "rootId": "logistics-map-mggjx",
+      "description": "",
+      "members": [
+        {
+          "email": "mmari@dfds.com"
+        },
+        {
+          "email": "johas@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "01e08314-239a-4467-95c0-e8a659758989",
+          "name": "default",
+          "awsAccountId": "226097015755",
+          "awsRoleArn": "arn:aws:iam::226097015755:role/Capability",
+          "awsRoleEmail": "aws.logistics-map-mggjx@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "b6787edb-a2a6-4108-81e3-6e1bcbe1b938",
+      "name": "Logistics-Planning",
+      "rootId": "logistics-planning-yrqxa",
+      "description": "Capability for planning cargo, trailer, driver etc. for logistics",
+      "members": [
+        {
+          "email": "hasal@dfds.com"
+        },
+        {
+          "email": "radam@dfds.com"
+        },
+        {
+          "email": "crale@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "05e13328-7ade-4234-b399-dc8459140cb2",
+          "name": "default",
+          "awsAccountId": "729980089226",
+          "awsRoleArn": "arn:aws:iam::729980089226:role/Capability",
+          "awsRoleEmail": "aws.logistics-planning-yrqxa@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5dd45d07-0b4e-4287-becc-0094ef2c872d",
+      "name": "Logistics-Quotes",
+      "rootId": "logistics-quotes-eqxam",
+      "description": "",
+      "members": [
+        {
+          "email": "pacaa@dfds.com"
+        },
+        {
+          "email": "klaur@dfds.com"
+        },
+        {
+          "email": "mmari@dfds.com"
+        },
+        {
+          "email": "johas@dfds.com"
+        },
+        {
+          "email": "tojes@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "jfhei@dfds.com"
+        },
+        {
+          "email": "cvwhi@dfds.com"
+        },
+        {
+          "email": "qaraz@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "e0cb8b81-a386-4b86-b5ee-4637ab1c6cda",
+          "name": "default",
+          "awsAccountId": "524751946812",
+          "awsRoleArn": "arn:aws:iam::524751946812:role/Capability",
+          "awsRoleEmail": "aws.logistics-quotes-eqxam@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "44991cbe-5ffd-4e11-9f54-7494b9ed4942",
+      "name": "Logistics-Quote-Staging",
+      "rootId": "logistics-quote-stagin-zlpxz",
+      "description": "Staging environment for Logistics-Quotes",
+      "members": [
+        {
+          "email": "jfhei@dfds.com"
+        },
+        {
+          "email": "johas@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "klaur@dfds.com"
+        },
+        {
+          "email": "pacaa@dfds.com"
+        },
+        {
+          "email": "mmari@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "01551edd-42ef-4d46-98af-3831710c0776",
+          "name": "default",
+          "awsAccountId": "442464036403",
+          "awsRoleArn": "arn:aws:iam::442464036403:role/Capability",
+          "awsRoleEmail": "aws.logistics-quote-stagin-zlpxz@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "01794d4d-644d-40af-bd8a-20547767efd9",
+      "name": "Logistics-Routes",
+      "rootId": "logistics-routes-bapbj",
+      "description": "",
+      "members": [
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "mmari@dfds.com"
+        },
+        {
+          "email": "qaraz@dfds.com"
+        },
+        {
+          "email": "johas@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "a61a374f-9586-4160-a9df-53a2602ff179",
+          "name": "default",
+          "awsAccountId": "571508623863",
+          "awsRoleArn": "arn:aws:iam::571508623863:role/Capability",
+          "awsRoleEmail": "aws.logistics-routes-bapbj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "a3ed4ab2-b89f-4e12-bce6-43c0689fc3f5",
+      "name": "Logistics-Tracking",
+      "rootId": "logistics-tracking-kyvem",
+      "description": "",
+      "members": [
+        {
+          "email": "thras@dfds.com"
+        },
+        {
+          "email": "danfr@dfds.com"
+        },
+        {
+          "email": "nilun@dfds.com"
+        },
+        {
+          "email": "abmoh@dfds.com"
+        },
+        {
+          "email": "ladan@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "43915472-d4a3-441c-80be-8779c4052304",
+          "name": "default",
+          "awsAccountId": "202980663391",
+          "awsRoleArn": "arn:aws:iam::202980663391:role/Capability",
+          "awsRoleEmail": "aws.logistics-tracking-kyvem@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "ca67425a-c5eb-4680-af8a-b78a21a52934",
+      "name": "Malware-scan",
+      "rootId": "",
+      "description": null,
+      "members": [
+        {
+          "email": "jfhei@dfds.com"
+        },
+        {
+          "email": "kilin@dfds.com"
+        },
+        {
+          "email": "thras@dfds.com"
+        },
+        {
+          "email": "alesc@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "e194709b-60f9-4987-b1ab-6031c6651c0d",
+      "name": "ManageCustomers",
+      "rootId": "managecustomers-kqmbo",
+      "description": "Capability that supports \"Attract customers\", \"Retain customers\" and \"Communicate with customers\"",
+      "members": [
+        {
+          "email": "andkr@dfds.com"
+        },
+        {
+          "email": "chbau@dfds.com"
+        },
+        {
+          "email": "tpet@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "trkar@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "19456154-e147-49e9-a142-89b87ce6ced0",
+          "name": "default",
+          "awsAccountId": "388322118183",
+          "awsRoleArn": "arn:aws:iam::388322118183:role/Capability",
+          "awsRoleEmail": "aws.managecustomers-kqmbo@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "c620f746-a4e5-4dd7-aac8-1da0fc68d67f",
+      "name": "ManageEquipmentLifeCycle",
+      "rootId": "manageequipmentlifecyc-xqxmx",
+      "description": "",
+      "members": [
+        {
+          "email": "radam@dfds.com"
+        },
+        {
+          "email": "thras@dfds.com"
+        },
+        {
+          "email": "jhans@dfds.com"
+        },
+        {
+          "email": "jfhei@DFDS.COM"
+        },
+        {
+          "email": "alesc@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "5c279d41-9e5c-4211-bb70-cc957e89631f",
+          "name": "default",
+          "awsAccountId": "237388055979",
+          "awsRoleArn": "arn:aws:iam::237388055979:role/Capability",
+          "awsRoleEmail": "aws.manageequipmentlifecyc-xqxmx@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "2ec0900e-114a-4877-8e5e-a7ee3fa51333",
+      "name": "ManageFleet",
+      "rootId": "managefleet-mjlyp",
+      "description": "Management of the vessel fleet in DFDS",
+      "members": [
+        {
+          "email": "cbrig@dfds.com"
+        },
+        {
+          "email": "cvwhi@dfds.com"
+        },
+        {
+          "email": "andkr@dfds.com"
+        },
+        {
+          "email": "chbau@dfds.com"
+        },
+        {
+          "email": "tpet@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "trkar@DFDS.COM"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "gasmi@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "edbbca5b-faa6-4508-9d38-a542c7148f54",
+          "name": "default",
+          "awsAccountId": "726864547422",
+          "awsRoleArn": "arn:aws:iam::726864547422:role/Capability",
+          "awsRoleEmail": "aws.managefleet-mjlyp@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "b3a5c08e-a74e-4a07-ab4a-d9eaa8e42c42",
+      "name": "ManageRoutes",
+      "rootId": "manageroutes-pqglk",
+      "description": "Management of routes and departures",
+      "members": [
+        {
+          "email": "tpet@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "trkar@DFDS.COM"
+        },
+        {
+          "email": "chbau@dfds.com"
+        },
+        {
+          "email": "andkr@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "5c02cf8e-c067-448e-b21a-ef0e7d56f616",
+          "name": "default",
+          "awsAccountId": "603981120105",
+          "awsRoleArn": "arn:aws:iam::603981120105:role/Capability",
+          "awsRoleEmail": "aws.manageroutes-pqglk@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "badafac7-5d4c-4cf9-8a6b-c277a9592fa8",
+      "name": "Migrate-Public-Sites",
+      "rootId": "migrate-public-sites-jqope",
+      "description": "Mapping from old seaways sites to dfds.com",
+      "members": [
+        {
+          "email": "esped@dfds.com"
+        },
+        {
+          "email": "igbag@dfds.com"
+        },
+        {
+          "email": "camic@dfds.com"
+        },
+        {
+          "email": "miande@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "cb2a8620-a963-4fed-a65d-bab72c30b542",
+          "name": "default",
+          "awsAccountId": "142293548536",
+          "awsRoleArn": "arn:aws:iam::142293548536:role/Capability",
+          "awsRoleEmail": "aws.migrate-public-sites-jqope@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "6e230f48-fc1b-4c5c-bcfe-7e9133365c94",
+      "name": "MLOps",
+      "rootId": "mlops-mmlml",
+      "description": "",
+      "members": [
+        {
+          "email": "dhans@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "mmari@dfds.com"
+        },
+        {
+          "email": "klaur@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "9c4faa5e-22aa-4987-aa14-218face44bc8",
+          "name": "default",
+          "awsAccountId": "272250499452",
+          "awsRoleArn": "arn:aws:iam::272250499452:role/Capability",
+          "awsRoleEmail": "aws.mlops-mmlml@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "a1eb4db9-1e10-41c3-a72f-3331ccbee37f",
+      "name": "Notification",
+      "rootId": "notification-yjavj",
+      "description": "Ability to send notifications",
+      "members": [
+        {
+          "email": "cbrig@dfds.com"
+        },
+        {
+          "email": "gasmi@dfds.com"
+        },
+        {
+          "email": "josmi@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "018020ea-8367-43c3-94d9-ea570cecff82",
+          "name": "default",
+          "awsAccountId": "474253937559",
+          "awsRoleArn": "arn:aws:iam::474253937559:role/Capability",
+          "awsRoleEmail": "aws.notification-yjavj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "88b22b97-6158-4ee8-bff0-4959eb8b8447",
+      "name": "OfferProducts",
+      "rootId": "offerproducts-qymnb",
+      "description": "Offers and Products exposes a framework for selling stuff",
+      "members": [
+        {
+          "email": "sngis@dfds.com"
+        },
+        {
+          "email": "nbrun@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "tpet@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "andkr@dfds.com"
+        },
+        {
+          "email": "trkar@dfds.com"
+        },
+        {
+          "email": "viosk@dfds.com"
+        },
+        {
+          "email": "chbau@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "42b1c9b1-d183-41c9-9e5e-9a319fa773d4",
+          "name": "default",
+          "awsAccountId": "340365652292",
+          "awsRoleArn": "arn:aws:iam::340365652292:role/Capability",
+          "awsRoleEmail": "aws.offerproducts-qymnb@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "67737796-40a2-4131-8953-8ff899f90cdf",
+      "name": "OnboardCustomers",
+      "rootId": "onboardcustomers-npxkm",
+      "description": "Velocity Customer Team",
+      "members": [
+        {
+          "email": "igbag@dfds.com"
+        },
+        {
+          "email": "qaraz@dfds.com"
+        },
+        {
+          "email": "anjen@DFDS.COM"
+        },
+        {
+          "email": "tojes@dfds.com"
+        },
+        {
+          "email": "cjess@dfds.com"
+        },
+        {
+          "email": "jfhei@DFDS.COM"
+        },
+        {
+          "email": "alesc@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "fc0e2064-0eac-4306-9eed-67d31872fa49",
+          "name": "default",
+          "awsAccountId": "978273016858",
+          "awsRoleArn": "arn:aws:iam::978273016858:role/Capability",
+          "awsRoleEmail": "aws.onboardcustomers-npxkm@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "d021f2c6-86d3-4b16-9bae-218a9b5d1060",
+      "name": "OnboardWiFi",
+      "rootId": "onboardwifi-jqvrj",
+      "description": "",
+      "members": [
+        {
+          "email": "ansoe@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "a8e13ea5-b9b3-4342-b478-f38a0a439d9a",
+          "name": "default",
+          "awsAccountId": "724567666943",
+          "awsRoleArn": "arn:aws:iam::724567666943:role/Capability",
+          "awsRoleEmail": "aws.onboardwifi-jqvrj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "ac4009b1-ab3e-4b61-b00e-be3242e9c1b1",
+      "name": "OperatePorts",
+      "rootId": "operateports-zekzl",
+      "description": "",
+      "members": [
+        {
+          "email": "mague@dfds.com"
+        },
+        {
+          "email": "remun@dfds.com"
+        },
+        {
+          "email": "gasmi@dfds.com"
+        },
+        {
+          "email": "mabun@dfds.com"
+        },
+        {
+          "email": "ansoe@dfds.com"
+        },
+        {
+          "email": "midla@dfds.com"
+        },
+        {
+          "email": "chsal@dfds.com"
+        },
+        {
+          "email": "viosk@dfds.com"
+        },
+        {
+          "email": "kalind@dfds.com"
+        },
+        {
+          "email": "chbau@dfds.com"
+        },
+        {
+          "email": "sngis@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "trkar@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "f8d149a2-de7d-4b5b-a15c-44a2840c3de8",
+          "name": "default",
+          "awsAccountId": "590549361919",
+          "awsRoleArn": "arn:aws:iam::590549361919:role/Capability",
+          "awsRoleEmail": "aws.operateports-zekzl@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "035712d6-11b9-4916-9ed6-9ec151995aa8",
+      "name": "OperateShips",
+      "rootId": "operateships-mvrnv",
+      "description": "",
+      "members": [
+        {
+          "email": "midla@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "chbau@dfds.com"
+        },
+        {
+          "email": "mabun@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "chsal@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "viosk@dfds.com"
+        },
+        {
+          "email": "mague@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "8f0fe4ea-23a0-4973-9df0-db8c952d90af",
+          "name": "default",
+          "awsAccountId": "016450677550",
+          "awsRoleArn": "arn:aws:iam::016450677550:role/Capability",
+          "awsRoleEmail": "aws.operateships-mvrnv@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "a60d4c21-a919-40ee-a784-48e8cbec7fbc",
+      "name": "Package-Holidays",
+      "rootId": "package-holidays-nzxrj",
+      "description": "",
+      "members": [
+        {
+          "email": "viosk@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "chbau@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "tpet@dfds.com"
+        },
+        {
+          "email": "andkr@dfds.com"
+        },
+        {
+          "email": "nbrun@dfds.com"
+        },
+        {
+          "email": "trkar@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "88268159-7815-409a-852b-99cad65c0f0b",
+          "name": "default",
+          "awsAccountId": "085593075187",
+          "awsRoleArn": "arn:aws:iam::085593075187:role/Capability",
+          "awsRoleEmail": "aws.package-holidays-nzxrj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "bcea203c-c9e0-427a-856e-9ccc5eee9820",
+      "name": "PassengerBffs",
+      "rootId": "passengerbffs-jqzab",
+      "description": "",
+      "members": [
+        {
+          "email": "nbrun@dfds.com"
+        },
+        {
+          "email": "viosk@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "trkar@DFDS.COM"
+        },
+        {
+          "email": "igplu@dfds.com"
+        },
+        {
+          "email": "thjel@DFDS.COM"
+        },
+        {
+          "email": "sngis@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "tpet@dfds.com"
+        },
+        {
+          "email": "chbau@dfds.com"
+        },
+        {
+          "email": "miande@dfds.com"
+        },
+        {
+          "email": "ansoe@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "esped@dfds.com"
+        },
+        {
+          "email": "andkr@dfds.com"
+        },
+        {
+          "email": "remun@dfds.com"
+        },
+        {
+          "email": "mabun@dfds.com"
+        },
+        {
+          "email": "anatu@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "59cd9bdd-7495-4773-b9d2-ac4a9f5e0796",
+          "name": "default",
+          "awsAccountId": "367224246738",
+          "awsRoleArn": "arn:aws:iam::367224246738:role/Capability",
+          "awsRoleEmail": "aws.passengerbffs-jqzab@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "058b66e7-907b-4d00-a6f4-aec27edb9c04",
+      "name": "PassengerBooking",
+      "rootId": "",
+      "description": null,
+      "members": [],
+      "contexts": []
+    },
+    {
+      "id": "2af2575a-a4aa-42d9-84af-bf847dbfa3de",
+      "name": "PassengerBooking",
+      "rootId": "passengerbooking-gbmvk",
+      "description": "Create- and Amend-Bookings",
+      "members": [
+        {
+          "email": "sngis@dfds.com"
+        },
+        {
+          "email": "thjel@DFDS.COM"
+        },
+        {
+          "email": "nbrun@dfds.com"
+        },
+        {
+          "email": "kalind@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "chsal@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "901f5835-f289-4d34-98fd-18dc90564d62",
+          "name": "default",
+          "awsAccountId": "779154956101",
+          "awsRoleArn": "arn:aws:iam::779154956101:role/Capability",
+          "awsRoleEmail": "aws.passengerbooking-gbmvk@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "fa09222e-79db-49a4-8f83-18593662d5e6",
+      "name": "PassengerPricing",
+      "rootId": "passengerpricing-zmjme",
+      "description": "",
+      "members": [
+        {
+          "email": "kalind@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "sngis@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "nbrun@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "chsal@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "1a959074-6fbf-4de8-96d3-6d60936303b6",
+          "name": "default",
+          "awsAccountId": "768727920604",
+          "awsRoleArn": "arn:aws:iam::768727920604:role/Capability",
+          "awsRoleEmail": "aws.passengerpricing-zmjme@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "f2b9c696-d0ba-4f7a-a3c9-0fcb03b3ae6a",
+      "name": "PassengerRevMgmt",
+      "rootId": "passengerrevmgmt-ybyyy",
+      "description": "Data scraping prices from competitors. Making tools for managing passenger prices and products. Making forecasting models, and other analytical revenue management projects.",
+      "members": [
+        {
+          "email": "liras@dfds.com"
+        },
+        {
+          "email": "topok@dfds.com"
+        },
+        {
+          "email": "relui@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "0104d7ea-53c9-478c-a759-8597af189399",
+          "name": "default",
+          "awsAccountId": "362732795862",
+          "awsRoleArn": "arn:aws:iam::362732795862:role/Capability",
+          "awsRoleEmail": "aws.passengerrevmgmt-ybyyy@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "3a0b5fc8-26f3-4c56-a5b6-64295760170b",
+      "name": "Passenger_RM",
+      "rootId": "passenger_rm-ebeko",
+      "description": "Data scraping prices from competitors. Making tools for managing passenger prices and products. Making forecasting models, and other analytical revenue management projects.",
+      "members": [],
+      "contexts": [
+        {
+          "id": "40eb16f3-346d-4347-8453-3acdd1aa1412",
+          "name": "default",
+          "awsAccountId": "",
+          "awsRoleArn": "",
+          "awsRoleEmail": ""
+        }
+      ]
+    },
+    {
+      "id": "25d6f77c-c977-4bc3-8a73-300cfd70be5f",
+      "name": "Pax-Booking-Frontend",
+      "rootId": "pax-booking-frontend-kkmgp",
+      "description": "Hosting of SeabookWeb etc.",
+      "members": [
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "miande@dfds.com"
+        },
+        {
+          "email": "alhan@dfds.com"
+        },
+        {
+          "email": "trspe@dfds.com"
+        },
+        {
+          "email": "johjo@dfds.com"
+        },
+        {
+          "email": "anatu@dfds.com"
+        },
+        {
+          "email": "igplu@dfds.com"
+        },
+        {
+          "email": "esped@dfds.com"
+        },
+        {
+          "email": "mlar@dfds.com"
+        },
+        {
+          "email": "remun@dfds.com"
+        },
+        {
+          "email": "mimat@dfds.com"
+        },
+        {
+          "email": "ansoe@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "13f77508-812a-46f2-9a49-ee43578e3f91",
+          "name": "default",
+          "awsAccountId": "942230770421",
+          "awsRoleArn": "arn:aws:iam::942230770421:role/Capability",
+          "awsRoleEmail": "aws.pax-booking-frontend-kkmgp@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "c529911e-1742-4163-a50e-a137be5ea912",
+      "name": "PaxEventIntegration",
+      "rootId": "paxeventintegration-lgyny",
+      "description": "Transforms passenger domain events into integration events and publishes them for the rest of the world to rejoice",
+      "members": [
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "emcla@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "e2b1e9b6-fa84-4c05-81c0-51c49bfee8e1",
+          "name": "default",
+          "awsAccountId": "870566213935",
+          "awsRoleArn": "arn:aws:iam::870566213935:role/Capability",
+          "awsRoleEmail": "aws.paxeventintegration-lgyny@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "dc198afd-4219-4acd-938d-c5ba08a0e10d",
+      "name": "Pax-Make-Ferry-Bookings",
+      "rootId": "pax-make-ferry-booking-pbaya",
+      "description": "",
+      "members": [
+        {
+          "email": "abara@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "2a80a5e5-16d8-4f9b-8cda-0ea5e072f3fa",
+      "name": "P-project",
+      "rootId": "",
+      "description": null,
+      "members": [
+        {
+          "email": "jandr@dfds.com"
+        },
+        {
+          "email": "thfis@dfds.com"
+        },
+        {
+          "email": "janie@dfds.com"
+        },
+        {
+          "email": "jcarl@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "e6fc0d14-310d-4cf2-ab85-10437bc4d3e1",
+          "name": "default",
+          "awsAccountId": "",
+          "awsRoleArn": "",
+          "awsRoleEmail": ""
+        }
+      ]
+    },
+    {
+      "id": "d77e332c-b886-4790-b030-1e9811bdd297",
+      "name": "Rebate",
+      "rootId": "rebate-vjnnx",
+      "description": "",
+      "members": [
+        {
+          "email": "ugcan@DFDS.COM"
+        },
+        {
+          "email": "emyur@dfds.com"
+        },
+        {
+          "email": "sanar@dfds.com"
+        },
+        {
+          "email": "emcla@dfds.com"
+        },
+        {
+          "email": "segul@dfds.com"
+        },
+        {
+          "email": "fukub@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "7c532475-e9ce-452e-80c1-a52649578a6e",
+          "name": "default",
+          "awsAccountId": "323825968943",
+          "awsRoleArn": "arn:aws:iam::323825968943:role/Capability",
+          "awsRoleEmail": "aws.rebate-vjnnx@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5b043a34-23c0-4728-94cd-a42abca154f3",
+      "name": "Run-Source-Netscaler",
+      "rootId": "run-source-netscaler-ypxem",
+      "description": "Netscaler in cloud",
+      "members": [
+        {
+          "email": "jeol@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "f8fcaba4-5475-41d0-8bc2-67f9041f2669",
+          "name": "default",
+          "awsAccountId": "656574415219",
+          "awsRoleArn": "arn:aws:iam::656574415219:role/Capability",
+          "awsRoleEmail": "aws.run-source-netscaler-ypxem@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "7ce447c8-da3a-4de7-8aa8-a77354651dc8",
+      "name": "SamiTester",
+      "rootId": "samitester-zkjka",
+      "description": "",
+      "members": [
+        {
+          "email": "alhan@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "1c7188d8-8055-44bb-a528-523f081ddfcc",
+          "name": "default",
+          "awsAccountId": "",
+          "awsRoleArn": "",
+          "awsRoleEmail": ""
+        }
+      ]
+    },
+    {
+      "id": "be4f68f2-8eee-4dd1-9fce-e71a2eabd262",
+      "name": "Sandbox-delete-me",
+      "rootId": "sandbox-delete-me-rnyvq",
+      "description": "Create by kim, delete it if you see it",
+      "members": [
+        {
+          "email": "kilin@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "5298a592-c462-4b8b-bf82-3be8d1d221ea",
+          "name": "default",
+          "awsAccountId": "783949716698",
+          "awsRoleArn": "arn:aws:iam::783949716698:role/Capability",
+          "awsRoleEmail": "aws.sandbox-delete-me-rnyvq@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "c99915d9-b635-44b5-a04c-58e6a943b810",
+      "name": "Sandbox-emcla",
+      "rootId": "sandbox-emcla-pmyxn",
+      "description": "Sandbox environment for emcla@dfds.com",
+      "members": [
+        {
+          "email": "emcla@dfds.com"
+        },
+        {
+          "email": "toban@dfds.com"
+        },
+        {
+          "email": "kilin@dfds.com"
+        },
+        {
+          "email": "jawib@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "3857f55f-e74b-456c-8dec-370930d8402e",
+          "name": "default",
+          "awsAccountId": "090185641622",
+          "awsRoleArn": "arn:aws:iam::090185641622:role/Capability",
+          "awsRoleEmail": "aws.sandbox-emcla-pmyxn@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "46e2c46d-2717-4a3e-96dc-c43f7b0ceb7e",
+      "name": "Sandbox-emcla-topics",
+      "rootId": "sandbox-emcla-topics-obrgv",
+      "description": "Made for testing Topics",
+      "members": [
+        {
+          "email": "jawib@dfds.com"
+        },
+        {
+          "email": "kilin@dfds.com"
+        },
+        {
+          "email": "emcla@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "99b541e0-09e7-46cf-9425-29f22328b4f6",
+      "name": "Sandbox-operations",
+      "rootId": "sandbox-operations-glxgq",
+      "description": "Sandbox for operations",
+      "members": [
+        {
+          "email": "pwes@dfds.com"
+        },
+        {
+          "email": "stsor@dfds.com"
+        },
+        {
+          "email": "jawib@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "3262de18-c4b5-4523-9246-459af2c711e7",
+          "name": "default",
+          "awsAccountId": "642128252442",
+          "awsRoleArn": "arn:aws:iam::642128252442:role/Capability",
+          "awsRoleEmail": "aws.sandbox-operations-glxgq@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "ae4c2a84-62ba-4b1e-8741-b1a1fcd2aee4",
+      "name": "Sandbox-pwes",
+      "rootId": "sandbox-pwes-eaaqb",
+      "description": "",
+      "members": [
+        {
+          "email": "pwes@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "5a3ed141-516e-4d27-8c9c-4956af9d589e",
+          "name": "default",
+          "awsAccountId": "183956578730",
+          "awsRoleArn": "arn:aws:iam::183956578730:role/Capability",
+          "awsRoleEmail": "aws.sandbox-pwes-eaaqb@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "429ccec8-ee51-4c64-9c5a-3d44c102b569",
+      "name": "Sandbox-raras",
+      "rootId": "sandbox-raras-gmrox",
+      "description": "Sandbox environment for raras@dfds.com",
+      "members": [
+        {
+          "email": "raras@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "49dacacd-98b1-4d1e-a5e2-22e6d1b225bf",
+          "name": "default",
+          "awsAccountId": "135584722124",
+          "awsRoleArn": "arn:aws:iam::135584722124:role/Capability",
+          "awsRoleEmail": "aws.sandbox-raras-gmrox@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "74175499-e143-471d-9099-0f307dd8357c",
+      "name": "Sandbox-wicar",
+      "rootId": "sandbox-wicar-ypvvv",
+      "description": "",
+      "members": [
+        {
+          "email": "wicar@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "bcb25048-1be3-4ab6-a73d-33838a14083d",
+          "name": "default",
+          "awsAccountId": "537879847197",
+          "awsRoleArn": "arn:aws:iam::537879847197:role/Capability",
+          "awsRoleEmail": "aws.sandbox-wicar-ypvvv@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5af40966-800f-4fb5-bdc9-cf0737eb2fbc",
+      "name": "SeaBeast",
+      "rootId": "seabeast-gqxze",
+      "description": "From the deepest of seas.",
+      "members": [
+        {
+          "email": "janie@dfds.com"
+        },
+        {
+          "email": "metop@dfds.com"
+        },
+        {
+          "email": "nipet@dfds.com"
+        },
+        {
+          "email": "adgue@dfds.com"
+        },
+        {
+          "email": "segul@dfds.com"
+        },
+        {
+          "email": "jandr@dfds.com"
+        },
+        {
+          "email": "redum@dfds.com"
+        },
+        {
+          "email": "thfis@dfds.com"
+        },
+        {
+          "email": "rupam@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "ea30dcb7-dd27-4c27-9f40-06a0e47a6a49",
+          "name": "default",
+          "awsAccountId": "153642329677",
+          "awsRoleArn": "arn:aws:iam::153642329677:role/Capability",
+          "awsRoleEmail": "aws.seabeast-gqxze@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "737c9e53-f2f1-44cd-bb67-c7ad946c369e",
+      "name": "SeabookAccounting",
+      "rootId": "seabookaccounting-rekpy",
+      "description": "Seabook specific components for untangling the knot that is known as Seabook Finance. In the long run, this capability should be superseded by a generic accounting capability. But until then...",
+      "members": [
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "trkar@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "e70abb75-9286-43c5-a470-1ffff8d5e5df",
+          "name": "default",
+          "awsAccountId": "995427626670",
+          "awsRoleArn": "arn:aws:iam::995427626670:role/Capability",
+          "awsRoleEmail": "aws.seabookaccounting-rekpy@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5ad21185-92e3-4ad2-ae06-f98f0f9ca811",
+      "name": "Seabook-Monitoring",
+      "rootId": "seabook-monitoring-jarry",
+      "description": "A capability with focus on monitoring of Seabook components",
+      "members": [
+        {
+          "email": "nbrun@dfds.com"
+        },
+        {
+          "email": "andkr@dfds.com"
+        },
+        {
+          "email": "mabun@dfds.com"
+        },
+        {
+          "email": "sngis@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        },
+        {
+          "email": "mafih@dfds.com"
+        },
+        {
+          "email": "chbau@dfds.com"
+        },
+        {
+          "email": "tpet@dfds.com"
+        },
+        {
+          "email": "viosk@dfds.com"
+        },
+        {
+          "email": "abara@DFDS.COM"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "chsal@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "acff6664-0d32-4550-9b0e-41c9bc0e700a",
+          "name": "default",
+          "awsAccountId": "175310238619",
+          "awsRoleArn": "arn:aws:iam::175310238619:role/Capability",
+          "awsRoleEmail": "aws.seabook-monitoring-jarry@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "4dbb4720-24f1-43a9-874b-90bca3ce1469",
+      "name": "Segment-UI",
+      "rootId": "segment-ui-beorp",
+      "description": "Capability for Segment UI project",
+      "members": [
+        {
+          "email": "igplu@dfds.com"
+        },
+        {
+          "email": "toban@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "a4e6a9b7-afec-4aef-ab1d-1ea28ac9ece6",
+          "name": "default",
+          "awsAccountId": "825548240362",
+          "awsRoleArn": "arn:aws:iam::825548240362:role/Capability",
+          "awsRoleEmail": "aws.segment-ui-beorp@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "7495e2e2-3648-4653-a001-022da671f28c",
+      "name": "Selfservice-Herald",
+      "rootId": "selfservice-herald-vbqkr",
+      "description": "Harald is the notification service between a capability and its members",
+      "members": [
+        {
+          "email": "jcarl@dfds.com"
+        },
+        {
+          "email": "toban@dfds.com"
+        },
+        {
+          "email": "raras@dfds.com"
+        },
+        {
+          "email": "emcla@dfds.com"
+        },
+        {
+          "email": "kilin@dfds.com"
+        },
+        {
+          "email": "hemor@dfds.com"
+        },
+        {
+          "email": "wicar@dfds.com"
+        },
+        {
+          "email": "jawib@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "58f4e026-1ac6-4231-9076-09983bf30116",
+          "name": "default",
+          "awsAccountId": "640590921355",
+          "awsRoleArn": "arn:aws:iam::640590921355:role/Capability",
+          "awsRoleEmail": "aws.selfservice-herald-vbqkr@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "3f0d6a92-6011-4dff-9227-5677d4b3594c",
+      "name": "Service-Transition",
+      "rootId": "service-transition-nalkj",
+      "description": "The Arriving and departing of Services(Bookings) to the Terminal",
+      "members": [
+        {
+          "email": "pasho@dfds.com"
+        },
+        {
+          "email": "masil@dfds.com"
+        },
+        {
+          "email": "sanar@dfds.com"
+        },
+        {
+          "email": "emyur@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "93cde2bc-dc97-4ff0-90c9-70dad0fe55b5",
+          "name": "default",
+          "awsAccountId": "581962582854",
+          "awsRoleArn": "arn:aws:iam::581962582854:role/Capability",
+          "awsRoleEmail": "aws.service-transition-nalkj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "525966a9-b845-466d-80fd-de7cc1a6691c",
+      "name": "Smartdata-ats",
+      "rootId": "smartdata-ats-xaqxj",
+      "description": "Automatic target setting for onboard sales outlets on cruise and ropax ferries",
+      "members": [
+        {
+          "email": "fepou@dfds.com"
+        },
+        {
+          "email": "urcha@dfds.com"
+        },
+        {
+          "email": "cvwhi@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "idfri@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "997ba883-6e9b-4305-9097-21ab1520926c",
+          "name": "default",
+          "awsAccountId": "761024884347",
+          "awsRoleArn": "arn:aws:iam::761024884347:role/Capability",
+          "awsRoleEmail": "aws.smartdata-ats-xaqxj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "4b8463ef-b089-4d96-b9ea-192e805c62c0",
+      "name": "Smartdata-fuel-optimization",
+      "rootId": "smartdata-fuel-optimiz-obbvp",
+      "description": "Project with TO in order to optimize the fuel consumption",
+      "members": [
+        {
+          "email": "fepou@dfds.com"
+        },
+        {
+          "email": "cvwhi@dfds.com"
+        },
+        {
+          "email": "idfri@dfds.com"
+        },
+        {
+          "email": "urcha@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "a12b6605-93c2-469a-b749-27a33c62c301",
+          "name": "default",
+          "awsAccountId": "215029680133",
+          "awsRoleArn": "arn:aws:iam::215029680133:role/Capability",
+          "awsRoleEmail": "aws.smartdata-fuel-optimiz-obbvp@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "d5e65812-e5c4-4ae7-9d67-c8abae20ed8a",
+      "name": "Smartdata-logfod",
+      "rootId": "smartdata-logfod-kqogy",
+      "description": "Capabilities for the logfod use-case",
+      "members": [
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "dhans@dfds.com"
+        },
+        {
+          "email": "jerav@DFDS.COM"
+        },
+        {
+          "email": "fepou@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "a18dc59b-4e47-4490-989c-57a97bf5ae00",
+          "name": "default",
+          "awsAccountId": "686811447626",
+          "awsRoleArn": "arn:aws:iam::686811447626:role/Capability",
+          "awsRoleEmail": "aws.smartdata-logfod-kqogy@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "a9265034-6c92-47a1-b8bc-49ffd02e4620",
+      "name": "Smartdata-pbb",
+      "rootId": "smartdata-pbb-glmee",
+      "description": "Pick-Up Based Booking capability!",
+      "members": [
+        {
+          "email": "urcha@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        },
+        {
+          "email": "fepou@dfds.com"
+        },
+        {
+          "email": "cvwhi@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "0cf07a02-590d-43d7-9d8d-d300e226191d",
+          "name": "default",
+          "awsAccountId": "129457569888",
+          "awsRoleArn": "arn:aws:iam::129457569888:role/Capability",
+          "awsRoleEmail": "aws.smartdata-pbb-glmee@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "31f445f4-7364-47e5-ba9d-628c56383988",
+      "name": "SmartDataSeldonTest",
+      "rootId": "smardataseldontest-qxgpy",
+      "description": "",
+      "members": [
+        {
+          "email": "jerav@DFDS.COM"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "8bcaba9a-5b99-415c-80b0-e63151dc13f9",
+          "name": "default",
+          "awsAccountId": "965145485124",
+          "awsRoleArn": "arn:aws:iam::965145485124:role/Capability",
+          "awsRoleEmail": "aws.smardataseldontest-qxgpy@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5c7072d6-a52c-4463-b2fe-afeca1dbb01a",
+      "name": "Staffing-Management",
+      "rootId": "staffing-management-kbxej",
+      "description": "Infrastructure needed for setting up the integration to intelliplan staffing solution",
+      "members": [
+        {
+          "email": "samdi@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "edfead3a-ee67-4ed6-b358-9196d64bcce3",
+          "name": "default",
+          "awsAccountId": "779835208962",
+          "awsRoleArn": "arn:aws:iam::779835208962:role/Capability",
+          "awsRoleEmail": "aws.staffing-management-kbxej@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "e43feab8-f63e-40b5-b6d1-967b2edb1da6",
+      "name": "SummaryDeclaration",
+      "rootId": "summarydeclaration-gjbpl",
+      "description": "",
+      "members": [
+        {
+          "email": "emyur@dfds.com"
+        },
+        {
+          "email": "sanar@dfds.com"
+        },
+        {
+          "email": "fukub@dfds.com"
+        },
+        {
+          "email": "ugcan@dfds.com"
+        },
+        {
+          "email": "segul@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "d9af57a2-95c2-4b26-894d-950edf863036",
+          "name": "default",
+          "awsAccountId": "139052370164",
+          "awsRoleArn": "arn:aws:iam::139052370164:role/Capability",
+          "awsRoleEmail": "aws.summarydeclaration-gjbpl@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "bd41c039-cb87-4f62-893d-35e150d1f60e",
+      "name": "TakePayment",
+      "rootId": "takepayment-qpkpk",
+      "description": "Enables DFDS to take payments. E.g. cash payments in port, online credit card payments etc.",
+      "members": [
+        {
+          "email": "sngis@dfds.com"
+        },
+        {
+          "email": "thjel@DFDS.COM"
+        },
+        {
+          "email": "miande@dfds.com"
+        },
+        {
+          "email": "chsal@dfds.com"
+        },
+        {
+          "email": "crale@dfds.com"
+        },
+        {
+          "email": "nbrun@dfds.com"
+        },
+        {
+          "email": "anatu@dfds.com"
+        },
+        {
+          "email": "vispr@dfds.com"
+        },
+        {
+          "email": "ansoe@dfds.com"
+        },
+        {
+          "email": "abara@dfds.com"
+        },
+        {
+          "email": "kalind@DFDS.COM"
+        },
+        {
+          "email": "remun@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "thsen@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "0e0595e9-9734-4ec7-924a-611fe2f818fc",
+          "name": "default",
+          "awsAccountId": "111728269964",
+          "awsRoleArn": "arn:aws:iam::111728269964:role/Capability",
+          "awsRoleEmail": "aws.takepayment-qpkpk@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "114f5719-4456-4047-a838-dad98bd2848e",
+      "name": "Terminal-LoadDischarge-Progress",
+      "rootId": "terminal-loaddischarge-rrazq",
+      "description": "D_A project that predict the load and discharge times",
+      "members": [
+        {
+          "email": "urcha@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "37eeae2e-3a8a-4b8f-8c27-2c8712f3a23f",
+          "name": "default",
+          "awsAccountId": "810378108574",
+          "awsRoleArn": "arn:aws:iam::810378108574:role/Capability",
+          "awsRoleEmail": "aws.terminal-loaddischarge-rrazq@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5b558550-fba0-4dd2-b3e9-c7b2c06ef2cd",
+      "name": "Terminal-Search",
+      "rootId": "terminal-search-aqnay",
+      "description": "",
+      "members": [
+        {
+          "email": "emyur@dfds.com"
+        },
+        {
+          "email": "masil@dfds.com"
+        },
+        {
+          "email": "pasho@dfds.com"
+        },
+        {
+          "email": "sanar@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "309bc350-6fde-420d-b7a3-a963185de511",
+          "name": "default",
+          "awsAccountId": "734419270700",
+          "awsRoleArn": "arn:aws:iam::734419270700:role/Capability",
+          "awsRoleEmail": "aws.terminal-search-aqnay@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "152dae8a-597f-4991-8240-e8d24f68f89e",
+      "name": "Terminal-Search-NonProd",
+      "rootId": "terminal-search-nonpro-gnjxj",
+      "description": "",
+      "members": [
+        {
+          "email": "emyur@dfds.com"
+        },
+        {
+          "email": "pasho@dfds.com"
+        },
+        {
+          "email": "masil@dfds.com"
+        },
+        {
+          "email": "sanar@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "6f6e02ad-8cad-464f-a685-0cfa55fa57fc",
+          "name": "default",
+          "awsAccountId": "037424936814",
+          "awsRoleArn": "arn:aws:iam::037424936814:role/Capability",
+          "awsRoleEmail": "aws.terminal-search-nonpro-gnjxj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "864c4054-d71d-4806-b04b-ab362b51f33d",
+      "name": "Terminal-Unit-Identification",
+      "rootId": "terminal-unit-identifi-boako",
+      "description": "Identification of units at gate arrival and departure",
+      "members": [
+        {
+          "email": "mpate@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "a84bbfc1-114a-4df3-883a-06974cebdef8",
+          "name": "default",
+          "awsAccountId": "205293678530",
+          "awsRoleArn": "arn:aws:iam::205293678530:role/Capability",
+          "awsRoleEmail": "aws.terminal-unit-identifi-boako@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "826a0440-af08-4721-8c14-2db8a3f127d0",
+      "name": "TestPelle",
+      "rootId": "testpelle-826a0440",
+      "description": "YAE2ET",
+      "members": [
+        {
+          "email": "kilin@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "fb09baa5-7253-4abe-a250-84429d5c4203",
+          "name": "default",
+          "awsAccountId": "287279587353",
+          "awsRoleArn": "arn:aws:iam::287279587353:role/Capability",
+          "awsRoleEmail": "aws.testpelle-826a0440@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "70e136a9-2673-4cf5-b59d-c54ba433d954",
+      "name": "Test-topic-2",
+      "rootId": "test-topic-2-eqyxl",
+      "description": "",
+      "members": [
+        {
+          "email": "pamed@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "5df7ebd6-e3e1-4fe8-ae13-4775d23d163d",
+      "name": "Topic-test-1",
+      "rootId": "topic-test-1-nprbz",
+      "description": "",
+      "members": [
+        {
+          "email": "pamed@dfds.com"
+        },
+        {
+          "email": "emcla@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "930ff541-9cd3-4c5b-888a-9a33995d6a54",
+      "name": "Topic-test-2",
+      "rootId": "topic-test-2-zkqgy",
+      "description": "",
+      "members": [
+        {
+          "email": "pamed@dfds.com"
+        },
+        {
+          "email": "kilin@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "8d5e2ecf-eb84-4abc-8e39-808f2e66e58c",
+      "name": "UIAM-UserManagement",
+      "rootId": "uiam-usermanagement-nmmml",
+      "description": "",
+      "members": [
+        {
+          "email": "alhan@dfds.com"
+        },
+        {
+          "email": "belju@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "1eff5962-3811-4ab0-b547-682282818ae3",
+          "name": "default",
+          "awsAccountId": "779060580135",
+          "awsRoleArn": "arn:aws:iam::779060580135:role/Capability",
+          "awsRoleEmail": "aws.uiam-usermanagement-nmmml@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "6214471b-155e-4a7a-b0b8-23081d3b6f1c",
+      "name": "Velocity-BFF",
+      "rootId": "velocity-bff-gqapj",
+      "description": "BFF for the Velocity WPF client",
+      "members": [
+        {
+          "email": "hasal@dfds.com"
+        },
+        {
+          "email": "radam@dfds.com"
+        },
+        {
+          "email": "crale@dfds.com"
+        },
+        {
+          "email": "nilun@dfds.com"
+        },
+        {
+          "email": "toske@dfds.com"
+        },
+        {
+          "email": "maosk@dfds.com"
+        },
+        {
+          "email": "namah@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "ca1113c8-ed80-423b-8363-20b218443aa7",
+          "name": "default",
+          "awsAccountId": "367110441362",
+          "awsRoleArn": "arn:aws:iam::367110441362:role/Capability",
+          "awsRoleEmail": "aws.velocity-bff-gqapj@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "3ddcaba7-512e-4d25-8a79-b0e9df6c4b14",
+      "name": "Velocity-Event-Enabling",
+      "rootId": "velocity-event-enablin-leqon",
+      "description": "Capability for event enabling the Velocity monolith while we discover bounded contexts",
+      "members": [
+        {
+          "email": "qaraz@dfds.com"
+        },
+        {
+          "email": "crale@dfds.com"
+        },
+        {
+          "email": "radam@dfds.com"
+        },
+        {
+          "email": "namah@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "ff46ffd7-d859-423d-8cb3-73cf3c50933a",
+          "name": "default",
+          "awsAccountId": "590600583824",
+          "awsRoleArn": "arn:aws:iam::590600583824:role/Capability",
+          "awsRoleEmail": "aws.velocity-event-enablin-leqon@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "fe2aa90f-0594-4076-8776-79c6a3ad4745",
+      "name": "Velocity-Monitoring",
+      "rootId": "velocity-monitoring-qbokv",
+      "description": "Shared space for increasing observability across velocity capabilities.",
+      "members": [
+        {
+          "email": "jhans@dfds.com"
+        },
+        {
+          "email": "jfhei@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "90f6ec8e-b206-4a64-949d-bf7f71fb2fa7",
+          "name": "default",
+          "awsAccountId": "724895580493",
+          "awsRoleArn": "arn:aws:iam::724895580493:role/Capability",
+          "awsRoleEmail": "aws.velocity-monitoring-qbokv@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "5d5aa650-cfb2-4e1b-a8fa-699a94eda05c",
+      "name": "Velocity-Playground",
+      "rootId": "velocity-playground-onzxm",
+      "description": "This is where you can try out working with k8s or other stuff",
+      "members": [
+        {
+          "email": "nilun@dfds.com"
+        },
+        {
+          "email": "hasal@dfds.com"
+        },
+        {
+          "email": "toske@dfds.com"
+        },
+        {
+          "email": "jawib@dfds.com"
+        },
+        {
+          "email": "abmoh@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "45ed81dc-1163-4d3a-bf2f-d6906cc5ef42",
+          "name": "default",
+          "awsAccountId": "098363379809",
+          "awsRoleArn": "arn:aws:iam::098363379809:role/Capability",
+          "awsRoleEmail": "aws.velocity-playground-onzxm@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "0f15c9da-bb4d-4058-9041-be3fd83b2cb0",
+      "name": "VirtualWorkstationDataAnalytics",
+      "rootId": "virtualworkstationdata-pvyme",
+      "description": "The AWS account of this capability will host some virtual workstations.",
+      "members": [
+        {
+          "email": "dhans@dfds.com"
+        },
+        {
+          "email": "mamor@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "b3d366fa-8044-41c8-b19d-fddb74d6827a",
+          "name": "default",
+          "awsAccountId": "244580130293",
+          "awsRoleArn": "arn:aws:iam::244580130293:role/Capability",
+          "awsRoleEmail": "aws.virtualworkstationdata-pvyme@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "2e10a087-83c3-4b41-8bcc-d877d2520e93",
+      "name": "X-DemoPlayground",
+      "rootId": "demoplayground-lylbl",
+      "description": "Playground for demos renamed to X-",
+      "members": [],
+      "contexts": [
+        {
+          "id": "84b68407-257e-474f-8b9c-9a3394406153",
+          "name": "default",
+          "awsAccountId": "691555736869",
+          "awsRoleArn": "arn:aws:iam::691555736869:role/Capability",
+          "awsRoleEmail": "aws.demoplayground-lylbl@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "0eae4d61-708a-4dda-9762-795413da9b34",
+      "name": "X-DFDS-App-Assets",
+      "rootId": "dfds-app-assets-vrbeb",
+      "description": "",
+      "members": [
+        {
+          "email": "vobic@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "1cce2678-6727-497f-b7b6-2ee1e58f56d9",
+          "name": "default",
+          "awsAccountId": "702463597323",
+          "awsRoleArn": "arn:aws:iam::702463597323:role/Capability",
+          "awsRoleEmail": "aws.dfds-app-assets-vrbeb@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "6400cd27-c94e-4209-8545-b3a206db4b67",
+      "name": "X-Logistics-Instruction",
+      "rootId": "",
+      "description": "(Depricated) Handles instruction of drivers, trucks and more",
+      "members": [
+        {
+          "email": "majep@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "eacc9f68-9697-43b0-9422-86452ed97c31",
+      "name": "X-Logistics-Tracking",
+      "rootId": "",
+      "description": "Track resources, freight and locations using a variety of tracking devices and apps",
+      "members": [
+        {
+          "email": "majep@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "ab439f04-9e9d-4065-9534-843e9ccfa5a2",
+      "name": "X-ManageFleet",
+      "rootId": "",
+      "description": "Soon to be replaced capability.",
+      "members": [
+        {
+          "email": "maosk@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "5742dcb9-6d56-443d-be9c-3e8ce3035e18",
+      "name": "XMS",
+      "rootId": "",
+      "description": null,
+      "members": [
+        {
+          "email": "kacel@dfds.com"
+        },
+        {
+          "email": "cadog@dfds.com"
+        },
+        {
+          "email": "antas@dfds.com"
+        },
+        {
+          "email": "segul@dfds.com"
+        },
+        {
+          "email": "alhan@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "bbde9ab4-b0a7-4435-a76b-8dfe9cc61cd1",
+      "name": "X-OperatePorts",
+      "rootId": "",
+      "description": "Legacy OperatePorts",
+      "members": [
+        {
+          "email": "mague@dfds.com"
+        },
+        {
+          "email": "midla@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "6a8901d6-e007-483c-bf8f-37b91d7603a6",
+      "name": "X-OperateShips",
+      "rootId": "",
+      "description": "Legacy OperateShips",
+      "members": [
+        {
+          "email": "midla@dfds.com"
+        },
+        {
+          "email": "matni@dfds.com"
+        },
+        {
+          "email": "mague@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "3d931b6c-64f1-4cd8-80b5-f06b4c560495",
+      "name": "X-Playground",
+      "rootId": "capabilityplayground-7b2045b6",
+      "description": "Feeling more playful? Wants to see what happens when joining or leaving capabilities? This is the place to try it out!",
+      "members": [
+        {
+          "email": "jfhei@dfds.com"
+        },
+        {
+          "email": "stdur@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "de2e559b-eba1-40ce-8b8f-2c003177f751",
+          "name": "default",
+          "awsAccountId": "741753595052",
+          "awsRoleArn": "arn:aws:iam::741753595052:role/Capability",
+          "awsRoleEmail": "aws.CapabilityPlayground-vwxyz@dfds.com"
+        }
+      ]
+    },
+    {
+      "id": "9d7fb0fc-dddc-4b91-a9b4-50f1251dc128",
+      "name": "X-Smartdata-ats",
+      "rootId": "",
+      "description": "Soon to be replaced capability for Smart Data's ATS project.",
+      "members": [
+        {
+          "email": "mamek@dfds.com"
+        }
+      ],
+      "contexts": []
+    },
+    {
+      "id": "69523477-78dc-4dd5-98d2-e57c6c39cdde",
+      "name": "X-UIAM-ReverseProxy",
+      "rootId": "uiam-reverseproxy-llezz",
+      "description": "",
+      "members": [
+        {
+          "email": "belju@dfds.com"
+        },
+        {
+          "email": "alhan@dfds.com"
+        }
+      ],
+      "contexts": [
+        {
+          "id": "85c769a5-fd80-4a4d-9536-1b7b55db71a6",
+          "name": "default",
+          "awsAccountId": "",
+          "awsRoleArn": "",
+          "awsRoleEmail": ""
+        }
+      ]
+    }
+  ]
+}
