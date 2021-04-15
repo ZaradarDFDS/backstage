@@ -40,7 +40,7 @@ export const lightTheme = createTheme({
       },
     },
     primary: {
-      main: '#2E77D0',
+      main: '#002b45',
     },
     banner: {
       info: '#2E77D0',

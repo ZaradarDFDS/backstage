@@ -37,7 +37,7 @@ export const colorVariants: Record<string, string[]> = {
   veryBlue: ['#0027AF', '#270094'],
   rubyRed: ['#98002B', '#8D1134'],
   toastyOrange: ['#BE2200', '#A41D00'],
-  purpleSky: ['#8912CA', '#3E00EA'],
+  purpleSky: ['#002b45', '#002b45'],
   eveningSea: ['#00FFF2', '#035355'],
   teal: ['#005B4B'],
   pinkSea: ['#C8077A', '#C2297D'],
