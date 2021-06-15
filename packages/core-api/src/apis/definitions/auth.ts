@@ -16,6 +16,7 @@
 
 import { ApiRef, createApiRef } from '../system';
 import { Observable } from '../../types';
+import { TokenApi } from './TokenApi';
 
 /**
  * This file contains declarations for common interfaces of auth-related APIs.
@@ -291,7 +292,8 @@ export const microsoftAuthApiRef: ApiRef<
     OpenIdConnectApi &
     ProfileInfoApi &
     BackstageIdentityApi &
-    SessionApi
+    SessionApi &
+    TokenApi
 > = createApiRef({
   id: 'core.auth.microsoft',
   description: 'Provides authentication towards Microsoft APIs and identities',

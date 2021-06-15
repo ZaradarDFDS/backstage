@@ -31,6 +31,7 @@ class MicrosoftAuth {
     provider = DEFAULT_PROVIDER,
     oauthRequestApi,
     discoveryApi,
+    tokenApi,
     defaultScopes = [
       'openid',
       'offline_access',
@@ -42,6 +43,7 @@ class MicrosoftAuth {
     return OAuth2.create({
       discoveryApi,
       oauthRequestApi,
+      tokenApi,
       provider,
       environment,
       defaultScopes,

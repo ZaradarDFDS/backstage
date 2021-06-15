@@ -13,22 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { ApiRef, createApiRef } from '../system';
+import { OAuthScope } from './auth';
 
-import {
-  AuthProvider,
-  DiscoveryApi,
-  OAuthRequestApi,
-  TokenApi,
-} from '../../definitions';
+export interface ITokenAcquisitionService {
+  acquireTokenSilent?(scopes: OAuthScope): Promise<string>;
+}
 
-export type OAuthApiCreateOptions = AuthApiCreateOptions & {
-  oauthRequestApi: OAuthRequestApi;
-  tokenApi?: TokenApi;
-  defaultScopes?: string[];
-};
+/**
+ * The Token API used to acquire tokens user tokens (not provider based) for API calls.
+ */
+export type TokenApi = ITokenAcquisitionService;
 
-export type AuthApiCreateOptions = {
-  discoveryApi: DiscoveryApi;
-  environment?: string;
-  provider?: AuthProvider & { id: string };
-};
+export const tokenApiRef: ApiRef<TokenApi> = createApiRef({
+  id: 'core.token',
+  description: 'Provides access to the token acquisition API',
+});

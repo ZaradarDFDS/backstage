@@ -21,6 +21,7 @@ import {
   ErrorApiForwarder,
   ErrorAlerter,
   discoveryApiRef,
+  tokenApiRef,
   GoogleAuth,
   GithubAuth,
   OAuth2,
@@ -93,10 +94,12 @@ export const defaultApis = [
       discoveryApi: discoveryApiRef,
       oauthRequestApi: oauthRequestApiRef,
       configApi: configApiRef,
+      tokenApi: tokenApiRef,
     },
-    factory: ({ discoveryApi, oauthRequestApi, configApi }) =>
+    factory: ({ discoveryApi, oauthRequestApi, configApi, tokenApi }) =>
       MicrosoftAuth.create({
         discoveryApi,
+        tokenApi,
         oauthRequestApi,
         environment: configApi.getOptionalString('auth.environment'),
       }),
