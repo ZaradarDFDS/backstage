@@ -53,18 +53,25 @@ export class SessionScopeHelper<T> {
     return hasScopes(sessionScopes, scopes);
   }
 
-  getExtendedScope(session: T | undefined, scopes?: Set<string>) {
-    const newScope = new Set(this.options.defaultScopes);
-    if (session && this.options.sessionScopes !== undefined) {
-      const sessionScopes = this.options.sessionScopes(session);
-      for (const scope of sessionScopes) {
-        newScope.add(scope);
+  getExtendedScope(session: T | undefined, scopes?: Set<string>, useDefaultScopes?: boolean) {
+    let newScope = new Set<string>();
+    console.log(useDefaultScopes);
+    if (typeof useDefaultScopes === "boolean" ? useDefaultScopes : true) {
+      console.log("Use default scopes");
+      newScope = new Set(this.options.defaultScopes) 
+      if (session && this.options.sessionScopes !== undefined) {
+        const sessionScopes = this.options.sessionScopes(session);
+        for (const scope of sessionScopes) {
+          newScope.add(scope);
+        }
       }
     }
+
     if (scopes) {
       for (const scope of scopes) {
         newScope.add(scope);
       }
+      console.log(newScope);
     }
     return newScope;
   }

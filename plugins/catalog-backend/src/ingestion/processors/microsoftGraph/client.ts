@@ -110,6 +110,7 @@ export class MicrosoftGraphClient {
   async getUserProfile(userId: string): Promise<MicrosoftGraph.User> {
     const response = await this.requestApi(`users/${userId}`);
 
+
     if (response.status !== 200) {
       await this.handleError('user profile', response);
     }

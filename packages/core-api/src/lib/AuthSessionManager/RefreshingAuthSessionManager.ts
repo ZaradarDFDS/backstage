@@ -56,7 +56,6 @@ export class RefreshingAuthSessionManager<T> implements SessionManager<T> {
       sessionScopes,
       sessionShouldRefresh,
     } = options;
-
     this.connector = connector;
     this.sessionScopesFunc = sessionScopes;
     this.sessionShouldRefreshFunc = sessionShouldRefresh;
@@ -64,6 +63,7 @@ export class RefreshingAuthSessionManager<T> implements SessionManager<T> {
   }
 
   async getSession(options: GetSessionOptions): Promise<T | undefined> {
+    console.log(options.useDefaultScopes);
     if (
       this.helper.sessionExistsAndHasScope(this.currentSession, options.scopes)
     ) {
@@ -114,7 +114,7 @@ export class RefreshingAuthSessionManager<T> implements SessionManager<T> {
     // We can call authRequester multiple times, the returned session will contain all requested scopes.
     this.currentSession = await this.connector.createSession({
       ...options,
-      scopes: this.helper.getExtendedScope(this.currentSession, options.scopes),
+      scopes: this.helper.getExtendedScope(this.currentSession, options.scopes, options.useDefaultScopes),
     });
     this.stateTracker.setIsSignedIn(true);
     return this.currentSession;

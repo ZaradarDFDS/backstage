@@ -98,6 +98,7 @@ export const executeFrameHandlerStrategy = async <Result, PrivateInfo = never>(
       };
       strategy.error = (error: InternalOAuthError) => {
         let message = `Authentication failed, ${error.message}`;
+        console.log(error);
 
         if (error.oauthError?.data) {
           try {

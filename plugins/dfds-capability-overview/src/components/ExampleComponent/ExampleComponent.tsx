@@ -191,7 +191,7 @@ export const ExampleComponent = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       console.log("Weee D:");
-      console.log(await identityApi.getAccessToken(['api://24420be9-46e5-4584-acd7-64850d2f2a03/access_as_user']));
+      console.log(await identityApi.getAccessToken(['api://24420be9-46e5-4584-acd7-64850d2f2a03/access_as_user'], undefined, false));
     };
     fetchData();
   }, [])

@@ -62,10 +62,11 @@ export class StaticAuthSessionManager<T> implements MutableSessionManager<T> {
       return undefined;
     }
 
+    console.log(options.useDefaultScopes);
     // We can call authRequester multiple times, the returned session will contain all requested scopes.
     this.currentSession = await this.connector.createSession({
       ...options,
-      scopes: this.helper.getExtendedScope(this.currentSession, options.scopes),
+      scopes: this.helper.getExtendedScope(this.currentSession, options.scopes, options.useDefaultScopes),
     });
     this.stateTracker.setIsSignedIn(true);
     return this.currentSession;

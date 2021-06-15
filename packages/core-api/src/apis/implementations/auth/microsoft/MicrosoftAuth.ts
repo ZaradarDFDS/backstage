@@ -36,7 +36,7 @@ class MicrosoftAuth {
       'offline_access',
       'profile',
       'email',
-      'User.Read',
+      'User.Read'
     ],
   }: OAuthApiCreateOptions): typeof microsoftAuthApiRef.T {
     return OAuth2.create({

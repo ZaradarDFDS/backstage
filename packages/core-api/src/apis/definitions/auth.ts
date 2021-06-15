@@ -89,6 +89,7 @@ export type OAuthApi = {
   getAccessToken(
     scope?: OAuthScope,
     options?: AuthRequestOptions,
+    useDefaultScopes?: Boolean
   ): Promise<string>;
 };
 

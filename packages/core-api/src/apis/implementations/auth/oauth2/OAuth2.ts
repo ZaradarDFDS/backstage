@@ -134,11 +134,14 @@ class OAuth2
   async getAccessToken(
     scope?: string | string[],
     options?: AuthRequestOptions,
+    useDefaultScopes?: boolean
   ) {
     const normalizedScopes = OAuth2.normalizeScopes(this.scopeTransform, scope);
+    console.log(useDefaultScopes);
     const session = await this.sessionManager.getSession({
       ...options,
       scopes: normalizedScopes,
+      useDefaultScopes: useDefaultScopes
     });
     return session?.providerInfo.accessToken ?? '';
   }
