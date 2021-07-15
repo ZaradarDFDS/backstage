@@ -27,3 +27,7 @@ Add this entry:
 127.0.0.1 localdev
 
 Save and close
+
+Then update .env file with the following values (port number can be modified as desired)
+APP_CONFIG_app_baseUrl=http://localdev:3000
+BACKEND_CORS_ORIGIN=http://localdev:3000
